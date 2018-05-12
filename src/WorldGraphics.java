@@ -10,11 +10,12 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class WorldGraphics {
-	private static String imgFilePath = "/home/Jacob/Pictures/For_AP_CS_Project/ZeldaWorld2.jpg";
+	private static String imgFilePath = "/home/Jacob/Pictures/For_AP_CS_Project/ZeldaWorld.png";
 	// edit this to allow program to work on another computer
-	private static int subImgW = 50;
-	private static int subImgH = 50;
-	private static Point subImgCorner = new Point();
+	private static int subImgW = 100;
+	private static int subImgH = 100;
+	private static Image zeldaWorldImg;
+	private static Point subImgCorner = new Point(800, 800);
 	
 	// Class JFrame variable
 	private static JFrame window;
@@ -38,7 +39,7 @@ public class WorldGraphics {
 		tf.addKeyListener(k);
 		
 		ImageIcon zeldaWorldIcon = new ImageIcon(imgFilePath);	// image of Zelda world
-		Image zeldaWorldImg = zeldaWorldIcon.getImage();
+		zeldaWorldImg = zeldaWorldIcon.getImage();
 		
 		BufferedImage a = ImageIO.read(new File(imgFilePath));
 		
@@ -47,7 +48,7 @@ public class WorldGraphics {
 		panelArr[0][0].add(tf);
 		pane.add(panelArr[0][0]);
 		
-		panelArr[1][0] = new ImagePanel(a, window);
+		panelArr[1][0] = new ImagePanel(a, window, subImgCorner, subImgW, subImgH);
 		pane.add(panelArr[1][0]);
 		
 		BufferedImage subImg = a.getSubimage(subImgCorner.x, subImgCorner.y, subImgW, subImgH);
@@ -76,7 +77,7 @@ public class WorldGraphics {
 	
 	public static void subImgCornerRightArrow() {
 		int newX = subImgCorner.x + 10;
-		newX = Math.min(newX, window.getWidth());
+		newX = Math.min(newX, zeldaWorldImg.getWidth(null));
 		
 		subImgCorner.setLocation(newX, subImgCorner.y);
 	}
@@ -93,7 +94,7 @@ public class WorldGraphics {
 	
 	public static void subImgCornerDownArrow() {
 		int newY = subImgCorner.y + 10;
-		newY = Math.min(newY, window.getHeight());
+		newY = Math.min(newY, zeldaWorldImg.getHeight(null));
 
 		subImgCorner.setLocation(subImgCorner.x, newY);
 	}

@@ -7,17 +7,34 @@ public class ImagePanel extends JPanel {
 	private BufferedImage image;
 	private JFrame frame;
 	
+	// Only for use with subImg images
+	private Point subImgCorner;
+	private int subImgH;
+	private int subImgW;
+	
 	public ImagePanel(BufferedImage img, JFrame window) {
 		image = img;
 		frame = window;
 	}
 	
+	public ImagePanel(BufferedImage img, JFrame window, Point subImgCorner, int subW, int subH) {
+		image = img;
+		frame = window;
+		subImgH = subH;
+		subImgW = subW;
+	}
+	
     public void paintComponent (Graphics g) {
-        int imgW = image.getWidth(null);
-        int imgH = image.getHeight(null);
-
         // draw regular image
         g.drawImage(image, 0, 0, frame.getWidth(), frame.getHeight(), null);
+        
+        // Draw box to represent zoomed in area (sub image)
+        if (subImgCorner != null) {
+        	g.setColor(Color.YELLOW);
+            Graphics2D g2D = (Graphics2D) g;      
+            g2D.setStroke(new BasicStroke(200F));  // set stroke width of 10
+        	g2D.drawRect(subImgCorner.x, subImgCorner.y, subImgW, subImgH);
+        }
     }
     
     public void setImage(BufferedImage img) {
