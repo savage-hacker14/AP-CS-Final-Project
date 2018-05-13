@@ -10,12 +10,13 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class WorldGraphics {
-	private static String imgFilePath = "/home/Jacob/Pictures/For_AP_CS_Project/ZeldaWorld.png";
-	// edit this to allow program to work on another computer
+	private static String imgFilePath = "ZeldaWorld_1000x1000.png";
+	// should be tied to project so no file path required
+	
 	private static int subImgW = 100;
 	private static int subImgH = 100;
 	private static Image zeldaWorldImg;
-	private static Point subImgCorner = new Point(800, 800);
+	private static Point subImgCorner = new Point(subImgW, subImgH);
 	
 	// Class JFrame variable
 	private static JFrame window;
