@@ -25,8 +25,11 @@ public class ImagePanel extends JPanel {
 	}
 	
     public void paintComponent (Graphics g) {
+    	
         // draw regular image
-        g.drawImage(image, 0, 0, frame.getWidth(), frame.getHeight(), null);
+    	// *** FIGURE OUT WHY THIS ISN'T WORKING!!! ***
+        //g.drawImage(image, 0, 0, frame.getWidth(), frame.getHeight(), null);
+    	g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
         
         // Draw box to represent zoomed in area (sub image)
         if (subImgCorner != null) {
@@ -35,6 +38,10 @@ public class ImagePanel extends JPanel {
             g2D.setStroke(new BasicStroke(200F));  // set stroke width of 10
         	g2D.drawRect(subImgCorner.x, subImgCorner.y, subImgW, subImgH);
         }
+        
+        // draw a perimeter
+        g.setColor(Color.BLACK);
+        g.drawRect(0, 0, frame.getWidth(), frame.getHeight());
     }
     
     public void setImage(BufferedImage img) {

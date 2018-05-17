@@ -15,6 +15,7 @@ public class WorldGraphics {
 	
 	private static int subImgW = 100;
 	private static int subImgH = 100;
+	private static int frameMovmt = 20;
 	private static Image zeldaWorldImg;
 	private static Point subImgCorner = new Point(subImgW, subImgH);
 	
@@ -47,13 +48,15 @@ public class WorldGraphics {
 		// Set up panels for window
 		panelArr[0][0] = new JPanel();
 		panelArr[0][0].add(tf);
+		//panelArr[0][0].setVisible(false);
 		pane.add(panelArr[0][0]);
 		
 		panelArr[1][0] = new ImagePanel(a, window, subImgCorner, subImgW, subImgH);
 		pane.add(panelArr[1][0]);
 		
 		BufferedImage subImg = a.getSubimage(subImgCorner.x, subImgCorner.y, subImgW, subImgH);
-		//BufferedImage subImage = a.getSubimage(700, 100, subImgW, subImgH);
+		//BufferedImage subImage = a.getSubimage(700, 100, subImgW, subImgH);JFrame.EXIT_ON_CLOSE);
+
 		panelArr[2][0] = new ImagePanel(subImg, window);
 		pane.add(panelArr[2][0]);
 		
@@ -67,7 +70,7 @@ public class WorldGraphics {
 	}
 	
 	public static void subImgCornerLeftArrow() {
-		int newX = subImgCorner.x - 10;
+		int newX = subImgCorner.x - frameMovmt;
 		
 		if (newX < 0) {
 			newX = 0;
@@ -77,14 +80,14 @@ public class WorldGraphics {
 	}
 	
 	public static void subImgCornerRightArrow() {
-		int newX = subImgCorner.x + 10;
+		int newX = subImgCorner.x + frameMovmt;
 		newX = Math.min(newX, zeldaWorldImg.getWidth(null));
 		
 		subImgCorner.setLocation(newX, subImgCorner.y);
 	}
 	
 	public static void subImgCornerUpArrow() {
-		int newY = subImgCorner.y - 10;
+		int newY = subImgCorner.y - frameMovmt;
 		
 		if (newY < 0) {
 			newY = 0;
@@ -94,7 +97,7 @@ public class WorldGraphics {
 	}
 	
 	public static void subImgCornerDownArrow() {
-		int newY = subImgCorner.y + 10;
+		int newY = subImgCorner.y + frameMovmt;
 		newY = Math.min(newY, zeldaWorldImg.getHeight(null));
 
 		subImgCorner.setLocation(subImgCorner.x, newY);
