@@ -1,2 +1,2 @@
 # AP-CS-Final-Project
-The game _____ in Java!
+The game Zelda recreated in Java!
