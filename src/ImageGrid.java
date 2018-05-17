@@ -8,6 +8,7 @@ import javax.swing.*;
 
 public class ImageGrid {
 	
+	// String for image name
 	private static final String imgName = "BushSprite.png";
 	
 	public static void main(String[] args) throws IOException {
@@ -34,7 +35,7 @@ public class ImageGrid {
 		BufferedImage img = ImageIO.read(new File(imgName));
 		//img = img.getSubimage(0, 0, 10, 10); 					// Limit image size to 10x10 pixels
 		
-		
+		// Place image / sprite in all panels
 		for (int r = 0; r < rows; r++) {
 			for (int c = 0; c < cols; c++) {
 				panelArray[r][c] = new ImagePanel(img, grid);
