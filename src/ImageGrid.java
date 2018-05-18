@@ -9,7 +9,7 @@ import javax.swing.*;
 public class ImageGrid {
 	
 	// String for image name
-	private static final String imgName = "BushSprite.png";
+	private static final String imgName = "Sprites/BushSprite.png";
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -38,7 +38,7 @@ public class ImageGrid {
 		// Place image / sprite in all panels
 		for (int r = 0; r < rows; r++) {
 			for (int c = 0; c < cols; c++) {
-				panelArray[r][c] = new ImagePanel(img, grid);
+				panelArray[r][c] = new ImagePanel(img, grid, rows, cols);
 				pane.add(panelArray[r][c]);
 			}
 		}
