@@ -1,5 +1,6 @@
+import java.awt.image.BufferedImage;
 
-public class Character {
+public class Character extends Tile {
 	
 	private int health;
 	private int armor;
@@ -7,8 +8,8 @@ public class Character {
 	private int defense;
 	
 	
-	public Character() {
-		
+	public Character(BufferedImage img) {
+		super(img);
 		health = 100;
 		armor = 0;
 		attack = 10;
