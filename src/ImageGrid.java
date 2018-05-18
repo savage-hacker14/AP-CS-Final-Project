@@ -9,7 +9,7 @@ import javax.swing.*;
 public class ImageGrid {
 	
 	// String for image name
-	private static final String imgName = "Sprites/BushSprite.png";
+	private static final String imgName = "Sprites/Blob.png";
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -25,7 +25,7 @@ public class ImageGrid {
 		int cols = Integer.parseInt(input2);								// Parse the strings input for char that forms the integer, will crash if string not completely an int
 		pane.setLayout(new GridLayout(rows, cols));
 		
-		ImagePanel panelArray[][] = new ImagePanel[rows][cols];
+		Tile panelArray[][] = new Tile[rows][cols];
 		grid.setSize(cols * 20, rows * 20);
 		grid.setVisible(true);
 		grid.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		// allows program termination when x is clicked on
@@ -38,7 +38,7 @@ public class ImageGrid {
 		// Place image / sprite in all panels
 		for (int r = 0; r < rows; r++) {
 			for (int c = 0; c < cols; c++) {
-				panelArray[r][c] = new ImagePanel(img, grid, rows, cols);
+				panelArray[r][c] = new Tile(img);
 				pane.add(panelArray[r][c]);
 			}
 		}
