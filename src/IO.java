@@ -18,7 +18,8 @@ public class IO {
 		while (reader.ready()) {
 			int c_int = reader.read();
 			
-			if (c_int != 20) {
+			//System.out.println(c_int);
+			if (c_int != 32 && c_int != 10) {
 				arr[r][c] = (char) c_int;
 				c++;
 				
@@ -29,8 +30,17 @@ public class IO {
 			}	
 		}
 		
-		System.out.println(Arrays.toString(arr));
+//		System.out.println(Arrays.toString(arr));
 		
 		return arr;
+	}
+	
+	public static void printMap(char[][] arr) {
+		for (char[] row : arr) {
+			for (char c : row) {
+				System.out.print(c + " ");
+			}
+			System.out.println();
+		}
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.*;
 
 public class Tile extends JPanel {
+	
 	private BufferedImage image;
 	
 	public Tile(BufferedImage img) {

@@ -16,7 +16,7 @@ public class Floor {
 	public static BufferedImage lava;
 
 	// Initialize image constants
-	public static void init() throws IOException {
+	public void init() throws IOException {
 		character 	= ImageIO.read(new File("Sprites/Player.gif"));		// this file format might cause errors
 		wall 		= ImageIO.read(new File("Sprites/Stone.png"));
 		bush 		= ImageIO.read(new File("Sprites/Bush.png"));
@@ -30,6 +30,9 @@ public class Floor {
 	public Floor(Tile[][] arr) throws IOException {
 		// init image constants
 		init();
+		
+		// init floor array
+		floorTiles = new Tile[arr.length][arr[0].length];
 		
 		// Jacob: omit 9x16 size for now
 		for (int r = 0; r < arr.length; r++) {
@@ -45,34 +48,37 @@ public class Floor {
 		// init image constants
 		init();
 		
+		// init floor array
+		floorTiles = new Tile[arr.length][arr[0].length];
+		
 		for (int r = 0; r < arr.length; r++) {
 			for (int c = 0; c < arr[r].length; c++) {
 				char tile = arr[r][c];
 				
 				switch (tile) {
-				case 'p':
-					floorTiles[r][c] = new Tile(character);
-					break;
-					
-				case 'w':
-					floorTiles[r][c] = new Tile(wall);
-					break;
-					
-				case 'b':
-					floorTiles[r][c] = new Tile(bush);
-					break;
-
-				case 'd':
-					floorTiles[r][c] = new Tile(door);
-					break;
-
-				case 'c':
-					floorTiles[r][c] = new Tile(chest);
-					break;
-
-				case 'l':
-					floorTiles[r][c] = new Tile(lava);
-					break;
+					case 'p':
+						floorTiles[r][c] = new Tile(character);
+						break;
+						
+					case 'w':
+						floorTiles[r][c] = new Tile(wall);
+						break;
+						
+					case 'b':
+						floorTiles[r][c] = new Tile(bush);
+						break;
+	
+					case 'd':
+						floorTiles[r][c] = new Tile(door);
+						break;
+	
+					case 'c':
+						floorTiles[r][c] = new Tile(chest);
+						break;
+	
+					case 'l':
+						floorTiles[r][c] = new Tile(lava);
+						break;
 				}
 			}
 		}
@@ -85,6 +91,10 @@ public class Floor {
 	
 	public void setTile(Tile tile, int x, int y) {
 		floorTiles[x][y] = tile;
+	}
+	
+	public Tile[][] getFloor() {
+		return floorTiles;
 	}
 
 }
