@@ -10,5 +10,4 @@ public class Blob extends Enemy {
 	}
 	
 	
-	
 }
