@@ -16,7 +16,7 @@ public class Floor {
 	public static BufferedImage lava;
 
 	// Initialize image constants
-	public void init() throws IOException {
+	public static void init() throws IOException {
 		character 	= ImageIO.read(new File("Sprites/Player.gif"));		// this file format might cause errors
 		wall 		= ImageIO.read(new File("Sprites/Stone.png"));
 		bush 		= ImageIO.read(new File("Sprites/Bush.png"));
