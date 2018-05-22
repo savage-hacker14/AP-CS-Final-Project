@@ -30,23 +30,23 @@ public class Floor {
 	// Initialize image constants
 	public static void init() throws IOException {
 		blob 		= ImageIO.read(new File("Sprites/Blob.png"));
-		bush 		= ImageIO.read(new File("Sprites/Blob.png"));
-		chest 		= ImageIO.read(new File("Sprites/Blob.png"));
-		chili 		= ImageIO.read(new File("Sprites/Blob.png"));
-		demon 		= ImageIO.read(new File("Sprites/Blob.png"));
-		door 		= ImageIO.read(new File("Sprites/Blob.png"));
-		doorLock 	= ImageIO.read(new File("Sprites/Blob.png"));
-		enemy1 		= ImageIO.read(new File("Sprites/Blob.png"));
-		fireball	= ImageIO.read(new File("Sprites/Blob.png"));
-		grass 		= ImageIO.read(new File("Sprites/Blob.png"));
-		knight1 	= ImageIO.read(new File("Sprites/Blob.png"));
-		knight2		= ImageIO.read(new File("Sprites/Blob.png"));
-		lava 		= ImageIO.read(new File("Sprites/Blob.png"));
-		player 		= ImageIO.read(new File("Sprites/Blob.png"));
-		redPotion	= ImageIO.read(new File("Sprites/Blob.png"));
-		smallSwordV	= ImageIO.read(new File("Sprites/Blob.png"));
-		stone 		= ImageIO.read(new File("Sprites/Blob.png"));
-		water 		= ImageIO.read(new File("Sprites/Blob.png"));
+		bush 		= ImageIO.read(new File("Sprites/Bush.png"));
+		chest 		= ImageIO.read(new File("Sprites/Chest.png"));
+		chili 		= ImageIO.read(new File("Sprites/Chilli.png"));
+		demon 		= ImageIO.read(new File("Sprites/Demon.png"));
+		door 		= ImageIO.read(new File("Sprites/Door.png"));
+		doorLock 	= ImageIO.read(new File("Sprites/DoorLock.png"));
+		enemy1 		= ImageIO.read(new File("Sprites/Enemy1.png"));
+		fireball	= ImageIO.read(new File("Sprites/FireBall.png"));
+		grass 		= ImageIO.read(new File("Sprites/Grass.png"));
+		knight1 	= ImageIO.read(new File("Sprites/KnightShield.png"));
+		knight2		= ImageIO.read(new File("Sprites/KnightShieldWings.png"));
+		lava 		= ImageIO.read(new File("Sprites/Lava.png"));
+		player 		= ImageIO.read(new File("Sprites/Player.gif"));
+		redPotion	= ImageIO.read(new File("Sprites/PotionRed.png"));
+		smallSwordV	= ImageIO.read(new File("Sprites/SmallSwordVertical.png"));
+		stone 		= ImageIO.read(new File("Sprites/Stone.png"));
+		water 		= ImageIO.read(new File("Sprites/Water.png"));
 			
 	}
 	
@@ -81,11 +81,11 @@ public class Floor {
 				
 				switch (tile) {
 					case 'p':
-						floorTiles[r][c] = new Tile(character);
+						floorTiles[r][c] = new Tile(player);
 						break;
 						
 					case 'w':
-						floorTiles[r][c] = new Tile(wall);
+						//floorTiles[r][c] = new Tile(wall);
 						break;
 						
 					case 'b':
