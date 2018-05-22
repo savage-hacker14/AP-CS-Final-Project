@@ -16,7 +16,12 @@ public class Character extends Tile {
 		maxHealth = 100;
 
 	}
-
+	public void resetAll() {
+		health = 100;
+		attack = 10;
+		defense = 10;
+		maxHealth = 100;
+	}
 
 	public int getHealth() {
 		return health;
@@ -29,8 +34,6 @@ public class Character extends Tile {
 			this.health = maxHealth;
 		}
 	}
-
-
 	
 	public int getAttack() {
 		return attack;

@@ -13,5 +13,13 @@ public class MainCharacter extends Character{
 	public void setItem(Items input,int index){
 		backpack[index]=input;
 	}
-	
+	public void readItems() {
+		resetAll();
+		for(int i=0;i<backpack.length;i++) {
+			setMaxHealth(backpack[i].getHealth()+getMaxHealth());
+			increaseHealth(backpack[i].getHealth());
+			increaseAttack(backpack[i].getHealth());
+			increaseDefense(backpack[i].getHealth());
+		}
+	}
 }
