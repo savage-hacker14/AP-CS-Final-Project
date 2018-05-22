@@ -1,16 +1,14 @@
 import java.awt.image.BufferedImage;
 
-public class enemy extends Tile{
+public class Enemy extends Tile{
 	private int health;
-	private int armor;
 	private int attack;
 	private int defense;
 	
 	
-	public enemy(BufferedImage img) {
+	public Enemy(BufferedImage img) {
 		super(img);
 		health = 100;
-		armor = 0;
 		attack = 10;
 		defense = 10;
 		
@@ -20,12 +18,6 @@ public class enemy extends Tile{
 	}
 	public void setHealth(int h) {
 		health = h;
-	}
-	public int getarmor() {
-		return armor;
-	}
-	public void setArmor(int h) {
-		armor = h;
 	}
 	public int getattack() {
 		return attack;
