@@ -3,25 +3,18 @@ import java.awt.image.BufferedImage;
 public class Character extends Tile {
 	
 	private int health;
-	private int armor;
 	private int attack;
 	private int defense;
 	private int maxHealth;
-	private int maxArmor;
-	private int maxAttack;
-	private int maxDefense;
 	
 	
 	public Character(BufferedImage img) {
 		super(img);
 		health = 100;
-		armor = 0;
 		attack = 10;
 		defense = 10;
 		maxHealth = 100;
-		maxArmor = 0;
-		maxAttack = 20;
-		maxDefense = 20;
+
 	}
 
 
@@ -38,19 +31,7 @@ public class Character extends Tile {
 	}
 
 
-	public int getArmor() {
-		return armor;
-	}
-
-	/* Decreases armor by armor, but doesn't go less than 0 */
-	public void damageArmor(int armor) {
-		this.armor -= armor;
-		if (this.armor < 0) {
-			this.armor = 0;
-		}
-	}
-
-
+	
 	public int getAttack() {
 		return attack;
 	}
@@ -58,9 +39,7 @@ public class Character extends Tile {
 	/* Increases attack by attack, but doesn't exceed maxAttack */
 	public void increaseAttack(int attack) {
 		this.attack += attack;
-		if (this.attack > maxAttack) {
-			this.attack = attack;
-		}
+		
 	}
 
 
@@ -71,9 +50,7 @@ public class Character extends Tile {
 	/* Increases defense by defense, but doesn't exceed maxDefense */
 	public void increaseDefense(int defense) {
 		this.defense += defense;
-		if (this.defense > maxDefense) {
-			this.defense = maxDefense;
-		}
+		
 	}
 
 
@@ -82,39 +59,11 @@ public class Character extends Tile {
 	}
 
 
-	public void increaseMaxHealth(int maxHealth) {
-		this.maxHealth += maxHealth;
+	public void setMaxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
 	}
 
 
-	public int getMaxArmor() {
-		return maxArmor;
-	}
-
-
-	public void increaseMaxArmor(int maxArmor) {
-		this.maxArmor += maxArmor;
-	}
-
-
-	public int getMaxAttack() {
-		return maxAttack;
-	}
-
-
-	public void increaseMaxAttack(int maxAttack) {
-		this.maxAttack += maxAttack;
-	}
-
-
-	public int getMaxDefense() {
-		return maxDefense;
-	}
-
-
-	public void increaseMaxDefense(int maxDefense) {
-		this.maxDefense += maxDefense;
-	}
 	
 	
 }

@@ -5,10 +5,7 @@ public class MainCharacter extends Character{
 	public MainCharacter(BufferedImage img) {
 		super(img);
 		backpack= new Items[10];
-		setHealth(100);
-		setArmor(0);
-		setAttack(10);
-		setDefense(10);
+		
 	}
 	public Items getItem(int index) {
 		return backpack[index];
