@@ -16,9 +16,7 @@ public class Items {
 	/* Increases health by health, but doesn't exceed maxHealth */
 	public void increaseHealth(int health) {
 		this.health += health;
-		if (this.health > maxHealth) {
-			this.health = maxHealth;
-		}
+		
 	}
 
 
@@ -45,14 +43,6 @@ public class Items {
 	}
 
 
-	public int getMaxHealth() {
-		return maxHealth;
-	}
-
-
-	public void setMaxHealth(int maxHealth) {
-		this.maxHealth = maxHealth;
-	}
 
 
 }
