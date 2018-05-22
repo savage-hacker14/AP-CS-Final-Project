@@ -19,6 +19,8 @@ public class GameInfoTest {
 		
 		pane.add(GameInfo.generatePanel());
 		window.repaint();
+		
+		System.out.print("↑");
 	}
 
 }
