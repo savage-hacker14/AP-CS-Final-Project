@@ -1,5 +1,6 @@
 // Written by JAcob Krucinski on 5/21/18
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
@@ -15,10 +16,10 @@ public class GameInfo {
 		buttons = new JButton[9];
 		buttons[0] = new JButton("ATTACK");
 		buttons[1] = new JButton("DEFEND");
-		buttons[2] = new JButton("UP");
-		buttons[3] = new JButton("DOWN");
-		buttons[4] = new JButton("LEFT");
-		buttons[5] = new JButton("RIGHT");
+		buttons[2] = new JButton("↑");
+		buttons[3] = new JButton("↓");
+		buttons[4] = new JButton("←");
+		buttons[5] = new JButton("→");
 		buttons[6] = new JButton("INVENTORY");
 		buttons[7] = new JButton("MENU");
 		buttons[8] = new JButton("SHOP");
@@ -39,6 +40,8 @@ public class GameInfo {
 		init();
 		
 		for (int i = 0; i < buttons.length; i++) {
+			String buttonName = buttons[i].getText();
+			buttons[i].addActionListener(new ButtonListener(buttonName));
 			panel.add(buttons[i]);
 		}
 		
@@ -49,7 +52,46 @@ public class GameInfo {
 		return panel;
 	}
 	
-	static class ButtonListener extends KeyAdapter {
+	static class ButtonListener implements ActionListener {
+		
+		private String button;
 		// Class for reading button clicks
+		public ButtonListener(String buttonTxt) {
+			button = buttonTxt;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			switch (button) {
+			case "ATTACK":
+				System.out.println("ATTACK!");
+				break;
+			case "DEFEND":
+				System.out.println("DEFEND!");
+				break;
+			case "↑":
+				System.out.println("UP!");
+				break;
+			case "↓":
+				System.out.println("DOWN!");
+				break;
+			case "←":
+				System.out.println("LEFT!");
+				break;
+			case "→":
+				System.out.println("RIGHT!");
+				break;
+			case "INVENTORY":
+				System.out.println("INVENTORY!");
+				break;
+			case "MENU":
+				System.out.println("MENU!");
+				break;
+			case "SHOP":
+				System.out.println("SHOP!");
+				break;
+			}
+		}
 	}
 }
