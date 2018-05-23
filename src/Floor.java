@@ -106,6 +106,9 @@ public class Floor {
 					case 'o':
 						floorTiles[r][c] = new Tile(blob, "Blob");
 						break;
+					case 'h':
+						floorTiles[r][c] = new Tile(blob, "Chilli");
+						break;
 				}
 			}
 		}
