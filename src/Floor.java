@@ -11,7 +11,7 @@ public class Floor {
 	public static BufferedImage blob;
 	public static BufferedImage bush;
 	public static BufferedImage chest;
-	public static BufferedImage chili;
+	public static BufferedImage chilli;
 	public static BufferedImage demon;
 	public static BufferedImage door;
 	public static BufferedImage doorLock;
@@ -32,7 +32,7 @@ public class Floor {
 		blob 		= ImageIO.read(new File("Sprites/Blob.png"));
 		bush 		= ImageIO.read(new File("Sprites/Bush.png"));
 		chest 		= ImageIO.read(new File("Sprites/Chest.png"));
-		chili 		= ImageIO.read(new File("Sprites/Chilli.png"));
+		chilli 		= ImageIO.read(new File("Sprites/Chilli.png"));
 		demon 		= ImageIO.read(new File("Sprites/Demon.png"));
 		door 		= ImageIO.read(new File("Sprites/Door.png"));
 		doorLock 	= ImageIO.read(new File("Sprites/DoorLock.png"));
@@ -81,7 +81,7 @@ public class Floor {
 				
 				switch (tile) {
 					case 'p':
-						floorTiles[r][c] = new Tile(player);
+						floorTiles[r][c] = new Tile(player, "Player1");
 						break;
 						
 					case 'w':
@@ -89,19 +89,22 @@ public class Floor {
 						break;
 						
 					case 'b':
-						floorTiles[r][c] = new Tile(bush);
+						floorTiles[r][c] = new Tile(bush, "Bush");
 						break;
 	
 					case 'd':
-						floorTiles[r][c] = new Tile(door);
+						floorTiles[r][c] = new Tile(door, "Door");
 						break;
 	
 					case 'c':
-						floorTiles[r][c] = new Tile(chest);
+						floorTiles[r][c] = new Tile(chest, "Chest");
 						break;
 	
 					case 'l':
-						floorTiles[r][c] = new Tile(lava);
+						floorTiles[r][c] = new Tile(lava, "Lava");
+						break;
+					case 'o':
+						floorTiles[r][c] = new Tile(blob, "Blob");
 						break;
 				}
 			}
