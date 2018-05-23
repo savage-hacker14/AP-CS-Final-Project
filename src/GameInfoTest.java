@@ -20,6 +20,7 @@ public class GameInfoTest {
 		pane.add(GameInfo.generatePanel());
 		window.repaint();
 		
+		// test comment written from school desktop
 		System.out.print("↑");
 	}
 
