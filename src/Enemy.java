@@ -1,6 +1,6 @@
 import java.awt.image.BufferedImage;
 
-public class Enemy extends Tile{
+public class Enemy extends Tile {
 	private int health;
 	private int attack;
 	private int defense;

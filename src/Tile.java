@@ -6,9 +6,15 @@ import javax.swing.*;
 public class Tile extends JPanel {
 	
 	private BufferedImage image;
+	private String imageType;
 	
 	public Tile(BufferedImage img) {
 		image = img;
+	}
+	
+	public Tile(BufferedImage img, String name) {
+		image = img;
+		imageType = name;
 	}
 	
     public void paintComponent (Graphics g) {
@@ -24,5 +30,20 @@ public class Tile extends JPanel {
     
     public void setImage(BufferedImage img) {
     	image = img;
+    }
+    public boolean isWalkable() {
+    	switch (imageType) {
+    		
+    	case "Grass":
+    		return true;
+    	case "Chilli":
+    		return true;
+    	case "PotionRed":
+    		return true;
+    	case "Wood":
+    		return true;
+    	}
+    	
+    	return false;
     }
 }
