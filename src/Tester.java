@@ -12,14 +12,14 @@ public class Tester {
 		JFrame window = new JFrame();
 		Container pane = window.getContentPane();
 		window.setTitle("Custom Floor");
-		window.setSize(200, 200);
+		window.setSize(300, 300);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		// allows program termination when x is clicked on
 		pane.setLayout(new GridLayout(2,1));
 		
 		//load in floor from text file
 		JPanel map = new JPanel();
-		String filepath = "MapTxtFiles/AllSprites";
+		String filepath = "MapTxtFiles/Floor1";
 		char[][] testArr = IO.readMapFromTxt(filepath);
 		//IO.printMap(testArr);
 		Floor testFloor = new Floor(testArr);
@@ -29,10 +29,13 @@ public class Tester {
 		// Fill window
 		for (int r = 0; r < rows; r++) {
 			for (int c = 0; c < cols; c++) {
+				//testFloor.getTile(r, c).setOpaque(true);
 				map.add(testFloor.getTile(r, c));
 			}
 		}
 		pane.add(map);
+		window.revalidate();
+		window.repaint();
 		
 		
 		//create game info panel

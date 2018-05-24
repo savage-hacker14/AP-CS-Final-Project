@@ -5,8 +5,10 @@ import javax.swing.*;
 
 public class Tile extends JPanel {
 	
+	private final Color bg = new Color(251, 214, 159);
 	private BufferedImage image;
 	private String imageType;
+	private Point p;
 	
 	public Tile(BufferedImage img) {
 		image = img;
@@ -21,11 +23,16 @@ public class Tile extends JPanel {
     	
         // draw regular image
     	//g.drawImage(image, 0, 0, frame.getWidth() / numR, frame.getHeight() / numC, null);
-    	g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    	//g.drawImage(image, 0, 0, getWidth() - 10, getHeight() - 10, null);
         
         // draw a perimeter
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, getWidth(), getHeight());
+        
+        // draw tan background
+        setBackground(Color.BLACK);
+        //g.setColor(Color.black);
+        //g.drawRect(0, 0, getWidth(), getHeight());
     }
     
     public void setImage(BufferedImage img) {
