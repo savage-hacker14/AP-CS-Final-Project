@@ -18,6 +18,7 @@ public class Driver {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allows program termination when x is clicked on
 		pane.setLayout(new GridLayout(2, 1));
 
+		
 		// load in floor from text file
 		JPanel map = new JPanel();
 		String filepath = "MapTxtFiles/AllSprites";
