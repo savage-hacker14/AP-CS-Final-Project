@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -162,5 +163,9 @@ public class Floor {
 	public Tile[][] getFloor() {
 		return floorTiles;
 	}
-
+	
+	// new method. Moves tiles from old x,y to new x,y
+	public void moveTile(Point old, Point newPt) {
+		floorTiles[newPt.x][newPt.y] = floorTiles[old.x][old.y];
+	}
 }

@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 public class Character extends Tile {
@@ -64,9 +65,5 @@ public class Character extends Tile {
 
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
-	}
-
-
-	
-	
+	}	
 }
