@@ -31,4 +31,9 @@ public class Enemy extends Tile {
 	public void setDefense(int h) {
 		defense = h;
 	}
+	public void move(Floor floor) {
+		
+		
+		
+	}
 }
