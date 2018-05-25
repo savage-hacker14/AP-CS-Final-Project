@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 public class Floor {
 
@@ -91,13 +92,13 @@ public class Floor {
 				
 				switch (tile) {
 					case '1':
-						floorTiles[r][c] = new Tile(player1, "Player1", tileLocation);
+						floorTiles[r][c] = new MainCharacter(player1, "Player1", tileLocation);
 						break;
 					case '2':
-						floorTiles[r][c] = new Tile(player2, "Player2", tileLocation);
+						floorTiles[r][c] = new MainCharacter(player2, "Player2", tileLocation);
 						break;
 					case '3':
-						floorTiles[r][c] = new Tile(player3, "Player3", tileLocation);
+						floorTiles[r][c] = new MainCharacter(player3, "Player3", tileLocation);
 						break;
 					case 'b':
 						floorTiles[r][c] = new Tile(bush, "Bush", tileLocation);
@@ -161,8 +162,16 @@ public class Floor {
 		return floorTiles[x][y];
 	}
 	
-	public static void setTile(Tile tile, int x, int y) {
+	public Tile getTile(Point p) {
+		return floorTiles[p.x][p.y];
+	}
+	
+	public void setTile(Tile tile, int x, int y) {
 		floorTiles[x][y] = tile;
+	}
+	
+	public void setTile(Tile tile, Point p) {
+		floorTiles[p.x][p.y] = tile;
 	}
 	
 	public Tile[][] getFloor() {
@@ -172,5 +181,42 @@ public class Floor {
 	// new method. Moves tiles from old x,y to new x,y
 	public void moveTile(Point old, Point newPt) {
 		floorTiles[newPt.x][newPt.y] = floorTiles[old.x][old.y];
+		
+		// reset old cell
+		setTile(new Tile(Floor.grass, "Grass", old), old);
+	}
+	
+	public Point findChar() {
+		MainCharacter main = new MainCharacter(player1);
+		
+		for (int r = 0; r < width; r++) {
+			for (int c = 0; c < length; c++) {
+				if (floorTiles[r][c].getClass().getName().equals(main.getClass().getName())) {
+					Point poin = new Point(r, c);
+					return poin;
+				}
+			}
+		}
+		
+		Point poin = new Point(-1,-1);
+		return poin;
+	}
+	
+	public void printFloor() {
+		for (int r = 0; r < width; r++) {
+			for (int c = 0; c < length; c++) {
+				System.out.print(floorTiles[r][c].getImageType().substring(0, 1) + " ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public void refresh(JPanel mapPanel) {
+		// try moves
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 	}
 }

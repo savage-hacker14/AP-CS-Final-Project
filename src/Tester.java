@@ -19,7 +19,7 @@ public class Tester {
 		
 		//load in floor from text file
 		JPanel map = new JPanel();
-		String filepath = "MapTxtFiles/AllSprites";
+		String filepath = "MapTxtFiles/TestCharacterMoves";
 		char[][] testArr = IO.readMapFromTxt(filepath);
 		//IO.printMap(testArr);
 		Floor testFloor = new Floor(testArr);
@@ -37,12 +37,27 @@ public class Tester {
 		window.revalidate();
 		window.repaint();
 		
+		MainCharacter main = new MainCharacter(Floor.player1, "Character", testFloor.findChar());
+		System.out.println(main.getPoint());
 		
 		//create game info panel
-		JPanel gameInfo = GameInfo.generatePanel();
+		JPanel gameInfo = GameInfo.generatePanel(testFloor, main);
 		pane.add(gameInfo);
 		window.repaint();
 		
+		
+		// test character moves
+		while (true) {
+			main.moveDown(testFloor);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			main.moveUp(testFloor);
+			window.repaint();
+		}
 	
 	}
 

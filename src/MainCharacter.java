@@ -1,12 +1,19 @@
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 public class MainCharacter extends Character{
 	private Items[]backpack;
+	
 	public MainCharacter(BufferedImage img) {
 		super(img);
 		backpack= new Items[10];
 		
 	}
+	
+	public MainCharacter(BufferedImage img, String type, Point p) {
+		super(img, type, p);
+	}
+	
 	public Items getItem(int index) {
 		return backpack[index];
 	}

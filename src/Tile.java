@@ -10,7 +10,7 @@ public class Tile extends JPanel {
 	
 	private BufferedImage sprite;
 	private String imageType;
-	private Point p;
+	protected Point p;				// protected so subclasses can see this
 	
 	public Tile(BufferedImage img) {
 		sprite = img;
@@ -51,8 +51,20 @@ public class Tile extends JPanel {
         return bg;
     }
     
+    public String getImageType() {
+    	return imageType;
+    }
+    
     public void setImage(BufferedImage img) {
     	sprite = img;
+    }
+    
+    public Point getPoint( ) {
+    	return p;
+    }
+    
+    public void setPoint(Point pt) {
+    	p = pt;
     }
     
     public boolean isWalkable() {

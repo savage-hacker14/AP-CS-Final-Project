@@ -35,14 +35,14 @@ public class GameInfo {
 		// do later
 	}
 	
-	public static JPanel generatePanel() {
+	public static JPanel generatePanel(Floor f, Character c) {
 		JPanel panel = new JPanel();
 		
 		init();
 		
 		for (int i = 0; i < buttons.length; i++) {
 			String buttonName = buttons[i].getText();
-			buttons[i].addActionListener(new ButtonListener(buttonName));
+			buttons[i].addActionListener(new ButtonListener(buttonName, c, f));
 			panel.add(buttons[i]);
 		}
 		
@@ -56,9 +56,14 @@ public class GameInfo {
 	static class ButtonListener implements ActionListener {
 		
 		private String button;
+		private Character c;
+		private Floor f;
+		
 		// Class for reading button clicks
-		public ButtonListener(String buttonTxt) {
+		public ButtonListener(String buttonTxt, Character ch, Floor fl) {
 			button = buttonTxt;
+			c = ch;
+			f = fl;
 		}
 		
 		@Override
@@ -73,15 +78,19 @@ public class GameInfo {
 				break;
 			case "↑":
 				System.out.println("UP!");
+				c.moveUp(f);
 				break;
 			case "↓":
 				System.out.println("DOWN!");
+				c.moveDown(f);
 				break;
 			case "←":
 				System.out.println("LEFT!");
+				c.moveLeft(f);
 				break;
 			case "→":
 				System.out.println("RIGHT!");
+				c.moveRight(f);
 				break;
 			case "INVENTORY":
 				System.out.println("INVENTORY!");
@@ -96,9 +105,4 @@ public class GameInfo {
 		}
 	}
 	
-	private void moveUp(Point currentPos) {
-		int newY = Math.min(Floor.length, currentPos.y + 1);
-		Point newPos = new Point(currentPos.x, newY);
-		Floor.setTile(tile, x, y);
-	}
 }
