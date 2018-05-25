@@ -20,19 +20,25 @@ public class Tile extends JPanel {
 	}
 	
     public void paintComponent (Graphics g) {
+        // draw tan background
+        setBackground(Color.ORANGE);
+        //g.setColor(bg);
+        //g.fillRect(0, 0, getWidth(), getHeight());
     	
+        // Create JLabel for ImageIcon
+//        JLabel forImg = new JLabel();
+//        forImg.setBackground(bg);
+//        forImg.setOpaque(true);
+//        forImg.setIcon(new ImageIcon(image));
+//        this.add(forImg);
+        
         // draw regular image
-    	//g.drawImage(image, 0, 0, frame.getWidth() / numR, frame.getHeight() / numC, null);
-    	//g.drawImage(image, 0, 0, getWidth() - 10, getHeight() - 10, null);
+    	g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
         
         // draw a perimeter
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, getWidth(), getHeight());
         
-        // draw tan background
-        setBackground(Color.BLACK);
-        //g.setColor(Color.black);
-        //g.drawRect(0, 0, getWidth(), getHeight());
     }
     
     public void setImage(BufferedImage img) {

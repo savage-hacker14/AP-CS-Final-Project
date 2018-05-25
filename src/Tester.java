@@ -1,5 +1,4 @@
-import java.awt.Container;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -16,6 +15,7 @@ public class Tester {
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		// allows program termination when x is clicked on
 		pane.setLayout(new GridLayout(2,1));
+		pane.setBackground(Color.LIGHT_GRAY);
 		
 		//load in floor from text file
 		JPanel map = new JPanel();
