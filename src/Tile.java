@@ -20,18 +20,12 @@ public class Tile extends JPanel {
 	}
 	
     public void paintComponent (Graphics g) {
-        // draw tan background
-        setBackground(Color.ORANGE);
-        //g.setColor(bg);
-        //g.fillRect(0, 0, getWidth(), getHeight());
     	
-        // Create JLabel for ImageIcon
-//        JLabel forImg = new JLabel();
-//        forImg.setBackground(bg);
-//        forImg.setOpaque(true);
-//        forImg.setIcon(new ImageIcon(image));
-//        this.add(forImg);
-        
+        // draw tan background
+        setOpaque(true);					// allows image to show up over filled rectangle
+        g.setColor(bg);
+        g.fillRect(0, 0, getWidth(), getHeight());
+    	
         // draw regular image
     	g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
         
