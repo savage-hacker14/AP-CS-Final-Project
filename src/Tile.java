@@ -30,10 +30,9 @@ public class Tile extends JPanel {
         g2d.drawImage(sprite, 0, 0, getWidth(), getHeight(), null);
 
         
-     // draw a perimeter
-     g.setColor(Color.BLACK);
-     g.drawRect(0, 0, getWidth(), getHeight());
-        
+        // draw a perimeter
+        g.setColor(Color.BLACK);
+     	g.drawRect(0, 0, getWidth(), getHeight());    
     }
     
     private BufferedImage overlayImages(BufferedImage bg, BufferedImage fg) {

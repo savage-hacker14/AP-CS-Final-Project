@@ -1,4 +1,5 @@
 // Written by JAcob Krucinski on 5/21/18
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -93,5 +94,11 @@ public class GameInfo {
 				break;
 			}
 		}
+	}
+	
+	private void moveUp(Point currentPos) {
+		int newY = Math.min(Floor.length, currentPos.y + 1);
+		Point newPos = new Point(currentPos.x, newY);
+		Floor.setTile(tile, x, y);
 	}
 }

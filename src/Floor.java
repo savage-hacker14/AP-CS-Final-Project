@@ -8,6 +8,9 @@ public class Floor {
 
 	private Tile[][] floorTiles;
 	
+	public static int length = 16;
+	public static int width = 9;
+	
 	// Images/sprites to be used
 	public static BufferedImage blob;
 	public static BufferedImage bush;
@@ -158,7 +161,7 @@ public class Floor {
 		return floorTiles[x][y];
 	}
 	
-	public void setTile(Tile tile, int x, int y) {
+	public static void setTile(Tile tile, int x, int y) {
 		floorTiles[x][y] = tile;
 	}
 	
