@@ -84,66 +84,68 @@ public class Floor {
 			for (int c = 0; c < arr[r].length; c++) {
 				char tile = arr[r][c];
 				
+				Point tileLocation = new Point(r, c);
+				
 				switch (tile) {
 					case '1':
-						floorTiles[r][c] = new Tile(player1, "Player1");
+						floorTiles[r][c] = new Tile(player1, "Player1", tileLocation);
 						break;
 					case '2':
-						floorTiles[r][c] = new Tile(player2, "Player2");
+						floorTiles[r][c] = new Tile(player2, "Player2", tileLocation);
 						break;
 					case '3':
-						floorTiles[r][c] = new Tile(player3, "Player3");
+						floorTiles[r][c] = new Tile(player3, "Player3", tileLocation);
 						break;
 					case 'b':
-						floorTiles[r][c] = new Tile(bush, "Bush");
+						floorTiles[r][c] = new Tile(bush, "Bush", tileLocation);
 						break;
 					case 'd':
-						floorTiles[r][c] = new Tile(door, "Door");
+						floorTiles[r][c] = new Tile(door, "Door", tileLocation);
 						break;
 					case 'c':
-						floorTiles[r][c] = new Tile(chest, "Chest");
+						floorTiles[r][c] = new Tile(chest, "Chest", tileLocation);
 						break;
 					case 'l':
-						floorTiles[r][c] = new Tile(lava, "Lava");
+						floorTiles[r][c] = new Tile(lava, "Lava", tileLocation);
 						break;
 					case 'o':
-						floorTiles[r][c] = new Tile(blob, "Blob");
+						floorTiles[r][c] = new Tile(blob, "Blob", tileLocation);
 						break;
 					case 'h':
-						floorTiles[r][c] = new Tile(chilli, "Chilli");
+						floorTiles[r][c] = new Tile(chilli, "Chilli", tileLocation);
 						break;
 					case 'e':
-						floorTiles[r][c] = new Tile(demon, "Demon");
+						floorTiles[r][c] = new Tile(demon, "Demon", tileLocation);
 						break;
 					case 'r':
-						floorTiles[r][c] = new Tile(doorLock, "DoorLock");
+						floorTiles[r][c] = new Tile(doorLock, "DoorLock", tileLocation);
 						break;
 					case 'n':
-						floorTiles[r][c] = new Tile(enemy1, "Enemy1");
+						floorTiles[r][c] = new Tile(enemy1, "Enemy1",tileLocation);
 						break;
 					case 'f':
-						floorTiles[r][c] = new Tile(fireball, "Fireball");
+						floorTiles[r][c] = new Tile(fireball, "Fireball", tileLocation);
 						break;
 					case 'g':
-						floorTiles[r][c] = new Tile(grass, "Grass");
+						floorTiles[r][c] = new Tile(grass, "Grass", tileLocation);
 						break;
 					case 'k':
-						floorTiles[r][c] = new Tile(knightShield, "KnightShield");
+						floorTiles[r][c] = new Tile(knightShield, "KnightShield", tileLocation);
 						break;
 					case 'i':
-						floorTiles[r][c] = new Tile(knightShieldWings, "KnightShieldWings");
+						floorTiles[r][c] = new Tile(knightShieldWings, "KnightShieldWings", tileLocation);
 						break;
 					case 'p':
-						floorTiles[r][c] = new Tile(redPotion, "RedPotion");
+						floorTiles[r][c] = new Tile(redPotion, "RedPotion", tileLocation);
 						break;
 					case 's':
-						floorTiles[r][c] = new Tile(smallSwordVertical, "SmallSwordVertical");
+						floorTiles[r][c] = new Tile(smallSwordVertical, "SmallSwordVertical", tileLocation);
 						break;
 					case 't':
-						floorTiles[r][c] = new Tile(stone, "Stone");
+						floorTiles[r][c] = new Tile(stone, "Stone", tileLocation);
 						break;
 					case 'w':
-						floorTiles[r][c] = new Tile(water, "Water");
+						floorTiles[r][c] = new Tile(water, "Water", tileLocation);
 						break;
 						
 				}

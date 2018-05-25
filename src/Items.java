@@ -18,8 +18,6 @@ public class Items {
 		this.health += health;
 		
 	}
-
-
 	
 	public int getAttack() {
 		return attack;

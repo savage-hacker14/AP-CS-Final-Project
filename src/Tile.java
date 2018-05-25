@@ -6,38 +6,56 @@ import javax.swing.*;
 public class Tile extends JPanel {
 	
 	private final Color bg = new Color(251, 214, 159);
-	private BufferedImage image;
+	private BufferedImage ground = Floor.grass;
+	
+	private BufferedImage sprite;
 	private String imageType;
 	private Point p;
 	
 	public Tile(BufferedImage img) {
-		image = img;
+		sprite = img;
 	}
 	
-	public Tile(BufferedImage img, String name) {
-		image = img;
+	public Tile(BufferedImage img, String name, Point location) {
+		sprite = img;
 		imageType = name;
+		p = location;		// the r & c value of the tile in the Floor object
 	}
 	
     public void paintComponent (Graphics g) {
+    	super.paintComponent(g);
     	
-        // draw tan background
-        setOpaque(true);					// allows image to show up over filled rectangle
-        g.setColor(bg);
-        g.fillRect(0, 0, getWidth(), getHeight());
-    	
-        // draw regular image
-    	g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(ground, 0, 0, getWidth(), getHeight(), null);
+        g2d.drawImage(sprite, 0, 0, getWidth(), getHeight(), null);
+
         
-        // draw a perimeter
-        g.setColor(Color.BLACK);
-        g.drawRect(0, 0, getWidth(), getHeight());
+     // draw a perimeter
+     g.setColor(Color.BLACK);
+     g.drawRect(0, 0, getWidth(), getHeight());
         
     }
     
-    public void setImage(BufferedImage img) {
-    	image = img;
+    private BufferedImage overlayImages(BufferedImage bg, BufferedImage fg) {
+    	Graphics2D g = bg.createGraphics();
+    	
+//        // Set Antialias Rendering
+//        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+//                RenderingHints.VALUE_ANTIALIAS_ON);
+
+        g.drawImage(bg, getWidth(), getHeight(), null);
+
+        g.drawImage(fg, getWidth(), getHeight(), null);
+ 
+        //g.dispose();
+        
+        return bg;
     }
+    
+    public void setImage(BufferedImage img) {
+    	sprite = img;
+    }
+    
     public boolean isWalkable() {
     	switch (imageType) {
     		
