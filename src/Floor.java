@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Floor {
 
@@ -218,5 +219,14 @@ public class Floor {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		mapPanel.removeAll();
+		for (int r = 0; r < width; r++) {
+			for (int c = 0; c < length; c++) {
+				//testFloor.getTile(r, c).setOpaque(true);
+				mapPanel.add(getTile(r, c));
+			}
+		}
 	}
 }

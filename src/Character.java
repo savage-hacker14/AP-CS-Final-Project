@@ -77,36 +77,56 @@ public class Character extends Tile {
 	
 	
 	// Character movements
+	// NOTE: X and Y represent row and col, respectively
+	
 	public void moveUp(Floor f) {
-		int newY = Math.min(0, p.y - 1);
-		Point newPos = new Point(p.x, newY);
+		int newX;
+		if (p.x > 0) {
+			newX = p.x - 1;
+		}
+		else {
+			newX = 0;
+		}
+		
+		Point newPos = new Point(newX, p.y);
 		f.moveTile(p, newPos);
 		
 		// update character position
-		p = newPos;
+		p = newPos;	
 	}
 	
 	public void moveDown(Floor f) {
-		int newY = Math.min(Floor.width, p.y + 1);
-		Point newPos = new Point(p.x, newY);
+		int newX = Math.min(Floor.width - 1, p.x + 1);
+		Point newPos = new Point(newX, p.y);
 		f.moveTile(p, newPos);
+		
+		System.out.println(p + "\t" + newPos);
+		f.printFloor();
 		
 		// update character position
 		p = newPos;
 	}
 	
 	public void moveLeft(Floor f) {
-		int newX = Math.min(0, p.x - 1);
-		Point newPos = new Point(newX, p.y);
+		int newY;
+		if (p.y > 0) {
+			newY = p.y - 1;
+		}
+		else {
+			newY = 0;
+		}
+		
+		Point newPos = new Point(p.x, newY);
 		f.moveTile(p, newPos);
+		System.out.println(p);
 		
 		// update character position
 		p = newPos;
 	}
 	
 	public void moveRight(Floor f) {
-		int newX = Math.min(Floor.length, p.x + 1);
-		Point newPos = new Point(newX, p.y);
+		int newY = Math.min(Floor.length - 1, p.y + 1);
+		Point newPos = new Point(p.x, newY);
 		f.moveTile(p, newPos);
 		
 		// update character position

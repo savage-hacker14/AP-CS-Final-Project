@@ -35,14 +35,14 @@ public class GameInfo {
 		// do later
 	}
 	
-	public static JPanel generatePanel(Floor f, Character c) {
+	public static JPanel generatePanel(Floor f, Character c, JPanel mapPanel) {
 		JPanel panel = new JPanel();
 		
 		init();
 		
 		for (int i = 0; i < buttons.length; i++) {
 			String buttonName = buttons[i].getText();
-			buttons[i].addActionListener(new ButtonListener(buttonName, c, f));
+			buttons[i].addActionListener(new ButtonListener(buttonName, c, f, mapPanel));
 			panel.add(buttons[i]);
 		}
 		
@@ -58,12 +58,14 @@ public class GameInfo {
 		private String button;
 		private Character c;
 		private Floor f;
+		private JPanel mapPanel;
 		
 		// Class for reading button clicks
-		public ButtonListener(String buttonTxt, Character ch, Floor fl) {
+		public ButtonListener(String buttonTxt, Character ch, Floor fl, JPanel map) {
 			button = buttonTxt;
 			c = ch;
 			f = fl;
+			mapPanel = map;
 		}
 		
 		@Override
@@ -79,18 +81,22 @@ public class GameInfo {
 			case "↑":
 				System.out.println("UP!");
 				c.moveUp(f);
+				f.refresh(mapPanel);
 				break;
 			case "↓":
 				System.out.println("DOWN!");
 				c.moveDown(f);
+				f.refresh(mapPanel);
 				break;
 			case "←":
 				System.out.println("LEFT!");
 				c.moveLeft(f);
+				f.refresh(mapPanel);
 				break;
 			case "→":
 				System.out.println("RIGHT!");
 				c.moveRight(f);
+				f.refresh(mapPanel);
 				break;
 			case "INVENTORY":
 				System.out.println("INVENTORY!");
