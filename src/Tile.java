@@ -82,4 +82,22 @@ public class Tile extends JPanel {
     	
     	return false;
     }
+    
+    public boolean isWalkable(String type) {
+    	switch (type) {
+    		
+    	case "Grass":
+    		return true;
+    	case "Chilli":
+    		return true;
+    	case "PotionRed":
+    		return true;
+    	case "Wood":
+    		return true;
+    	}
+    	
+    	return false;
+    }
+    
+    
 }

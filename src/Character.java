@@ -1,6 +1,8 @@
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 public class Character extends Tile {
 	
 	private int health;
@@ -89,12 +91,13 @@ public class Character extends Tile {
 		}
 		
 		Point newPos = new Point(newX, p.y);
-		f.moveTile(p, newPos);
 		
-		System.out.println(p + "\t" + newPos);
-		
-		// update character position
-		p = (Point) newPos.clone();
+		if (isWalkable(f.getTile(newPos).getImageType())) {
+			f.moveTile(p, newPos);
+			
+			// update character position
+			p = (Point) newPos.clone();	
+		}
 		
 		System.out.println(p + "\t" + newPos);
 	}
@@ -102,13 +105,18 @@ public class Character extends Tile {
 	public void moveDown(Floor f) {
 		int newX = Math.min(Floor.width - 1, p.x + 1);
 		Point newPos = new Point(newX, p.y);
-		f.moveTile(p, newPos);
+
+//		System.out.println(f.getTile(newPos).getImageType());
+//		System.out.println(isWalkable(f.getTile(newPos).getImageType()));
+		if (isWalkable(f.getTile(newPos).getImageType())) {
+			f.moveTile(p, newPos);
+			
+			// update character position
+			p = (Point) newPos.clone();	
+		}
 		
 		System.out.println(p + "\t" + newPos);
 		//f.printFloor();
-		
-		// update character position
-		p = (Point) newPos.clone();	
 	}
 	
 	public void moveLeft(Floor f) {
@@ -121,22 +129,28 @@ public class Character extends Tile {
 		}
 		
 		Point newPos = new Point(p.x, newY);
-		f.moveTile(p, newPos);
+		
+		if (isWalkable(f.getTile(newPos).getImageType())) {
+			f.moveTile(p, newPos);
+			
+			// update character position
+			p = (Point) newPos.clone();	
+		}
 		
 		System.out.println(p + "\t" + newPos);
-		
-		// update character position
-		p = (Point) newPos.clone();	
 	}
 	
 	public void moveRight(Floor f) {
 		int newY = Math.min(Floor.length - 1, p.y + 1);
 		Point newPos = new Point(p.x, newY);
-		f.moveTile(p, newPos);
 		
+		if (isWalkable(f.getTile(newPos).getImageType())) {
+			f.moveTile(p, newPos);
+			
+			// update character position
+			p = (Point) newPos.clone();	
+		}
+			
 		System.out.println(p + "\t" + newPos);
-		
-		// update character position
-		p = (Point) newPos.clone();	
 	}
 }
