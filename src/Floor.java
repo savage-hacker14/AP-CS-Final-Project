@@ -183,8 +183,11 @@ public class Floor {
 	public void moveTile(Point old, Point newPt) {
 		floorTiles[newPt.x][newPt.y] = floorTiles[old.x][old.y];
 		
-		// reset old cell
-		setTile(new Tile(Floor.grass, "Grass", old), old);
+		
+		if (!(old.equals(newPt))) {
+			// reset old cell
+			setTile(new Tile(Floor.grass, "Grass", old), old);
+		}
 	}
 	
 	public Point findChar() {
@@ -212,15 +215,7 @@ public class Floor {
 		}
 	}
 	
-	public void refresh(JPanel mapPanel) {
-		// try moves
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	public void refresh(JPanel mapPanel) {			
 		mapPanel.removeAll();
 		for (int r = 0; r < width; r++) {
 			for (int c = 0; c < length; c++) {
@@ -228,5 +223,8 @@ public class Floor {
 				mapPanel.add(getTile(r, c));
 			}
 		}
+		
+		mapPanel.repaint();
+		mapPanel.revalidate();
 	}
 }

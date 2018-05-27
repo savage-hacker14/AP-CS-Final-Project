@@ -91,8 +91,12 @@ public class Character extends Tile {
 		Point newPos = new Point(newX, p.y);
 		f.moveTile(p, newPos);
 		
+		System.out.println(p + "\t" + newPos);
+		
 		// update character position
-		p = newPos;	
+		p = (Point) newPos.clone();
+		
+		System.out.println(p + "\t" + newPos);
 	}
 	
 	public void moveDown(Floor f) {
@@ -101,10 +105,10 @@ public class Character extends Tile {
 		f.moveTile(p, newPos);
 		
 		System.out.println(p + "\t" + newPos);
-		f.printFloor();
+		//f.printFloor();
 		
 		// update character position
-		p = newPos;
+		p = (Point) newPos.clone();	
 	}
 	
 	public void moveLeft(Floor f) {
@@ -118,10 +122,11 @@ public class Character extends Tile {
 		
 		Point newPos = new Point(p.x, newY);
 		f.moveTile(p, newPos);
-		System.out.println(p);
+		
+		System.out.println(p + "\t" + newPos);
 		
 		// update character position
-		p = newPos;
+		p = (Point) newPos.clone();	
 	}
 	
 	public void moveRight(Floor f) {
@@ -129,7 +134,9 @@ public class Character extends Tile {
 		Point newPos = new Point(p.x, newY);
 		f.moveTile(p, newPos);
 		
+		System.out.println(p + "\t" + newPos);
+		
 		// update character position
-		p = newPos;
+		p = (Point) newPos.clone();	
 	}
 }
