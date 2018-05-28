@@ -19,7 +19,7 @@ public class Tester {
 		
 		//load in floor from text file
 		JPanel map = new JPanel();
-		String filepath = "MapTxtFiles/TestCharacterMoves2";
+		String filepath = "MapTxtFiles/Floor1_1x3";
 		char[][] testArr = IO.readMapFromTxt(filepath);
 		//IO.printMap(testArr);
 		Floor testFloor = new Floor(testArr);

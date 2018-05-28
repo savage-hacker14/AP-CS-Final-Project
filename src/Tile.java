@@ -35,22 +35,6 @@ public class Tile extends JPanel {
      	g.drawRect(0, 0, getWidth(), getHeight());    
     }
     
-    private BufferedImage overlayImages(BufferedImage bg, BufferedImage fg) {
-    	Graphics2D g = bg.createGraphics();
-    	
-//        // Set Antialias Rendering
-//        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-//                RenderingHints.VALUE_ANTIALIAS_ON);
-
-        g.drawImage(bg, getWidth(), getHeight(), null);
-
-        g.drawImage(fg, getWidth(), getHeight(), null);
- 
-        //g.dispose();
-        
-        return bg;
-    }
-    
     public String getImageType() {
     	return imageType;
     }
