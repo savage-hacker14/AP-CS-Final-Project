@@ -1,35 +1,28 @@
 // Written by Jacob on 5/20/18
 
 import java.awt.Point;
-import java.io.*;
-import java.util.Arrays;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class IO {
 	
 	// This method can read in a character matrix from a .txt file 
-	public static char[][] readMapFromTxt(String filepath) throws IOException {
-		int maxR = 9;
-		int maxC = 16;
+	public static String[][] readMapFromTxt(String filepath) throws IOException {
+		int maxR = Floor.width;
+		int maxC = Floor.length;
 		
-		char[][] arr = new char[maxR][maxC];
+		String[][] arr = new String[maxR][maxC];
+		Scanner reader = new Scanner(new File(filepath));
 		
-		FileReader reader = new FileReader(new File(filepath));
 		
-		int r = 0; int c = 0;
-		while (reader.ready()) {
-			int c_int = reader.read();
-			
-			//System.out.println(c_int);
-			if (c_int != 32 && c_int != 10) {
-				arr[r][c] = (char) c_int;
-				c++;
-				
-				if (c == arr[0].length) {
-					r++;
-					c = 0;
-				}
-			}	
+		for (int i = 0; i < 9; i++) {
+			String temp = reader.nextLine();
+			for (int j = 0; j < 16; j++) {
+				arr[i][j] = temp.substring(j * 5, j * 5 + 4);
+			}
 		}
+
 		
 //		System.out.println(Arrays.toString(arr));
 		

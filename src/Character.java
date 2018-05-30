@@ -97,7 +97,7 @@ public class Character extends Tile {
 			// get new floor ID
 			Point newFID = IO.strToFloorID(filepath);
 			
-			char[][] newCharArr = IO.readMapFromTxt(filepath);
+			String[][] newCharArr = IO.readMapFromTxt(filepath);
 			newF = new Floor(newCharArr, newFID);
 			
 			// place character in new correct position
@@ -143,7 +143,7 @@ public class Character extends Tile {
 			// get new floor ID
 			Point newFID = IO.strToFloorID(filepath);
 			
-			char[][] newCharArr = IO.readMapFromTxt(filepath);
+			String[][] newCharArr = IO.readMapFromTxt(filepath);
 			newF = new Floor(newCharArr, newFID);
 			
 			// place character in new correct position
@@ -176,7 +176,7 @@ public class Character extends Tile {
 			// get new floor ID
 			Point newFID = IO.strToFloorID(filepath);
 			
-			char[][] newCharArr = IO.readMapFromTxt(filepath);
+			String[][] newCharArr = IO.readMapFromTxt(filepath);
 			newF = new Floor(newCharArr, newFID);
 			
 			// place character in new correct position
@@ -217,7 +217,7 @@ public class Character extends Tile {
 			Point newFID = IO.strToFloorID(filepath);
 			newFID.setLocation(newFID.x, newFID.y + 1);
 			
-			char[][] newCharArr = IO.readMapFromTxt(filepath);
+			String[][] newCharArr = IO.readMapFromTxt(filepath);
 			newF = new Floor(newCharArr, newFID);
 			
 			// place character in new correct position
