@@ -13,6 +13,8 @@ public class Floor {
 	public static int length = 16;
 	public static int width = 9;
 	
+	private Point floorID; 		// String that stores current part of floor
+	
 	// Images/sprites to be used
 	public static BufferedImage blob;
 	public static BufferedImage bush;
@@ -66,11 +68,11 @@ public class Floor {
 		init();
 		
 		// init floor array
-		floorTiles = new Tile[arr.length][arr[0].length];
+		floorTiles = new Tile[width][length];
 		
 		// Jacob: omit 9x16 size for now
-		for (int r = 0; r < arr.length; r++) {
-			for (int c = 0; c < arr[r].length; c++) {
+		for (int r = 0; r < width; r++) {
+			for (int c = 0; c < length; c++) {
 				floorTiles[r][c] = arr[r][c];
 			}
 		}
@@ -78,9 +80,12 @@ public class Floor {
 	}
 	
 	// Constructor that builds floor based on character matrix input
-	public Floor(char[][] arr) throws IOException {
+	public Floor(char[][] arr, Point id) throws IOException {
 		// init image constants
 		init();
+		
+		// set floor id
+		floorID = id;
 		
 		// init floor array
 		floorTiles = new Tile[arr.length][arr[0].length];
@@ -177,6 +182,10 @@ public class Floor {
 	
 	public Tile[][] getFloor() {
 		return floorTiles;
+	}
+	
+	public Point getFloorID() {
+		return floorID;
 	}
 	
 	// new method. Moves tiles from old x,y to new x,y

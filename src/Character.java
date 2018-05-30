@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -84,7 +85,26 @@ public class Character extends Tile {
 	// Character movements
 	// NOTE: X and Y represent row and col, respectively
 	
-	public void moveUp(Floor f) {
+	public Floor moveUp(Floor f) throws IOException {
+		Floor newF = f;
+		
+		// load in new floor
+		if (p.x == 0) {
+			// load in upper floor
+			String filepath = "MapTxtFiles/Floor1_" + f.getFloorID().x + "x" + (f.getFloorID().y + 1);
+			System.out.println(filepath);
+			
+			// get new floor ID
+			Point newFID = IO.strToFloorID(filepath);
+			
+			char[][] newCharArr = IO.readMapFromTxt(filepath);
+			newF = new Floor(newCharArr, newFID);
+			
+			// place character in new correct position
+			newF.setTile(this, new Point(Floor.width - 1, p.y));
+			p.setLocation(Floor.width - 1, p.y);
+		}
+		
 		int newX;
 		if (p.x > 0) {
 			newX = p.x - 1;
@@ -95,6 +115,8 @@ public class Character extends Tile {
 		
 		Point newPos = new Point(newX, p.y);
 		
+		System.out.println(p + "\t" + newPos);
+		
 		if (isWalkable(f.getTile(newPos).getImageType())) {
 			f.moveTile(p, newPos);
 			
@@ -102,18 +124,38 @@ public class Character extends Tile {
 			p = (Point) newPos.clone();	
 		}
 		
+		return newF;
+		
 //		surroundObjs(f);
 //		f.printFloor();
 //		
-//		System.out.println(p + "\t" + newPos);
 	}
 	
-	public void moveDown(Floor f) {
+	public Floor moveDown(Floor f) throws IOException {
+		Floor newF = f;
+		
+		// load in new floor
+		if (p.x == Floor.width - 1) {
+			// load in upper floor
+			String filepath = "MapTxtFiles/Floor1_" + f.getFloorID().x + "x" + (f.getFloorID().y - 1);
+			System.out.println(filepath);
+			
+			// get new floor ID
+			Point newFID = IO.strToFloorID(filepath);
+			
+			char[][] newCharArr = IO.readMapFromTxt(filepath);
+			newF = new Floor(newCharArr, newFID);
+			
+			// place character in new correct position
+			newF.setTile(this, new Point(0, p.y));
+			p.setLocation(0, p.y);
+		}
+		
 		int newX = Math.min(Floor.width - 1, p.x + 1);
 		Point newPos = new Point(newX, p.y);
-
-//		System.out.println(f.getTile(newPos).getImageType());
-//		System.out.println(isWalkable(f.getTile(newPos).getImageType()));
+		
+		System.out.println(p + "\t" + newPos);
+		
 		if (isWalkable(f.getTile(newPos).getImageType())) {
 			f.moveTile(p, newPos);
 			
@@ -121,14 +163,27 @@ public class Character extends Tile {
 			p = (Point) newPos.clone();	
 		}
 		
-//		surroundObjs(f);
-//		f.printFloor();
-//		
-//		System.out.println(p + "\t" + newPos);
-		//f.printFloor();
+		return newF;
 	}
 	
-	public void moveLeft(Floor f) {
+	public Floor moveLeft(Floor f) throws IOException {
+		Floor newF = f;
+		// load in new floor
+		if (p.y == 0) {
+			// load in upper floor
+			String filepath = "MapTxtFiles/Floor1_" + (f.getFloorID().x - 1) + "x" + f.getFloorID().y;
+			
+			// get new floor ID
+			Point newFID = IO.strToFloorID(filepath);
+			
+			char[][] newCharArr = IO.readMapFromTxt(filepath);
+			newF = new Floor(newCharArr, newFID);
+			
+			// place character in new correct position
+			newF.setTile(this, new Point(p.x, Floor.length - 1));
+			p.setLocation(p.x, Floor.length - 1);
+		}
+		
 		int newY;
 		if (p.y > 0) {
 			newY = p.y - 1;
@@ -139,6 +194,8 @@ public class Character extends Tile {
 		
 		Point newPos = new Point(p.x, newY);
 		
+		System.out.println(p + "\t" + newPos);
+		
 		if (isWalkable(f.getTile(newPos).getImageType())) {
 			f.moveTile(p, newPos);
 			
@@ -146,16 +203,33 @@ public class Character extends Tile {
 			p = (Point) newPos.clone();	
 		}
 		
-//		surroundObjs(f);
-//		f.printFloor();
-//		
-//		System.out.println(p + "\t" + newPos);
+		return newF;
 	}
 	
-	public void moveRight(Floor f) {
+	public Floor moveRight(Floor f) throws IOException {
+		Floor newF = f;
+		// load in new floor
+		if (p.y == Floor.length - 1) {
+			// load in upper floor
+			String filepath = "MapTxtFiles/Floor1_" + (f.getFloorID().x + 1) + "x" + f.getFloorID().y;
+			
+			// get new floor ID
+			Point newFID = IO.strToFloorID(filepath);
+			newFID.setLocation(newFID.x, newFID.y + 1);
+			
+			char[][] newCharArr = IO.readMapFromTxt(filepath);
+			newF = new Floor(newCharArr, newFID);
+			
+			// place character in new correct position
+			newF.setTile(this, new Point(p.x, 0));
+			p.setLocation(p.x, 0);
+		}
+		
 		int newY = Math.min(Floor.length - 1, p.y + 1);
 		Point newPos = new Point(p.x, newY);
 		
+		System.out.println(p + "\t" + newPos);
+		
 		if (isWalkable(f.getTile(newPos).getImageType())) {
 			f.moveTile(p, newPos);
 			
@@ -163,10 +237,7 @@ public class Character extends Tile {
 			p = (Point) newPos.clone();	
 		}
 		
-//		surroundObjs(f);
-//		f.printFloor();
-//			
-//		System.out.println(p + "\t" + newPos);
+		return newF;
 	}
 	
 	

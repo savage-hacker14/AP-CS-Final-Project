@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 import javax.swing.*;
 
 public class GameInfo {
@@ -80,23 +82,43 @@ public class GameInfo {
 				break;
 			case "↑":
 				System.out.println("UP!");
-				c.moveUp(f);
-				f.refresh(mapPanel);
+				try {
+					f = c.moveUp(f);
+					f.refresh(mapPanel);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				break;
 			case "↓":
 				System.out.println("DOWN!");
-				c.moveDown(f);
-				f.refresh(mapPanel);
+				try {
+					f = c.moveDown(f);
+					f.refresh(mapPanel);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				break;
 			case "←":
 				System.out.println("LEFT!");
-				c.moveLeft(f);
-				f.refresh(mapPanel);
+				try {
+					f = c.moveLeft(f);
+					f.refresh(mapPanel);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				break;
 			case "→":
 				System.out.println("RIGHT!");
-				c.moveRight(f);
-				f.refresh(mapPanel);
+				try {
+					f = c.moveRight(f);
+					f.refresh(mapPanel);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				break;
 			case "INVENTORY":
 				System.out.println("INVENTORY!");

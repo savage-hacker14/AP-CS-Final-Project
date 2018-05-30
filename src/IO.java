@@ -1,5 +1,6 @@
 // Written by Jacob on 5/20/18
 
+import java.awt.Point;
 import java.io.*;
 import java.util.Arrays;
 
@@ -42,5 +43,14 @@ public class IO {
 			}
 			System.out.println();
 		}
+	}
+	
+	public static Point strToFloorID(String str) {
+		int x = Integer.parseInt(str.substring(19, 20));
+		int y = Integer.parseInt(str.substring(21, 22));
+		
+		System.out.println("x: " + x + "\t" + "y: " + y);
+		
+		return new Point(x, y);
 	}
 }

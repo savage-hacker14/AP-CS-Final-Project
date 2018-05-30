@@ -19,10 +19,10 @@ public class Tester {
 		
 		//load in floor from text file
 		JPanel map = new JPanel();
-		String filepath = "MapTxtFiles/Floor1_1x3";
+		String filepath = "MapTxtFiles/Floor1_0x0";
 		char[][] testArr = IO.readMapFromTxt(filepath);
 		//IO.printMap(testArr);
-		Floor testFloor = new Floor(testArr);
+		Floor testFloor = new Floor(testArr, IO.strToFloorID(filepath));
 		int rows = 9;
 		int cols = 16;
 		map.setLayout(new GridLayout(rows, cols));
@@ -44,11 +44,6 @@ public class Tester {
 		JPanel gameInfo = GameInfo.generatePanel(testFloor, main, map);
 		pane.add(gameInfo);
 		window.repaint();
-		
-		while (true) {
-			window.repaint();
-			window.revalidate();
-		}
 		
 //		// test character moves
 //		while (true) {
