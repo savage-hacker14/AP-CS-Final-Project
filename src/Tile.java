@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Tile extends JPanel {
 	
 	private final Color bg = new Color(251, 214, 159);
-	private BufferedImage ground = Floor.grass;
+	private BufferedImage ground;
 	
 	private BufferedImage sprite;
 	private String imageType;
@@ -16,9 +16,10 @@ public class Tile extends JPanel {
 		sprite = img;
 	}
 	
-	public Tile(BufferedImage img, String name, Point location) {
-		sprite = img;
+	public Tile(BufferedImage sprit, BufferedImage BG, String name, Point location) {
+		sprite = sprit;
 		imageType = name;
+		ground = BG;
 		p = location;		// the r & c value of the tile in the Floor object
 	}
 	
@@ -33,6 +34,14 @@ public class Tile extends JPanel {
         // draw a perimeter
         g.setColor(Color.BLACK);
      	g.drawRect(0, 0, getWidth(), getHeight());    
+    }
+    
+    public BufferedImage getBG() {
+    	return ground;
+    }
+    
+    public BufferedImage getSprite() {
+    	return sprite;
     }
     
     public String getImageType() {
