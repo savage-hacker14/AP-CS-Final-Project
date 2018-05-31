@@ -19,10 +19,10 @@ public class GameInfo {
 		buttons = new JButton[9];
 		buttons[0] = new JButton("ATTACK");
 		buttons[1] = new JButton("DEFEND");
-		buttons[2] = new JButton("â†‘");
-		buttons[3] = new JButton("â†“");
-		buttons[4] = new JButton("â†�");
-		buttons[5] = new JButton("â†’");
+		buttons[2] = new JButton("↑");
+		buttons[3] = new JButton("↓");
+		buttons[4] = new JButton("←");
+		buttons[5] = new JButton("→");
 		buttons[6] = new JButton("INVENTORY");
 		buttons[7] = new JButton("MENU");
 		buttons[8] = new JButton("SHOP");
