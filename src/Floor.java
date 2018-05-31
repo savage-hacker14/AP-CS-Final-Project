@@ -122,73 +122,73 @@ public class Floor {
 					floorTiles[r][c] = new Tile(bush, grass, "Bush", tileLocation);
 					break;
 				case "gcht":
-					floorTiles[r][c] = new Tile(chest, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(chest, grass, "Chest", tileLocation);
 					break;
 				case "gchl":
-					floorTiles[r][c] = new Tile(chilli, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(chilli, grass, "Chilli", tileLocation);
 					break;
 				case "gdmn":
-					floorTiles[r][c] = new Tile(demon, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(demon, grass, "Demon", tileLocation);
 					break;
 				case "gdor":
-					floorTiles[r][c] = new Tile(door, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(door, grass, "Door", tileLocation);
 					break;
 				case "gdrl":
-					floorTiles[r][c] = new Tile(doorLock, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(doorLock, grass, "DoorLock", tileLocation);
 					break;
 				case "genm":
-					floorTiles[r][c] = new Tile(enemy, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(enemy, grass, "Enemy", tileLocation);
 					break;
 				case "gfbl":
-					floorTiles[r][c] = new Tile(fireball, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(fireball, grass, "Fireball", tileLocation);
 					break;		
 				case "ggra":
-					floorTiles[r][c] = new Tile(grass, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(grass, grass, "Grass", tileLocation);
 					break;
 				case "gkey":
-					floorTiles[r][c] = new Tile(key, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(key, grass, "Key", tileLocation);
 					break;
 				case "gknt":
-					floorTiles[r][c] = new Tile(knight, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(knight, grass, "Knight", tileLocation);
 					break;
 				case "gknw":
-					floorTiles[r][c] = new Tile(knightWings, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(knightWings, grass, "KnightWings", tileLocation);
 					break;
 				case "glva":
-					floorTiles[r][c] = new Tile(lava, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(lava, grass, "Lava", tileLocation);
 					break;
 				case "gpl1":
-					floorTiles[r][c] = new Tile(player1, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(player1, grass, "Player1", tileLocation);
 					break;
 				case "gpl2":
-					floorTiles[r][c] = new Tile(player2, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(player2, grass, "Player2", tileLocation);
 					break;
 				case "gpl3":
-					floorTiles[r][c] = new Tile(player3, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(player3, grass, "Player3", tileLocation);
 					break;
 				case "gpot":
-					floorTiles[r][c] = new Tile(potion, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(potion, grass, "Potion", tileLocation);
 					break;
 				case "grck":
-					floorTiles[r][c] = new Tile(rock, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(rock, grass, "Rock", tileLocation);
 					break;
 				case "gstn":
-					floorTiles[r][c] = new Tile(stone, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(stone, grass, "Stone", tileLocation);
 					break;
 				case "gsw1":
-					floorTiles[r][c] = new Tile(sword1, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(sword1, grass, "Sword1", tileLocation);
 					break;
 				case "gsw2":
-					floorTiles[r][c] = new Tile(sword2, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(sword2, grass, "Sword2", tileLocation);
 					break;
 				case "gsw3":
-					floorTiles[r][c] = new Tile(sword3, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(sword3, grass, "Sword3", tileLocation);
 					break;
 				case "gwtr":
-					floorTiles[r][c] = new Tile(water, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(water, grass, "Water", tileLocation);
 					break;
 				case "wwod":
-					floorTiles[r][c] = new Tile(wood, grass, tile, tileLocation);
+					floorTiles[r][c] = new Tile(wood, grass, "Wood", tileLocation);
 					break;
 				case "wblb":
 					floorTiles[r][c] = new Tile(blob, wood, "Blob", tileLocation);
@@ -197,19 +197,19 @@ public class Floor {
 					floorTiles[r][c] = new Tile(bush, wood, "Bush", tileLocation);
 					break;
 				case "wcht":
-					floorTiles[r][c] = new Tile(chest, wood, tile, tileLocation);
+					floorTiles[r][c] = new Tile(chest, wood, "Chest", tileLocation);
 					break;
 				case "wchl":
-					floorTiles[r][c] = new Tile(chilli, wood, tile, tileLocation);
+					floorTiles[r][c] = new Tile(chilli, wood, "Chilli", tileLocation);
 					break;
 				case "wdmn":
-					floorTiles[r][c] = new Tile(demon, wood, tile, tileLocation);
+					floorTiles[r][c] = new Tile(demon, wood, "Demon", tileLocation);
 					break;
 				case "wdor":
-					floorTiles[r][c] = new Tile(door, wood, tile, tileLocation);
+					floorTiles[r][c] = new Tile(door, wood, "Door", tileLocation);
 					break;
 				case "wdrl":
-					floorTiles[r][c] = new Tile(doorLock, wood, tile, tileLocation);
+					floorTiles[r][c] = new Tile(doorLock, wood, "DoorLock", tileLocation);
 					break;
 				case "wenm":
 					floorTiles[r][c] = new Tile(enemy, wood, tile, tileLocation);
