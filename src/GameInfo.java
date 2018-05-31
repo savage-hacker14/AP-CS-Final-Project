@@ -19,10 +19,10 @@ public class GameInfo {
 		buttons = new JButton[9];
 		buttons[0] = new JButton("ATTACK");
 		buttons[1] = new JButton("DEFEND");
-		buttons[2] = new JButton("↑");
-		buttons[3] = new JButton("↓");
-		buttons[4] = new JButton("←");
-		buttons[5] = new JButton("→");
+		buttons[2] = new JButton("â†‘");
+		buttons[3] = new JButton("â†“");
+		buttons[4] = new JButton("â†�");
+		buttons[5] = new JButton("â†’");
 		buttons[6] = new JButton("INVENTORY");
 		buttons[7] = new JButton("MENU");
 		buttons[8] = new JButton("SHOP");
@@ -80,7 +80,7 @@ public class GameInfo {
 			case "DEFEND":
 				System.out.println("DEFEND!");
 				break;
-			case "↑":
+			case "â†‘":
 				System.out.println("UP!");
 				try {
 					f = c.moveUp(f);
@@ -90,7 +90,7 @@ public class GameInfo {
 					e1.printStackTrace();
 				}
 				break;
-			case "↓":
+			case "â†“":
 				System.out.println("DOWN!");
 				try {
 					f = c.moveDown(f);
@@ -100,7 +100,7 @@ public class GameInfo {
 					e1.printStackTrace();
 				}
 				break;
-			case "←":
+			case "â†�":
 				System.out.println("LEFT!");
 				try {
 					f = c.moveLeft(f);
@@ -110,7 +110,7 @@ public class GameInfo {
 					e1.printStackTrace();
 				}
 				break;
-			case "→":
+			case "â†’":
 				System.out.println("RIGHT!");
 				try {
 					f = c.moveRight(f);
@@ -128,6 +128,14 @@ public class GameInfo {
 				break;
 			case "SHOP":
 				System.out.println("SHOP!");
+				String answer = "";
+				//need to fix it so it changes main character
+				answer = JOptionPane.showInputDialog("Type one to purchase potion(50), type two to purchase sword(150)");
+				if(answer.equals("one")) {
+					
+				}else if(answer.equals("two")){
+					
+				}
 				break;
 			}
 		}
