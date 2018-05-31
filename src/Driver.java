@@ -44,8 +44,9 @@ public class Driver {
 		while (!sortType.equals("start")) {
 			sortType = JOptionPane.showInputDialog("Welcome the Tower, type start to begin");
 		}
-		JOptionPane.showMessageDialog(null, "Matt likes that good yeeyee lettuce");
-
+		JOptionPane.showMessageDialog(null, "Use your mouse to click the arrows to move");
+		
+		
 	}
 
 }
