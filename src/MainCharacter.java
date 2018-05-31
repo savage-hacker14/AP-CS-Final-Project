@@ -1,7 +1,7 @@
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 
-public class MainCharacter extends Character{
+public class MainCharacter extends Character {
 	private Items[]backpack;
 	private int money;
 	public MainCharacter(BufferedImage img) {
@@ -10,8 +10,8 @@ public class MainCharacter extends Character{
 		money = 0;
 	}
 	
-	public MainCharacter(BufferedImage img, String type, Point p) {
-		super(img, type, p);
+	public MainCharacter(BufferedImage img, BufferedImage BG, String type, Point p) {
+		super(img, BG, type, p);
 	}
 	
 	public Items getItem(int index) {

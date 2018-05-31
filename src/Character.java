@@ -23,8 +23,8 @@ public class Character extends Tile {
 		maxHealth = 100;
 	}
 	
-	public Character(BufferedImage img, String type, Point p) {
-		super(img, type, p);
+	public Character(BufferedImage img, BufferedImage BG, String type, Point p) {
+		super(img, BG, type, p);
 		health = 100;
 		attack = 10;
 		defense = 10;
