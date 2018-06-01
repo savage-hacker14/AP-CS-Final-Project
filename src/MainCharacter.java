@@ -48,7 +48,7 @@ public class MainCharacter extends Character {
 		ArrayList <Tiles> arr= surroundObjs();
 		for(int i =0;i<arr.size();i++){
 			if(arr.get(i).getName().equals("enm"){
-				arr.get(i)
+				arr.get(i).setHealth(arr.get(i).getHealth()-this.getAttack())
 					break;
 			}	
 		}	
