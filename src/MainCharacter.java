@@ -47,7 +47,9 @@ public class MainCharacter extends Character {
 	public void attack(){
 		ArrayList <Tiles> arr= surroundObjs();
 		for(int i =0;i<arr.size();i++){
-			if(arr.get(i)){
+			if(arr.get(i).getName().equals("enm"){
+				arr.get(i)
+					break;
 			}	
 		}	
 	}	
