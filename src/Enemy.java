@@ -13,6 +13,7 @@ public class Enemy extends Tile {
 		defense = 10;
 		trophies = 0;
 	}
+	
 	public int getHealth() {
 		return health;
 	}

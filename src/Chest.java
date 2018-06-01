@@ -14,5 +14,8 @@ public class Chest extends Tile {
 	public ArrayList<Items> getChestItems() {
 		return itemList;
 	}
+	public void setChestItems(int i,Items yeet) {
+		itemList.set(i, yeet);
+	}
 	
 }
