@@ -37,7 +37,7 @@ public class GameInfo {
 		// do later
 	}
 	
-	public static JPanel generatePanel(Floor f, Character c, JPanel mapPanel) {
+	public static JPanel generatePanel(Floor f, MainCharacter c, JPanel mapPanel) {
 		JPanel panel = new JPanel();
 		
 		init();
@@ -58,12 +58,12 @@ public class GameInfo {
 	static class ButtonListener implements ActionListener {
 		
 		private String button;
-		private Character c;
+		private MainCharacter c;
 		private Floor f;
 		private JPanel mapPanel;
 		
 		// Class for reading button clicks
-		public ButtonListener(String buttonTxt, Character ch, Floor fl, JPanel map) {
+		public ButtonListener(String buttonTxt, MainCharacter ch, Floor fl, JPanel map) {
 			button = buttonTxt;
 			c = ch;
 			f = fl;
@@ -76,6 +76,7 @@ public class GameInfo {
 			switch (button) {
 			case "ATTACK":
 				System.out.println("ATTACK!");
+				c.attack(f);
 				break;
 			case "DEFEND":
 				System.out.println("DEFEND!");

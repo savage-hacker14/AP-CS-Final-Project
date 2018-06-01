@@ -56,11 +56,10 @@ public class MainCharacter extends Character {
 		money += add;
 	}
 
-	public void attack(Floor f) throws IOException{
+	public void attack(Floor f){
 		Tile[] arr= surroundObjs(f);
-		Enemy checker = new Enemy(ImageIO.read(new File("Sprites/Enemy1.png")));
 		for(int i =0;i<arr.length;i++){
-			if(arr[i].getClass().equals(checker.getClass())){
+			if(arr[i].getClass().getName().equals("Enemy")){
 				((Enemy)arr[i]).setHealth(((Enemy)arr[i]).getHealth()-this.getAttack());
 					break;
 			}	
