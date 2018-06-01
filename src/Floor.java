@@ -237,7 +237,7 @@ public class Floor {
 		if (!(old.equals(newPt))) {
 			// reset old cell
 			Tile oldTile = getTile(old);
-			setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getName(), old), old);
+			setTile(new Tile(oldTile.getBG(), oldTile.getBG(), oldTile.getName(), old), old);
 		}
 	}
 
@@ -246,7 +246,7 @@ public class Floor {
 
 		for (int r = 0; r < width; r++) {
 			for (int c = 0; c < length; c++) {
-				if (floorTiles[r][c].getClass().getName().equals(main.getClass().getName())) {
+				if (floorTiles[r][c].getImageType().substring(0, 1).equals("P")) {
 					Point poin = new Point(r, c);
 					return poin;
 				}

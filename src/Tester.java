@@ -19,7 +19,7 @@ public class Tester {
 		
 		//load in floor from text file
 		JPanel map = new JPanel();
-		String filepath = "MapTxtFiles/Floor1_0x2";
+		String filepath = "MapTxtFiles/Floor1_0x0";
 		String[][] testArr = IO.readMapFromTxt(filepath);
 		//IO.printMap(testArr);
 		Floor testFloor = new Floor(testArr, IO.strToFloorID(filepath));
@@ -37,8 +37,9 @@ public class Tester {
 		window.revalidate();
 		window.repaint();
 		
-		MainCharacter main = new MainCharacter(Floor.player1, Floor.grass, "Character", testFloor.findChar());
+		Character main = new MainCharacter(Floor.player1, Floor.grass, "Character", testFloor.findChar());
 		System.out.println(main.getPoint());
+		testFloor.printFloor();
 		
 		//create game info panel
 		JPanel gameInfo = GameInfo.generatePanel(testFloor, main, map);

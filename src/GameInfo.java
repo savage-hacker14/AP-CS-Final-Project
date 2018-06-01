@@ -80,7 +80,7 @@ public class GameInfo {
 			case "DEFEND":
 				System.out.println("DEFEND!");
 				break;
-			case "â†‘":
+			case "↑":
 				System.out.println("UP!");
 				try {
 					f = c.moveUp(f);
@@ -90,7 +90,7 @@ public class GameInfo {
 					e1.printStackTrace();
 				}
 				break;
-			case "â†“":
+			case "↓":
 				System.out.println("DOWN!");
 				try {
 					f = c.moveDown(f);
@@ -100,7 +100,7 @@ public class GameInfo {
 					e1.printStackTrace();
 				}
 				break;
-			case "â†�":
+			case "←":
 				System.out.println("LEFT!");
 				try {
 					f = c.moveLeft(f);
@@ -110,7 +110,7 @@ public class GameInfo {
 					e1.printStackTrace();
 				}
 				break;
-			case "â†’":
+			case "→":
 				System.out.println("RIGHT!");
 				try {
 					f = c.moveRight(f);
