@@ -14,6 +14,14 @@ public class Enemy extends Tile {
 		trophies = 0;
 	}
 	
+	public Enemy(BufferedImage img, int helth, int attck, int defnse, int trophy) {
+		super(img);
+		health = helth;
+		attack = attck;
+		defense = defnse;
+		trophies = trophy;
+	}
+	
 	public int getHealth() {
 		return health;
 	}

@@ -29,8 +29,6 @@ public class Tile extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(ground, 0, 0, getWidth(), getHeight(), null);
         g2d.drawImage(sprite, 0, 0, getWidth(), getHeight(), null);
-
-        
         // draw a perimeter
         g.setColor(Color.BLACK);
      	g.drawRect(0, 0, getWidth(), getHeight());    
@@ -44,11 +42,27 @@ public class Tile extends JPanel {
     	return sprite;
     }
     
+    public BufferedImage invert() {
+    	
+    	for (int x = 0; x < sprite.getWidth(); x++) {
+            for (int y = 0; y < sprite.getHeight(); y++) {
+                int rgba = sprite.getRGB(x, y);
+                Color col = new Color(rgba, true);
+                col = new Color(255 - col.getRed(),
+                                255 - col.getGreen(),
+                                255 - col.getBlue());
+                sprite.setRGB(x, y, col.getRGB());
+            }
+        }
+    	
+    	return sprite;
+    }
+    
     public String getImageType() {
     	return imageType;
     }
     
-    public void setImage(BufferedImage img) {
+    public void setSprite(BufferedImage img) {
     	sprite = img;
     }
     

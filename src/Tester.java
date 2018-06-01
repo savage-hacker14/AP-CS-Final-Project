@@ -30,6 +30,7 @@ public class Tester {
 		for (int r = 0; r < rows; r++) {
 			for (int c = 0; c < cols; c++) {
 				//testFloor.getTile(r, c).setOpaque(true);
+				//testFloor.getTile(r, c).setSprite(testFloor.getTile(r, c).invert());
 				map.add(testFloor.getTile(r, c));
 			}
 		}
@@ -37,7 +38,7 @@ public class Tester {
 		window.revalidate();
 		window.repaint();
 		
-		Character main = new MainCharacter(Floor.player1, Floor.grass, "Character", testFloor.findChar());
+		MainCharacter main = new MainCharacter(Floor.player1, Floor.grass, "Character", testFloor.findChar());
 		System.out.println(main.getPoint());
 		testFloor.printFloor();
 		
