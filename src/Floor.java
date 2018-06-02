@@ -14,6 +14,7 @@ public class Floor {
 	public static int width = 9;
 
 	private Point floorID; // String that stores current part of floor
+	public static Point currentFloorID;
 
 	// Images/sprites to be used
 	public static BufferedImage blob;
@@ -74,7 +75,8 @@ public class Floor {
 		grass = ImageIO.read(new File("Sprites/Grass.png"));
 		wood = ImageIO.read(new File("Sprites/Wood.png"));
 
-
+		// init current floor id
+		currentFloorID = new Point (0, 0);
 	}
 
 	// Default constructor with Tile matrix input
@@ -205,6 +207,17 @@ public class Floor {
 		}
 
 	}
+	
+	public Floor clone(Floor f) {
+		try {
+			return new Floor(f.getFloor());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		return (Floor) new Object();
+	}
 
 	public Tile getTile(int x, int y) {
 		return floorTiles[x][y];
@@ -236,8 +249,9 @@ public class Floor {
 
 		if (!(old.equals(newPt))) {
 			// reset old cell
-			Tile oldTile = getTile(old);
-			setTile(new Tile(oldTile.getBG(), oldTile.getBG(), oldTile.getName(), old), old);
+			Tile oldTile = this.getTile(old);
+			this.setTile(new Tile(oldTile.getBG(), oldTile.getBG(), "Grass", old), old);
+			// fix line above to actual image type of background
 		}
 	}
 

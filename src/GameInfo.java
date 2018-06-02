@@ -84,7 +84,7 @@ public class GameInfo {
 			case "↑":
 				System.out.println("UP!");
 				try {
-					f = c.moveUp(f);
+					f = c.moveUp();
 					f.refresh(mapPanel);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -94,7 +94,7 @@ public class GameInfo {
 			case "↓":
 				System.out.println("DOWN!");
 				try {
-					f = c.moveDown(f);
+					f = c.moveDown();
 					f.refresh(mapPanel);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -104,7 +104,7 @@ public class GameInfo {
 			case "←":
 				System.out.println("LEFT!");
 				try {
-					f = c.moveLeft(f);
+					f = c.moveLeft();
 					f.refresh(mapPanel);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -114,7 +114,7 @@ public class GameInfo {
 			case "→":
 				System.out.println("RIGHT!");
 				try {
-					f = c.moveRight(f);
+					f = c.moveRight();
 					f.refresh(mapPanel);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
