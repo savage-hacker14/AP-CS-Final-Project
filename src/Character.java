@@ -95,6 +95,8 @@ public class Character extends Tile {
 		
 		// load in new floor
 		if (p.x == 0) {
+			
+			
 			// load in upper floor
 			filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + (Floor.currentFloorID.y + 1);
 			System.out.println(filepath);
@@ -209,7 +211,7 @@ public class Character extends Tile {
 		f.printFloor();
 		
 		// load in new floor
-		if (p.x == 0) {
+		if (p.y == 0) {
 			// load in upper floor
 			filepath = "MapTxtFiles/Floor1_" + (f.getFloorID().x - 1) + "x" + f.getFloorID().y;
 			System.out.println(filepath);
@@ -269,7 +271,7 @@ public class Character extends Tile {
 		f.printFloor();
 		
 		// load in new floor
-		if (p.x == Floor.length - 1) {
+		if (p.y == Floor.length - 1) {
 			// load in upper floor
 			filepath = "MapTxtFiles/Floor1_" + (f.getFloorID().x + 1) + "x" + f.getFloorID().y;
 			System.out.println(filepath);
