@@ -84,6 +84,7 @@ public class GameInfo {
 			case "↑":
 				System.out.println("UP!");
 				try {
+					System.out.println(Floor.currentFloorID);
 					f = c.moveUp();
 					f.refresh(mapPanel);
 				} catch (IOException e1) {

@@ -34,86 +34,89 @@ public class IO {
 		for (int r = 0; r < Floor.width; r++) {
 			for (int c = 0; c < Floor.length; c++) {
 				String type = map.getTile(r, c).getImageType();
+				String bg = "g"; 	// change later
 
 				switch (type) {
 				case "Blob":
-					writer.write("blb ");
+					writer.write(bg + "blb ");
 					break;
 				case "Bush":
-					writer.write("bsh ");
+					writer.write(bg + "bsh ");
 					break;
 				case "Chest":
-					writer.write("cht ");
+					writer.write(bg + "cht ");
 					break;
 				case "Chilli":
-					writer.write("chl ");
+					writer.write(bg + "chl ");
 					break;
 				case "Demon":
-					writer.write("dmn ");
+					writer.write(bg + "dmn ");
 					break;
 				case "Door":
-					writer.write("dor");
+					writer.write(bg + "dor");
 					break;
 				case "DoorLock":
-					writer.write("drl ");
+					writer.write(bg + "drl ");
 					break;
 				case "Enemy":
-					writer.write("enm ");
+					writer.write(bg + "enm ");
 					break;
 				case "Fireball":
-					writer.write("fbl ");
+					writer.write(bg + "fbl ");
 					break;		
 				case "Grass":
-					writer.write("gra ");
+					writer.write(bg + "gra ");
 					break;
 				case "Key":
-					writer.write("key ");
+					writer.write(bg + "key ");
 					break;
 				case "Knight":
-					writer.write("knt ");
+					writer.write(bg + "knt ");
 					break;
 				case "KnightWings":
-					writer.write("knw ");
+					writer.write(bg + "knw ");
 					break;
 				case "Lava":
-					writer.write("lva ");
+					writer.write(bg + "lva ");
 					break;
 				case "Player1":
-					writer.write("pl1 ");
+					writer.write(bg + "pl1 ");
 					break;
 				case "Player2":
-					writer.write("pl2 ");
+					writer.write(bg + "pl2 ");
 					break;
 				case "Player3":
-					writer.write("pl3 ");
+					writer.write(bg + "pl3 ");
 					break;
 				case "Potion":
-					writer.write("pot ");
+					writer.write(bg + "pot ");
 					break;
 				case "Rock":
-					writer.write("rck ");
+					writer.write(bg + "rck ");
 					break;
 				case "Stone":
-					writer.write("stn ");
+					writer.write(bg + "stn ");
 					break;
 				case "Sword1":
-					writer.write("sw1 ");
+					writer.write(bg + "sw1 ");
 					break;
 				case "Sword2":
-					writer.write("sw2 ");
+					writer.write(bg + "sw2 ");
 					break;
 				case "Sword3":
-					writer.write("sw3 ");
+					writer.write(bg + "sw3 ");
 					break;
 				case "Water":
-					writer.write("wtr ");
+					writer.write(bg + "wtr ");
 					break;
 				case "Wood":
-					writer.write("wod ");
+					writer.write(bg + "wod ");
 					break;
 				}
-				writer.newLine();
 			}
+			
+			if (r != Floor.width - 1)
+				writer.newLine();
 		}
 		writer.flush();
 		writer.close();

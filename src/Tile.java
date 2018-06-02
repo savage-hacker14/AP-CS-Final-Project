@@ -62,6 +62,10 @@ public class Tile extends JPanel {
     	return imageType;
     }
     
+    public void setImageType(String str) {
+    	imageType = str;
+    }
+    
     public String getBGImageType() {
     	//bg.get
     }

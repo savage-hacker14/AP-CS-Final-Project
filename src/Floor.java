@@ -14,7 +14,7 @@ public class Floor {
 	public static int width = 9;
 
 	private Point floorID; // String that stores current part of floor
-	public static Point currentFloorID;
+	public static Point currentFloorID = new Point (0, 0);
 
 	// Images/sprites to be used
 	public static BufferedImage blob;
@@ -74,9 +74,6 @@ public class Floor {
 		// Backgrounds
 		grass = ImageIO.read(new File("Sprites/Grass.png"));
 		wood = ImageIO.read(new File("Sprites/Wood.png"));
-
-		// init current floor id
-		currentFloorID = new Point (0, 0);
 	}
 
 	// Default constructor with Tile matrix input
@@ -285,7 +282,7 @@ public class Floor {
 		for (int r = 0; r < width; r++) {
 			for (int c = 0; c < length; c++) {
 				// testFloor.getTile(r, c).setOpaque(true);
-				mapPanel.add(getTile(r, c));
+				mapPanel.add(this.getTile(r, c));
 			}
 		}
 
