@@ -53,7 +53,7 @@ public class IO {
 					writer.write(bg + "dmn ");
 					break;
 				case "Door":
-					writer.write(bg + "dor");
+					writer.write(bg + "dor ");
 					break;
 				case "DoorLock":
 					writer.write(bg + "drl ");
