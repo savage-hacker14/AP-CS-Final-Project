@@ -16,8 +16,8 @@ public class MainCharacter extends Character {
 		money = 0;
 	}
 
-	public MainCharacter(BufferedImage img, BufferedImage BG, String type, Point p) {
-		super(img, BG, type, p);
+	public MainCharacter(BufferedImage img, BufferedImage BG,String name, String type, Point p) {
+		super(img, BG, name,type, p);
 	}
 
 	public Items getItem(int index) {
@@ -42,7 +42,7 @@ public class MainCharacter extends Character {
 		resetAll();
 		for (int i = 0; i < backpack.length; i++) {
 			setMaxHealth(backpack[i].getHealth() + getMaxHealth());
-			increaseHealth(backpack[i].getHealth());
+			changeHealth(backpack[i].getHealth());
 			increaseAttack(backpack[i].getHealth());
 			increaseDefense(backpack[i].getHealth());
 		}
