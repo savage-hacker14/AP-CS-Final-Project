@@ -78,7 +78,8 @@ public class GameInfo {
 			case "ATTACK":
 				System.out.println("ATTACK!");
 				cycleEnemyMoves();
-				c.attack(f);
+				//c.attack(f);
+				c.surroundObjs(f);
 				break;
 			case "DEFEND":
 				System.out.println("DEFEND!");

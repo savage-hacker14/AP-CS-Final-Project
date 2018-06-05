@@ -33,7 +33,7 @@ public class IO {
 		
 		for (int r = 0; r < Floor.width; r++) {
 			for (int c = 0; c < Floor.length; c++) {
-				String type = map.getTile(r, c).getImageType();
+				String type = map.getTile(r, c).getSpriteType();
 				
 				String bg = "";
 				

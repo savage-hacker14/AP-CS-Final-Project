@@ -62,7 +62,7 @@ public class Tile extends JPanel {
     	return sprite;
     }
     
-    public String getImageType() {
+    public String getSpriteType() {
     	return spriteType;
     }
     

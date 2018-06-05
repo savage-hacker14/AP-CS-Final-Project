@@ -246,8 +246,6 @@ public class Floor {
 	// new method. Moves tiles from old x,y to new x,y
 	public void moveTile(Point old, Point newPt) {
 		//floorTiles[newPt.x][newPt.y] = floorTiles[old.x][old.y];
-
-		// BUG HERE!!!!
 		
 		if (!(old.equals(newPt))) {
 			// reset old cell
@@ -260,9 +258,13 @@ public class Floor {
 			oldTile.setSprite(oldTile.getBG());				// removes sprite from oldTile
 			newTile.setSprite(tempImg);						// Adds sprite on new tile
 			
-			String tempStr = oldTile.getImageType();		
+			String tempStr = oldTile.getSpriteType();		
 			oldTile.setImageType(oldTile.getBGImageType()); // update sprite name for oldTile
 			newTile.setImageType(tempStr);					// update sprite name for newTile
+			
+			// update locations
+			oldTile.setLocation(old);
+			newTile.setLocation(newPt);
 		}
 	}
 
@@ -271,7 +273,7 @@ public class Floor {
 
 		for (int r = 0; r < width; r++) {
 			for (int c = 0; c < length; c++) {
-				if (floorTiles[r][c].getImageType().substring(0, 1).equals("P")) {
+				if (floorTiles[r][c].getSpriteType().substring(0, 1).equals("P")) {
 					Point poin = new Point(r, c);
 					return poin;
 				}
@@ -285,7 +287,7 @@ public class Floor {
 	public void printFloor() {
 		for (int r = 0; r < width; r++) {
 			for (int c = 0; c < length; c++) {
-				System.out.print(floorTiles[r][c].getImageType().substring(0, 1) + " ");
+				System.out.print(floorTiles[r][c].getSpriteType().substring(0, 1) + " ");
 			}
 			System.out.println();
 		}

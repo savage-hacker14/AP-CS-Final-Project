@@ -90,8 +90,6 @@ public class Character extends Tile {
 		String[][] map = IO.readMapFromTxt(filepath);
 		Floor f = new Floor(map, Floor.currentFloorID);
 
-		f.printFloor();
-
 		// load in new floor
 		if (p.x == 0) {
 			
@@ -119,10 +117,7 @@ public class Character extends Tile {
 
 			// write new map file
 			IO.writeMap(newF, newfilepath);
-
-			
-			
-			
+	
 			return newF;
 		}
 
@@ -137,9 +132,9 @@ public class Character extends Tile {
 
 		System.out.println(p + "\t" + newPos);
 
-		if (isWalkable(f.getTile(newPos).getImageType())) {
+		if (isWalkable(f.getTile(newPos).getSpriteType())) {
 			f.moveTile(p, newPos);
-			// f.printFloor();
+			f.printFloor();
 
 			// write new map file
 			IO.writeMap(f, filepath);
@@ -156,8 +151,6 @@ public class Character extends Tile {
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
 		String[][] map = IO.readMapFromTxt(filepath);
 		Floor f = new Floor(map, Floor.currentFloorID);
-
-		f.printFloor();
 
 		// load in new floor
 		if (p.x == Floor.width - 1) {
@@ -198,9 +191,9 @@ public class Character extends Tile {
 
 		System.out.println(p + "\t" + newPos);
 
-		if (isWalkable(f.getTile(newPos).getImageType())) {
+		if (isWalkable(f.getTile(newPos).getSpriteType())) {
 			f.moveTile(p, newPos);
-			// f.printFloor();
+			f.printFloor();
 
 			// write new map file
 			IO.writeMap(f, filepath);
@@ -217,9 +210,7 @@ public class Character extends Tile {
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
 		String[][] map = IO.readMapFromTxt(filepath);
 		Floor f = new Floor(map, Floor.currentFloorID);
-
-		f.printFloor();
-
+		
 		// load in new floor
 		if (p.y == 0) {
 			
@@ -263,9 +254,9 @@ public class Character extends Tile {
 
 		System.out.println(p + "\t" + newPos);
 
-		if (isWalkable(f.getTile(newPos).getImageType())) {
+		if (isWalkable(f.getTile(newPos).getSpriteType())) {
 			f.moveTile(p, newPos);
-			// f.printFloor();
+			f.printFloor();
 
 			// write new map file
 			IO.writeMap(f, filepath);
@@ -282,8 +273,6 @@ public class Character extends Tile {
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
 		String[][] map = IO.readMapFromTxt(filepath);
 		Floor f = new Floor(map, Floor.currentFloorID);
-
-		f.printFloor();
 
 		// load in new floor
 		if (p.y == Floor.length - 1) {
@@ -323,9 +312,9 @@ public class Character extends Tile {
 
 		System.out.println(p + "\t" + newPos);
 
-		if (isWalkable(f.getTile(newPos).getImageType())) {
+		if (isWalkable(f.getTile(newPos).getSpriteType())) {
 			f.moveTile(p, newPos);
-			// f.printFloor();
+			f.printFloor();
 
 			// write new map file
 			IO.writeMap(f, filepath);
@@ -338,6 +327,8 @@ public class Character extends Tile {
 	}
 
 	// Sensory commands
+	
+	// BUG HERE!
 	public Tile[] surroundObjs(Floor f) {
 		// will store surrounding tiles
 		ArrayList<Tile> tiles = new ArrayList<Tile>();
@@ -370,11 +361,34 @@ public class Character extends Tile {
 
 		// for debug, print out array
 		for (int i = 0; i < tilesArr.length; i++) {
-			System.out.println(tilesArr[i].getImageType().substring(0, 1));
+			System.out.print(tilesArr[i].getSpriteType().substring(0, 1) + " ");
 		}
 
 		// return array
 		return tilesArr;
+	}
+	
+	public void attack(Floor f) throws InterruptedException {
+		
+		Tile[] arr = surroundObjs(f);
+		
+		for(int i = 0; i < arr.length;i++){
+			if(arr[i].getSpriteType().equals("Enemy")){
+				// flash tile
+				arr[i].invert();
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				arr[i].invert();
+				
+				
+				((Enemy)arr[i]).setHealth(((Enemy)arr[i]).getHealth()-this.getAttack());
+					break;
+			}	
+		}	
 	}
 
 	private void removeOldPlayer(String [][] map, Floor f, String filepath) throws IOException {
@@ -388,7 +402,7 @@ public class Character extends Tile {
 			tileToChange = new Tile(Floor.wood, Floor.wood, "Wood", "Wood", p);
 		}
 		f.setTile(tileToChange, p);
-		System.out.println(tileToChange.getImageType() + " " + p.getX() + " " + p.getY());
+		System.out.println(tileToChange.getSpriteType() + " " + p.getX() + " " + p.getY());
 
 		IO.writeMap(f, filepath);
 	}
