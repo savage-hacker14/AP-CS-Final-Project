@@ -245,12 +245,15 @@ public class Floor {
 
 	// new method. Moves tiles from old x,y to new x,y
 	public void moveTile(Point old, Point newPt) {
-		floorTiles[newPt.x][newPt.y] = floorTiles[old.x][old.y];
+		//floorTiles[newPt.x][newPt.y] = floorTiles[old.x][old.y];
 
+		// BUG HERE!!!!
+		
 		if (!(old.equals(newPt))) {
 			// reset old cell
 			Tile oldTile = this.getTile(old);
-			this.setTile(new Tile(oldTile.getBG(), oldTile.getBG(), oldTile.getBGImageType(), oldTile.getBGImageType(), old), old);
+			Tile newTile = this.getTile(newPt);
+			this.setTile(new Tile(oldTile.getSprite(), newTile.getBG(), oldTile.getImageType(), newTile.getBGImageType(), old), newPt);
 			// fix line above to actual image type of background
 		}
 	}

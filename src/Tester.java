@@ -38,7 +38,7 @@ public class Tester {
 		window.revalidate();
 		window.repaint();
 		
-		MainCharacter main = new MainCharacter(Floor.player1, Floor.grass, "Player", testFloor.findChar());
+		MainCharacter main = new MainCharacter(Floor.player1, Floor.grass, "Player", "Grass", testFloor.findChar());
 		//System.out.println(main.getPoint());
 		testFloor.printFloor();
 		
