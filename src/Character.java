@@ -22,8 +22,8 @@ public class Character extends Tile {
 		maxHealth = 100;
 	}
 
-	public Character(BufferedImage img, BufferedImage BG, String type, Point p) {
-		super(img, BG, type, p);
+	public Character(BufferedImage img, BufferedImage BG, String spriteType, String BGName, Point p) {
+		super(img, BG, spriteType, BGName, p);
 		health = 100;
 		attack = 10;
 		defense = 10;
@@ -382,9 +382,9 @@ public class Character extends Tile {
 		
 		Tile tileToChange;
 		if (map[f.getFloorID().x][f.getFloorID().y].substring(0, 1).equals("g")) {
-			tileToChange = new Tile(Floor.grass, Floor.grass, "Grass", p);
+			tileToChange = new Tile(Floor.grass, Floor.grass, "Grass", "Grass", p);
 		} else { // if (map[p.x][p.y].substring(0, 1).equals("w")) {
-			tileToChange = new Tile(Floor.wood, Floor.wood, "Wood", p);
+			tileToChange = new Tile(Floor.wood, Floor.wood, "Wood", "Wood", p);
 		}
 		f.setTile(tileToChange, p);
 		System.out.println(tileToChange.getImageType() + " " + p.getX() + " " + p.getY());

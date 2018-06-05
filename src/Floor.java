@@ -250,7 +250,7 @@ public class Floor {
 		if (!(old.equals(newPt))) {
 			// reset old cell
 			Tile oldTile = this.getTile(old);
-			this.setTile(new Tile(oldTile.getBG(), oldTile.getBG(), "Grass", old), old);
+			this.setTile(new Tile(oldTile.getBG(), oldTile.getBG(), oldTile.getBGImageType(), oldTile.getBGImageType(), old), old);
 			// fix line above to actual image type of background
 		}
 	}
