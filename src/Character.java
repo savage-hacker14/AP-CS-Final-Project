@@ -380,6 +380,7 @@ public class Character extends Tile {
 	private void removeOldPlayer(String [][] map, Floor f, String filepath) throws IOException {
 		// Removes player from old
 		
+		////////////////////////////////////////////////////////////////////////////Check this
 		Tile tileToChange;
 		if (map[f.getFloorID().x][f.getFloorID().y].substring(0, 1).equals("g")) {
 			tileToChange = new Tile(Floor.grass, Floor.grass, "Grass", "Grass", p);
