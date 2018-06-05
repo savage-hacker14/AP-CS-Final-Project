@@ -1,11 +1,8 @@
 // Written by JAcob Krucinski on 5/21/18
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.image.BufferedImage;
+import java.awt.*;
+import java.awt.image.*;
+import java.awt.event.*;
 import java.io.IOException;
-
 import javax.swing.*;
 
 public class GameInfo {
@@ -45,6 +42,7 @@ public class GameInfo {
 		for (int i = 0; i < buttons.length; i++) {
 			String buttonName = buttons[i].getText();
 			buttons[i].addActionListener(new ButtonListener(buttonName, c, f, mapPanel));
+			buttons[i].addKeyListener(new KeyReader(c, f, mapPanel));
 			panel.add(buttons[i]);
 		}
 		
@@ -52,15 +50,18 @@ public class GameInfo {
 			panel.add(characterStatus[i]);
 		}
 		
+		// doesn't seem to work
+		//panel.addKeyListener(new KeyReader(c, f, mapPanel));
+		
 		return panel;
 	}
 	
 	static class ButtonListener implements ActionListener {
 		
-		private String button;
-		private MainCharacter c;
-		private Floor f;
-		private JPanel mapPanel;
+		protected String button;
+		protected MainCharacter c;
+		protected Floor f;
+		protected JPanel mapPanel;
 		
 		// Class for reading button clicks
 		public ButtonListener(String buttonTxt, MainCharacter ch, Floor fl, JPanel map) {
@@ -149,7 +150,8 @@ public class GameInfo {
 			
 		}
 		
-		private void cycleEnemyMoves() {
+		// Should this be here or in enemy class?
+		protected void cycleEnemyMoves() {
 			for (int i = 0; i < f.length; i++) {
 				for (int j = 0; j < f.width; j++) {
 					if (f.getTile(j, i) instanceof Enemy) {
@@ -160,5 +162,97 @@ public class GameInfo {
 		}
 		
 	}
+	
+	static class KeyReader extends ButtonListener implements KeyListener {
+	
+			// Class for reading button clicks
+			public KeyReader(MainCharacter ch, Floor fl, JPanel map) {
+				super("", ch, fl, map);
+				//win = window;
+			}
+			
+			// Make this method more efficient
+			public void keyPressed(KeyEvent e) {
+				//super.actionPerformed((ActionEvent) e);		// doesn't work
+				int key = e.getKeyCode();
+				
+				if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
+					moveUp();
+				} 
+				else if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
+					moveDown();
+				} 
+				else if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
+					moveLeft();
+				} 
+				else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
+					moveRight();
+				}
+				
+
+			}
+			
+			private void moveUp() {
+				System.out.println("UP!");
+				try {
+					System.out.println(Floor.currentFloorID);
+					f = c.moveUp();
+					cycleEnemyMoves();
+					f.refresh(mapPanel);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+			private void moveDown() {
+				System.out.println("DOWN!");
+				try {
+					f = c.moveDown();
+					cycleEnemyMoves();
+					f.refresh(mapPanel);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+			private void moveLeft() {
+				System.out.println("LEFT!");
+				try {
+					f = c.moveLeft();
+					cycleEnemyMoves();
+					f.refresh(mapPanel);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+			private void moveRight() {
+				System.out.println("RIGHT!");
+				try {
+					f = c.moveRight();
+					cycleEnemyMoves();
+					f.refresh(mapPanel);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				// Dont worry about code here
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				// Dont worry about code here
+			}
+	}
+	
 	
 }

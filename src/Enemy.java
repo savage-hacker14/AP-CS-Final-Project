@@ -50,6 +50,9 @@ public class Enemy extends Tile {
 	public void move(Floor floor) {
 		
 		// Attacks if player is around them
+		
+		// NOTE: Revise this to use surrounding objects method?
+		
 		for (int i = p.x - 1; i < p.x + 2; i++) {
 			for (int j = p.y - 1; j < p.y + 2; j++) {
 				if (p.x != i || p.y != j) {
