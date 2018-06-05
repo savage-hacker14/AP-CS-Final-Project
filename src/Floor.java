@@ -257,12 +257,12 @@ public class Floor {
 			// fix line above to actual image type of background
 			
 			BufferedImage tempImg = oldTile.getSprite();
-			oldTile.setSprite(oldTile.getBG());
-			newTile.setSprite(tempImg);
+			oldTile.setSprite(oldTile.getBG());				// removes sprite from oldTile
+			newTile.setSprite(tempImg);						// Adds sprite on new tile
 			
-			String tempStr = oldTile.getImageType();
-			oldTile.setImageType(oldTile.getBGImageType());
-			newTile.setImageType(tempStr);
+			String tempStr = oldTile.getImageType();		
+			oldTile.setImageType(oldTile.getBGImageType()); // update sprite name for oldTile
+			newTile.setImageType(tempStr);					// update sprite name for newTile
 		}
 	}
 
