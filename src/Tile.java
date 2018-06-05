@@ -1,6 +1,8 @@
 // Written by Jacob Krucinski on 5/11/18
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class Tile extends JPanel {
@@ -99,7 +101,44 @@ public class Tile extends JPanel {
     	
     	return false;
     }
-    
+    public Tile[] surroundObjs(Floor f) {
+		// will store surrounding tiles
+		ArrayList<Tile> tiles = new ArrayList<Tile>();
+
+		// array of all surrounding cell coordinates
+		Point[] surr = new Point[8];
+		surr[0] = new Point(p.x - 1, p.y - 1);
+		surr[1] = new Point(p.x - 1, p.y);
+		surr[2] = new Point(p.x - 1, p.y + 1);
+		surr[3] = new Point(p.x, p.y - 1);
+		surr[4] = new Point(p.x, p.y + 1);
+		surr[5] = new Point(p.x + 1, p.y - 1);
+		surr[6] = new Point(p.x + 1, p.y);
+		surr[7] = new Point(p.x + 1, p.y + 1);
+
+		for (int i = 0; i < surr.length; i++) {
+			boolean validPoint = surr[i].x >= 0 && surr[i].x < Floor.length && surr[i].y >= 0
+					&& surr[i].y < Floor.width;
+			if (validPoint) {
+				Tile surrTile = f.getTile(surr[i]);
+				tiles.add(surrTile);
+			}
+		}
+
+		// convert arrayList to arr
+		Tile[] tilesArr = new Tile[tiles.size()];
+		for (int i = 0; i < tilesArr.length; i++) {
+			tilesArr[i] = tiles.get(i);
+		}
+
+		// for debug, print out array
+		for (int i = 0; i < tilesArr.length; i++) {
+			System.out.println(tilesArr[i].getImageType().substring(0, 1));
+		}
+
+		// return array
+		return tilesArr;
+	}
     public boolean isWalkable(String type) {
     	switch (type) {
     		
