@@ -39,7 +39,7 @@ public class Tester {
 		window.repaint();
 		
 		MainCharacter main = new MainCharacter(Floor.player1, Floor.grass, "Player", testFloor.findChar());
-		System.out.println(main.getPoint());
+		//System.out.println(main.getPoint());
 		testFloor.printFloor();
 		
 		//create game info panel

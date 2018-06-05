@@ -76,16 +76,19 @@ public class GameInfo {
 			switch (button) {
 			case "ATTACK":
 				System.out.println("ATTACK!");
+				cycleEnemyMoves();
 				c.attack(f);
 				break;
 			case "DEFEND":
 				System.out.println("DEFEND!");
+				cycleEnemyMoves();
 				break;
 			case "↑":
 				System.out.println("UP!");
 				try {
 					System.out.println(Floor.currentFloorID);
 					f = c.moveUp();
+					cycleEnemyMoves();
 					f.refresh(mapPanel);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -96,6 +99,7 @@ public class GameInfo {
 				System.out.println("DOWN!");
 				try {
 					f = c.moveDown();
+					cycleEnemyMoves();
 					f.refresh(mapPanel);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -106,6 +110,7 @@ public class GameInfo {
 				System.out.println("LEFT!");
 				try {
 					f = c.moveLeft();
+					cycleEnemyMoves();
 					f.refresh(mapPanel);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -116,6 +121,7 @@ public class GameInfo {
 				System.out.println("RIGHT!");
 				try {
 					f = c.moveRight();
+					cycleEnemyMoves();
 					f.refresh(mapPanel);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -140,7 +146,19 @@ public class GameInfo {
 				}
 				break;
 			}
+			
 		}
+		
+		private void cycleEnemyMoves() {
+			for (int i = 0; i < f.length; i++) {
+				for (int j = 0; j < f.width; j++) {
+					if (f.getTile(j, i) instanceof Enemy) {
+						((Enemy)f.getTile(i, j)).move(f);
+					}
+				}
+			}
+		}
+		
 	}
 	
 }

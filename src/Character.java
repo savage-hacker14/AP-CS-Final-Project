@@ -42,11 +42,15 @@ public class Character extends Tile {
 	}
 
 	/* Increases health by health, but doesn't exceed maxHealth */
-	public void increaseHealth(int health) {
+	public void changeHealth(int health) {
 		this.health += health;
 		if (this.health > maxHealth) {
 			this.health = maxHealth;
+		} else if (this.health < 0) {
+			System.out.println("GAME OVER!");
+			
 		}
+		System.out.println(this.health);
 	}
 
 	public int getAttack() {
@@ -96,7 +100,7 @@ public class Character extends Tile {
 
 			// load in upper floor
 			String newfilepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + (Floor.currentFloorID.y + 1);
-			System.out.println(newfilepath);
+			//System.out.println(newfilepath);
 
 			// get new floor ID
 			Point newFID = IO.strToFloorID(newfilepath);
@@ -105,12 +109,12 @@ public class Character extends Tile {
 
 			String[][] newCharArr = IO.readMapFromTxt(newfilepath);
 			Floor newF = new Floor(newCharArr, newFID);
-			System.out.println(Floor.currentFloorID);
+			//System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
 			newF.setTile(this, new Point(Floor.width - 1, p.y));
 			newF.getTile(new Point(Floor.width - 1, p.y)).setImageType("Player1");
-			System.out.println(newF.getTile(new Point(Floor.width - 1, p.y)).getImageType());
+			//System.out.println(newF.getTile(new Point(Floor.width - 1, p.y)).getImageType());
 			p.setLocation(Floor.width - 1, p.y);
 
 			// write new map file
@@ -163,7 +167,7 @@ public class Character extends Tile {
 			
 			// load in upper floor
 			String newfilepath = "MapTxtFiles/Floor1_" + f.getFloorID().x + "x" + (f.getFloorID().y - 1);
-			System.out.println(newfilepath);
+			//System.out.println(newfilepath);
 
 			// get new floor ID
 			Point newFID = IO.strToFloorID(newfilepath);
@@ -172,13 +176,13 @@ public class Character extends Tile {
 
 			String[][] newCharArr = IO.readMapFromTxt(newfilepath);
 			Floor newF = new Floor(newCharArr, newFID);
-			System.out.println(Floor.currentFloorID);
+			//System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
 			newF.setTile(this, new Point(0, p.y));
 			p.setLocation(0, p.y);
 			newF.getTile(new Point(0, p.y)).setImageType("Player1");
-			System.out.println(newF.getTile(new Point(Floor.width - 1, p.y)).getImageType());
+			//System.out.println(newF.getTile(new Point(Floor.width - 1, p.y)).getImageType());
 
 			// write new map file
 			IO.writeMap(newF, newfilepath);
@@ -224,7 +228,7 @@ public class Character extends Tile {
 			
 			// load in upper floor
 			String newfilepath = "MapTxtFiles/Floor1_" + (f.getFloorID().x - 1) + "x" + f.getFloorID().y;
-			System.out.println(newfilepath);
+			//System.out.println(newfilepath);
 
 			// get new floor ID
 			Point newFID = IO.strToFloorID(newfilepath);
@@ -233,7 +237,7 @@ public class Character extends Tile {
 
 			String[][] newCharArr = IO.readMapFromTxt(newfilepath);
 			Floor newF = new Floor(newCharArr, newFID);
-			System.out.println(Floor.currentFloorID);
+			//System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
 			newF.setTile(this, new Point(p.x, Floor.length - 1));
@@ -289,7 +293,7 @@ public class Character extends Tile {
 			
 			// load in upper floor
 			String newfilepath = "MapTxtFiles/Floor1_" + (f.getFloorID().x + 1) + "x" + f.getFloorID().y;
-			System.out.println(newfilepath);
+			//System.out.println(newfilepath);
 
 			// get new floor ID
 			Point newFID = IO.strToFloorID(newfilepath);
@@ -298,7 +302,7 @@ public class Character extends Tile {
 
 			String[][] newCharArr = IO.readMapFromTxt(newfilepath);
 			Floor newF = new Floor(newCharArr, newFID);
-			System.out.println(Floor.currentFloorID);
+			//System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
 			newF.setTile(this, new Point(p.x, 0));

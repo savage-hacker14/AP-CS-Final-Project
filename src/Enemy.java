@@ -28,6 +28,13 @@ public class Enemy extends Tile {
 	public void setHealth(int h) {
 		health = h;
 	}
+	public void attackedByPlayer(int health) {
+		if (Math.random() < .25) { // Randomly defends
+			if (health - defense > 0) {
+				this.health -= health;
+			}
+		}
+	}
 	public int getattack() {
 		return attack;
 	}
@@ -42,6 +49,18 @@ public class Enemy extends Tile {
 	}
 	public void move(Floor floor) {
 		
+		// Attacks if player is around them
+		for (int i = p.x - 1; i < p.x + 2; i++) {
+			for (int j = p.y - 1; j < p.y + 2; j++) {
+				if (p.x != i || p.y != j) {
+					if (floor.getTile(i, j) instanceof Character) {
+						
+					}
+				}
+			}
+		}
+		
+		// Moves to a random spot adjacent to it (not diagonally)
 		
 		
 	}
