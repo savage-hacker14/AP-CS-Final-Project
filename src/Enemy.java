@@ -35,7 +35,7 @@ public class Enemy extends Tile {
 			}
 		}
 	}
-	public int getattack() {
+	public int getAttack() {
 		return attack;
 	}
 	public void setAttack(int h) {
@@ -69,6 +69,18 @@ public class Enemy extends Tile {
 	}
 	public int getTrophies() {
 		return trophies;
+	}
+	public void attack(Floor f) {
+		Tile[] arr= surroundObjs(f);
+		for(int i =0;i<arr.length;i++){
+			String name =arr[i].getClass().getName();
+			if(name.equals("Player1")||name.equals("Player2")||name.equals("Player3")){
+				invert();
+				((MainCharacter)arr[i]).changeHealth(this.getAttack());
+				
+					break;
+			}	
+		}	
 	}
 	public void addTrophies(int add) {
 		trophies+=add;
