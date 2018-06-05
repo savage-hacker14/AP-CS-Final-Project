@@ -114,89 +114,92 @@ public class Floor {
 				// background)/w(woodBackground) + three letter abbreviation: Grass background
 				// blob is gblb for its name
 				BufferedImage background = grass; //Default background is grass in case it gets messed up in the txt files
+				String BGName = "Grass";
 				if (tile.substring(0, 1).equalsIgnoreCase("w")) {
 					background = wood;
+					BGName = "Wood";
 				} else if (tile.substring(0, 1).equalsIgnoreCase("g")) { // This is else if in case we want to add more backgrounds
 					background = grass;
+					BGName = "Grass";
 				}
 				
 				tile = tile.substring(1); // gets the last three letters for the foreground image
 				
 				switch (tile) {
 				case "blb":
-					floorTiles[r][c] = new Tile(blob, background, "Blob", tileLocation);
+					floorTiles[r][c] = new Tile(blob, background, "Blob", BGName, tileLocation);
 					break;
 				case "bsh":
-					floorTiles[r][c] = new Tile(bush, background, "Bush", tileLocation);
+					floorTiles[r][c] = new Tile(bush, background, "Bush", BGName, tileLocation);
 					break;
 				case "cht":
-					floorTiles[r][c] = new Tile(chest, background, "Chest", tileLocation);
+					floorTiles[r][c] = new Tile(chest, background, "Chest", BGName, tileLocation);
 					break;
 				case "chl":
-					floorTiles[r][c] = new Tile(chilli, background, "Chilli", tileLocation);
+					floorTiles[r][c] = new Tile(chilli, background, "Chilli", BGName, tileLocation);
 					break;
 				case "dmn":
-					floorTiles[r][c] = new Tile(demon, background, "Demon", tileLocation);
+					floorTiles[r][c] = new Tile(demon, background, "Demon", BGName, tileLocation);
 					break;
 				case "dor":
-					floorTiles[r][c] = new Tile(door, background, "Door", tileLocation);
+					floorTiles[r][c] = new Tile(door, background, "Door", BGName, tileLocation);
 					break;
 				case "drl":
-					floorTiles[r][c] = new Tile(doorLock, background, "DoorLock", tileLocation);
+					floorTiles[r][c] = new Tile(doorLock, background, "DoorLock", BGName, tileLocation);
 					break;
 				case "enm":
-					floorTiles[r][c] = new Tile(enemy, background, "Enemy", tileLocation);
+					floorTiles[r][c] = new Tile(enemy, background, "Enemy", BGName, tileLocation);
 					break;
 				case "fbl":
-					floorTiles[r][c] = new Tile(fireball, background, "Fireball", tileLocation);
+					floorTiles[r][c] = new Tile(fireball, background, "Fireball", BGName, tileLocation);
 					break;		
 				case "gra":
-					floorTiles[r][c] = new Tile(grass, background, "Grass", tileLocation);
+					floorTiles[r][c] = new Tile(grass, background, "Grass", BGName, tileLocation);
 					break;
 				case "key":
-					floorTiles[r][c] = new Tile(key, background, "Key", tileLocation);
+					floorTiles[r][c] = new Tile(key, background, "Key", BGName, tileLocation);
 					break;
 				case "knt":
-					floorTiles[r][c] = new Tile(knight, background, "Knight", tileLocation);
+					floorTiles[r][c] = new Tile(knight, background, "Knight", BGName, tileLocation);
 					break;
 				case "knw":
-					floorTiles[r][c] = new Tile(knightWings, background, "KnightWings", tileLocation);
+					floorTiles[r][c] = new Tile(knightWings, background, "KnightWings", BGName, tileLocation);
 					break;
 				case "lva":
-					floorTiles[r][c] = new Tile(lava, background, "Lava", tileLocation);
+					floorTiles[r][c] = new Tile(lava, background, "Lava", BGName, tileLocation);
 					break;
 				case "pl1":
-					floorTiles[r][c] = new Tile(player1, background, "Player1", tileLocation);
+					floorTiles[r][c] = new Tile(player1, background, "Player1", BGName, tileLocation);
 					break;
 				case "pl2":
-					floorTiles[r][c] = new Tile(player2, background, "Player2", tileLocation);
+					floorTiles[r][c] = new Tile(player2, background, "Player2", BGName, tileLocation);
 					break;
 				case "pl3":
-					floorTiles[r][c] = new Tile(player3, background, "Player3", tileLocation);
+					floorTiles[r][c] = new Tile(player3, background, "Player3", BGName, tileLocation);
 					break;
 				case "pot":
-					floorTiles[r][c] = new Tile(potion, background, "Potion", tileLocation);
+					floorTiles[r][c] = new Tile(potion, background, "Potion", BGName, tileLocation);
 					break;
 				case "rck":
-					floorTiles[r][c] = new Tile(rock, background, "Rock", tileLocation);
+					floorTiles[r][c] = new Tile(rock, background, "Rock", BGName, tileLocation);
 					break;
 				case "stn":
-					floorTiles[r][c] = new Tile(stone, background, "Stone", tileLocation);
+					floorTiles[r][c] = new Tile(stone, background, "Stone", BGName, tileLocation);
 					break;
 				case "sw1":
-					floorTiles[r][c] = new Tile(sword1, background, "Sword1", tileLocation);
+					floorTiles[r][c] = new Tile(sword1, background, "Sword1", BGName, tileLocation);
 					break;
 				case "sw2":
-					floorTiles[r][c] = new Tile(sword2, background, "Sword2", tileLocation);
+					floorTiles[r][c] = new Tile(sword2, background, "Sword2", BGName, tileLocation);
 					break;
 				case "sw3":
-					floorTiles[r][c] = new Tile(sword3, background, "Sword3", tileLocation);
+					floorTiles[r][c] = new Tile(sword3, background, "Sword3", BGName, tileLocation);
 					break;
 				case "wtr":
-					floorTiles[r][c] = new Tile(water, background, "Water", tileLocation);
+					floorTiles[r][c] = new Tile(water, background, "Water", BGName, tileLocation);
 					break;
 				case "wod":
-					floorTiles[r][c] = new Tile(wood, background, "Wood", tileLocation);
+					floorTiles[r][c] = new Tile(wood, background, "Wood", BGName, tileLocation);
 					break;
 				
 				}

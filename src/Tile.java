@@ -9,17 +9,19 @@ public class Tile extends JPanel {
 	private BufferedImage ground;
 	
 	private BufferedImage sprite;
-	private String imageType;
+	private String spriteType;
+	private String groundType;
 	protected Point p;				// protected so subclasses can see this
 	
 	public Tile(BufferedImage img) {
 		sprite = img;
 	}
 	
-	public Tile(BufferedImage sprit, BufferedImage BG, String name, Point location) {
+	public Tile(BufferedImage sprit, BufferedImage BG, String name, String grndType, Point location) {
 		sprite = sprit;
-		imageType = name;
+		spriteType = name;
 		ground = BG;
+		groundType = grndType;
 		p = location;		// the r & c value of the tile in the Floor object
 	}
 	
@@ -59,15 +61,15 @@ public class Tile extends JPanel {
     }
     
     public String getImageType() {
-    	return imageType;
+    	return spriteType;
     }
     
     public void setImageType(String str) {
-    	imageType = str;
+    	spriteType = str;
     }
     
     public String getBGImageType() {
-    	//bg.get
+    	return groundType;
     }
     
     public void setSprite(BufferedImage img) {
@@ -83,7 +85,7 @@ public class Tile extends JPanel {
     }
     
     public boolean isWalkable() {
-    	switch (imageType) {
+    	switch (spriteType) {
     		
     	case "Grass":
     		return true;
