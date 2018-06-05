@@ -34,7 +34,17 @@ public class IO {
 		for (int r = 0; r < Floor.width; r++) {
 			for (int c = 0; c < Floor.length; c++) {
 				String type = map.getTile(r, c).getImageType();
-				String bg = "g"; 	// change later
+				
+				String bg = "";
+				
+				if (map.getTile(r, c).getBGImageType().equalsIgnoreCase("Grass")) {
+					bg = "g";
+					
+				} else if (map.getTile(r, c).getBGImageType().equalsIgnoreCase("Wood")) {
+					bg = "w";
+				}
+				
+				//String bg = "g"; 	// change later
 
 				switch (type) {
 				case "Blob":
@@ -63,7 +73,7 @@ public class IO {
 					break;
 				case "Fireball":
 					writer.write(bg + "fbl ");
-					break;		
+					break;		 
 				case "Grass":
 					writer.write(bg + "gra ");
 					break;

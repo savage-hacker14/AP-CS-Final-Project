@@ -253,8 +253,16 @@ public class Floor {
 			// reset old cell
 			Tile oldTile = this.getTile(old);
 			Tile newTile = this.getTile(newPt);
-			this.setTile(new Tile(oldTile.getSprite(), newTile.getBG(), oldTile.getImageType(), newTile.getBGImageType(), old), newPt);
+			//this.setTile(new Tile(oldTile.getSprite(), newTile.getBG(), oldTile.getImageType(), newTile.getBGImageType(), old), newPt);
 			// fix line above to actual image type of background
+			
+			BufferedImage tempImg = oldTile.getSprite();
+			oldTile.setSprite(oldTile.getBG());
+			newTile.setSprite(tempImg);
+			
+			String tempStr = oldTile.getImageType();
+			oldTile.setImageType(oldTile.getBGImageType());
+			newTile.setImageType(tempStr);
 		}
 	}
 
