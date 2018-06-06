@@ -1,6 +1,7 @@
 // Written by Jacob Krucinski on 5/11/18
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -66,7 +67,7 @@ public class Tile extends JPanel {
     	return spriteType;
     }
     
-    public void setImageType(String str) {
+    public void setSpriteType(String str) {
     	spriteType = str;
     }
     
@@ -101,7 +102,19 @@ public class Tile extends JPanel {
     	
     	return false;
     }
-    public Tile[] surroundObjs(Floor f) {
+    public Tile[] surroundObjs() {
+		// Load in the current floor id floor
+		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
+		String[][] map;
+		Floor f = new Floor();
+		try {
+			map = IO.readMapFromTxt(filepath);
+			f = new Floor(map, Floor.currentFloorID);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
 		// will store surrounding tiles
 		ArrayList<Tile> tiles = new ArrayList<Tile>();
 
@@ -117,10 +130,11 @@ public class Tile extends JPanel {
 		surr[7] = new Point(p.x + 1, p.y + 1);
 
 		for (int i = 0; i < surr.length; i++) {
-			boolean validPoint = surr[i].x >= 0 && surr[i].x < Floor.length && surr[i].y >= 0
-					&& surr[i].y < Floor.width;
+			boolean validPoint = surr[i].x >= 0 && surr[i].x < Floor.width && surr[i].y >= 0
+					&& surr[i].y < Floor.length;
 			if (validPoint) {
 				Tile surrTile = f.getTile(surr[i]);
+				System.out.println(surrTile.toString());
 				tiles.add(surrTile);
 			}
 		}
@@ -131,10 +145,10 @@ public class Tile extends JPanel {
 			tilesArr[i] = tiles.get(i);
 		}
 
-		// for debug, print out array
-		for (int i = 0; i < tilesArr.length; i++) {
-			System.out.println(tilesArr[i].getImageType().substring(0, 1));
-		}
+//		// for debug, print out array
+//		for (int i = 0; i < tilesArr.length; i++) {
+//			System.out.println(tilesArr[i].getSpriteType().substring(0, 1));
+//		}
 
 		// return array
 		return tilesArr;
@@ -155,5 +169,13 @@ public class Tile extends JPanel {
     	return false;
     }
     
+    public String toString() {
+    	String temp = "";
+    	temp += "Sprite: " + this.spriteType + "\n";
+    	temp += "Background: " + this.getBGImageType() + "\n";
+    	temp += "Location: " + p.toString() + "\n";
+    	return temp;
+    	
+    }
     
 }

@@ -77,9 +77,9 @@ public class GameInfo {
 			switch (button) {
 			case "ATTACK":
 				System.out.println("ATTACK!");
-				cycleEnemyMoves();
+				//cycleEnemyMoves();
 				//c.attack(f);
-				c.surroundObjs(f);
+				c.surroundObjs();
 				break;
 			case "DEFEND":
 				System.out.println("DEFEND!");

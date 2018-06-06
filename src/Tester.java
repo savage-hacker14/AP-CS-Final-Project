@@ -11,7 +11,7 @@ public class Tester {
 		JFrame window = new JFrame();
 		Container pane = window.getContentPane();
 		window.setTitle("Custom Floor");
-		window.setSize(300, 300);
+		window.setSize(500, 500);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		// allows program termination when x is clicked on
 		pane.setLayout(new GridLayout(2,1));

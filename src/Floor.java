@@ -76,6 +76,10 @@ public class Floor {
 		wood = ImageIO.read(new File("Sprites/Wood.png"));
 	}
 
+	public Floor() {
+		floorTiles = new Tile[Floor.width][Floor.length];
+	}
+	
 	// Default constructor with Tile matrix input
 	public Floor(Tile[][] arr) throws IOException {
 		// init image constants
@@ -259,8 +263,8 @@ public class Floor {
 			newTile.setSprite(tempImg);						// Adds sprite on new tile
 			
 			String tempStr = oldTile.getSpriteType();		
-			oldTile.setImageType(oldTile.getBGImageType()); // update sprite name for oldTile
-			newTile.setImageType(tempStr);					// update sprite name for newTile
+			oldTile.setSpriteType(oldTile.getBGImageType()); // update sprite name for oldTile
+			newTile.setSpriteType(tempStr);					// update sprite name for newTile
 			
 			// update locations
 			oldTile.setLocation(old);

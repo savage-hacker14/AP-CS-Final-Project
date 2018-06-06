@@ -111,7 +111,7 @@ public class Character extends Tile {
 
 			// place character in new correct position
 			newF.setTile(this, new Point(Floor.width - 1, p.y));
-			newF.getTile(new Point(Floor.width - 1, p.y)).setImageType("Player1");
+			newF.getTile(new Point(Floor.width - 1, p.y)).setSpriteType("Player1");
 			//System.out.println(newF.getTile(new Point(Floor.width - 1, p.y)).getImageType());
 			p.setLocation(Floor.width - 1, p.y);
 
@@ -174,7 +174,7 @@ public class Character extends Tile {
 			// place character in new correct position
 			newF.setTile(this, new Point(0, p.y));
 			p.setLocation(0, p.y);
-			newF.getTile(new Point(0, p.y)).setImageType("Player1");
+			newF.getTile(new Point(0, p.y)).setSpriteType("Player1");
 			//System.out.println(newF.getTile(new Point(Floor.width - 1, p.y)).getImageType());
 
 			// write new map file
@@ -233,7 +233,7 @@ public class Character extends Tile {
 			// place character in new correct position
 			newF.setTile(this, new Point(p.x, Floor.length - 1));
 			p.setLocation(p.x, Floor.length - 1);
-			newF.getTile(new Point(p.x, Floor.length - 1)).setImageType("Player1");
+			newF.getTile(new Point(p.x, Floor.length - 1)).setSpriteType("Player1");
 
 			// write new map file
 			IO.writeMap(newF, newfilepath);
@@ -296,7 +296,7 @@ public class Character extends Tile {
 			// place character in new correct position
 			newF.setTile(this, new Point(p.x, 0));
 			p.setLocation(p.x, 0);
-			newF.getTile(new Point(p.x, 0)).setImageType("Player1");
+			newF.getTile(new Point(p.x, 0)).setSpriteType("Player1");
 
 			// write new map file
 			IO.writeMap(newF, newfilepath);
@@ -327,50 +327,9 @@ public class Character extends Tile {
 	}
 
 	// Sensory commands
-	
-	// BUG HERE!
-	public Tile[] surroundObjs(Floor f) {
-		// will store surrounding tiles
-		ArrayList<Tile> tiles = new ArrayList<Tile>();
-
-		// array of all surrounding cell coordinates
-		Point[] surr = new Point[8];
-		surr[0] = new Point(p.x - 1, p.y - 1);
-		surr[1] = new Point(p.x - 1, p.y);
-		surr[2] = new Point(p.x - 1, p.y + 1);
-		surr[3] = new Point(p.x, p.y - 1);
-		surr[4] = new Point(p.x, p.y + 1);
-		surr[5] = new Point(p.x + 1, p.y - 1);
-		surr[6] = new Point(p.x + 1, p.y);
-		surr[7] = new Point(p.x + 1, p.y + 1);
-
-		for (int i = 0; i < surr.length; i++) {
-			boolean validPoint = surr[i].x >= 0 && surr[i].x < Floor.length && surr[i].y >= 0
-					&& surr[i].y < Floor.width;
-			if (validPoint) {
-				Tile surrTile = f.getTile(surr[i]);
-				tiles.add(surrTile);
-			}
-		}
-
-		// convert arrayList to arr
-		Tile[] tilesArr = new Tile[tiles.size()];
-		for (int i = 0; i < tilesArr.length; i++) {
-			tilesArr[i] = tiles.get(i);
-		}
-
-		// for debug, print out array
-		for (int i = 0; i < tilesArr.length; i++) {
-			System.out.print(tilesArr[i].getSpriteType().substring(0, 1) + " ");
-		}
-
-		// return array
-		return tilesArr;
-	}
-	
 	public void attack(Floor f) throws InterruptedException {
 		
-		Tile[] arr = surroundObjs(f);
+		Tile[] arr = surroundObjs();
 		
 		for(int i = 0; i < arr.length;i++){
 			if(arr[i].getSpriteType().equals("Enemy")){
