@@ -149,4 +149,26 @@ public class IO {
 		
 		return new Point(x, y);
 	}
+	
+	public static String currentFloor() {
+		int x = Floor.currentFloorID.x;
+		int y = Floor.currentFloorID.y;
+		return "Floor1_" + x + "x" + y;
+	}
+	
+	public static Floor loadInCurrentFloor() {
+		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
+		String[][] map;
+		Floor f = new Floor();
+		
+		try {
+			map = IO.readMapFromTxt(filepath);
+			f = new Floor(map, Floor.currentFloorID);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return f;		
+	}
 }

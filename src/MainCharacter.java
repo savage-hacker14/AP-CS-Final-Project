@@ -57,7 +57,8 @@ public class MainCharacter extends Character {
 	}
 
 	public void attack(Floor f){
-		Tile[] arr= surroundObjs(f);
+		Tile[] arr = surroundObjs();
+		
 		for(int i =0;i<arr.length;i++){
 			if(arr[i].getClass().getName().equals("Enemy")){
 				((Enemy)arr[i]).setHealth(((Enemy)arr[i]).getHealth()-this.getAttack());

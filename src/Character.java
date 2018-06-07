@@ -88,7 +88,7 @@ public class Character extends Tile {
 		// Load in the current floor id floor
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
 		String[][] map = IO.readMapFromTxt(filepath);
-		Floor f = new Floor(map, Floor.currentFloorID);
+		Floor f = IO.loadInCurrentFloor();
 
 		// load in new floor
 		if (p.x == 0) {
@@ -150,7 +150,7 @@ public class Character extends Tile {
 		// Load in the current floor id floor
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
 		String[][] map = IO.readMapFromTxt(filepath);
-		Floor f = new Floor(map, Floor.currentFloorID);
+		Floor f = IO.loadInCurrentFloor();
 
 		// load in new floor
 		if (p.x == Floor.width - 1) {
@@ -209,7 +209,7 @@ public class Character extends Tile {
 		// Load in the current floor id floor
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
 		String[][] map = IO.readMapFromTxt(filepath);
-		Floor f = new Floor(map, Floor.currentFloorID);
+		Floor f = IO.loadInCurrentFloor();
 		
 		// load in new floor
 		if (p.y == 0) {
@@ -272,7 +272,7 @@ public class Character extends Tile {
 		// Load in the current floor id floor
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
 		String[][] map = IO.readMapFromTxt(filepath);
-		Floor f = new Floor(map, Floor.currentFloorID);
+		Floor f = IO.loadInCurrentFloor();
 
 		// load in new floor
 		if (p.y == Floor.length - 1) {
@@ -327,27 +327,36 @@ public class Character extends Tile {
 	}
 
 	// Sensory commands
-	public void attack(Floor f) throws InterruptedException {
-		
+	public void attack() throws InterruptedException {
+		Floor f = IO.loadInCurrentFloor();
+				
 		Tile[] arr = surroundObjs();
 		
 		for(int i = 0; i < arr.length;i++){
-			if(arr[i].getSpriteType().equals("Enemy")){
-				// flash tile
-				arr[i].invert();
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				arr[i].invert();
-				
-				
-				((Enemy)arr[i]).setHealth(((Enemy)arr[i]).getHealth()-this.getAttack());
-					break;
-			}	
-		}	
+			arr[i].invert();
+			try {
+				IO.writeMap(f, IO.currentFloor());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+//			if(arr[i].getSpriteType().equals("Enemy")){
+//				// flash tile
+//				arr[i].invert();
+//				try {
+//					Thread.sleep(200);
+//				} catch (InterruptedException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//				arr[i].invert();
+//				
+//				
+//				((Enemy)arr[i]).setHealth(((Enemy)arr[i]).getHealth()-this.getAttack());
+//					break;
+//			}	
+//		}	
 	}
 
 	private void removeOldPlayer(String [][] map, Floor f, String filepath) throws IOException {

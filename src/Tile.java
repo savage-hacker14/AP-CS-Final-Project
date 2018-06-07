@@ -47,7 +47,7 @@ public class Tile extends JPanel {
     	return sprite;
     }
     
-    public BufferedImage invert() {
+    public void invert() {
     	
     	for (int x = 0; x < sprite.getWidth(); x++) {
             for (int y = 0; y < sprite.getHeight(); y++) {
@@ -59,8 +59,7 @@ public class Tile extends JPanel {
                 sprite.setRGB(x, y, col.getRGB());
             }
         }
-    	
-    	return sprite;
+    	  	
     }
     
     public String getSpriteType() {

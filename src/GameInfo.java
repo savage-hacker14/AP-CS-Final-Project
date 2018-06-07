@@ -77,9 +77,12 @@ public class GameInfo {
 			switch (button) {
 			case "ATTACK":
 				System.out.println("ATTACK!");
-				//cycleEnemyMoves();
-				//c.attack(f);
-				c.surroundObjs();
+				cycleEnemyMoves();
+				
+				//((Character) c).attack();
+				c.invert();
+				f.refresh(mapPanel);
+				//c.surroundObjs();
 				break;
 			case "DEFEND":
 				System.out.println("DEFEND!");
@@ -189,8 +192,9 @@ public class GameInfo {
 				else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
 					moveRight();
 				}
-				
-
+				else if (key == KeyEvent.VK_Q) {
+					attack();
+				}		
 			}
 			
 			private void moveUp() {
@@ -240,6 +244,16 @@ public class GameInfo {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+			}
+			
+			private void attack() {
+				System.out.println("ATTACK!");
+				cycleEnemyMoves();
+				
+				//((Character) c).attack();
+				c.invert();
+				f.refresh(mapPanel);
+				//c.surroundObjs();
 			}
 
 			@Override

@@ -29,8 +29,8 @@ public class Tester {
 		// Fill window
 		for (int r = 0; r < rows; r++) {
 			for (int c = 0; c < cols; c++) {
-				//testFloor.getTile(r, c).setOpaque(true);
 				//testFloor.getTile(r, c).setSprite(testFloor.getTile(r, c).invert());
+				//testFloor.getTile(r, c).invert();
 				map.add(testFloor.getTile(r, c));
 			}
 		}
