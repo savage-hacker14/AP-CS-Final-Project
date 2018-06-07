@@ -1,7 +1,10 @@
 // Written by Jacob on 5/20/18
 
 import java.awt.Point;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class IO {
@@ -44,8 +47,6 @@ public class IO {
 					bg = "w";
 				}
 				
-				//String bg = "g"; 	// change later
-
 				switch (type) {
 				case "Blob":
 					writer.write(bg + "blb ");
@@ -171,4 +172,63 @@ public class IO {
 		
 		return f;		
 	}
+	
+	
+	/*Returns the floorID point when it finds the first pl1 it sees on the whole map
+	 * 
+	 * @Param String floorName is "MapTxtFiles/Floor1_" unless we do a Floor2_
+	 * @Param maxWidth is width of Floor1
+	 * @Param maxWidth is length of Floor1
+	 * 
+	 * */
+	public static Point findPlayerFloorID(String floorName, int maxWidth, int maxHeight) {
+		
+		//Cycle through floors
+		for (int i = 0; i < maxWidth; i++) {
+			for (int j = 0; j < maxHeight; j++) {
+				
+				//If the floor exists in the MapTxtFlies and finds pl1, then it returns that floor
+				try {
+					String[][] strFloor2D = IO.readMapFromTxt("MapTxtFiles/" + floorName + i + "x" + j);
+					for (int k = 0; k < Floor.width; k++) {
+						for (int l = 0; l < Floor.length; l++) {
+							
+							if (strFloor2D[k][l].substring(1).equals("pl1")) {
+								return new Point(i, j);
+							}
+						}
+					}
+				} catch (IOException e) {}
+			}
+		}
+		
+		// If it doesn't find a player it sets the player to 0x0 floorID and puts the player back to its original position
+		try {
+			
+			File oldFile = new File("MapTxtFiles/Floor1_0x0");
+			Scanner reader = new Scanner(oldFile);
+			String[][] strArr = readMapFromTxt("MapTxtFiles/Floor1_0x0");
+			//oldFile.delete();
+			BufferedWriter writer = new BufferedWriter(new FileWriter("MapTxtFiles/Floor1_0x0"));
+			strArr[6][5] = "gpl1";
+			for (int i = 0; i < strArr.length; i++) {
+				for (int j = 0; j < strArr[0].length; j++) {
+					writer.write(strArr[i][j] + " ");
+				}
+				writer.newLine();
+			}
+			writer.flush();
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Oh no!!!!!!!!!!!!!!!!!!!!!It no print level right!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			e.printStackTrace();
+		}
+		
+		System.out.println("Failed to find player :(\nPlayer added to Floor1_0x0 at (6, 5)");
+		return new Point(0, 0);
+		
+	}
+	
 }

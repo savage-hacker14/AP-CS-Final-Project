@@ -17,9 +17,13 @@ public class Tester {
 		pane.setLayout(new GridLayout(2,1));
 		pane.setBackground(Color.LIGHT_GRAY);
 		
+		// Checks to find player throughout whole map and returns floor ID point that finds him
+		Point floorPt = IO.findPlayerFloorID("Floor1_", 3, 5);
+		Floor.currentFloorID = floorPt;
+		
 		//load in floor from text file
 		JPanel map = new JPanel();
-		String filepath = "MapTxtFiles/Floor1_0x0";
+		String filepath = "MapTxtFiles/Floor1_" + floorPt.x + "x" + floorPt.y;
 		String[][] testArr = IO.readMapFromTxt(filepath);
 		//IO.printMap(testArr);
 		Floor testFloor = new Floor(testArr, IO.strToFloorID(filepath));

@@ -71,11 +71,11 @@ public class Enemy extends Tile {
 		return trophies;
 	}
 	public void attack(Floor f) {
-		Tile[] arr= surroundObjs(f);
+		Tile[] arr= surroundObjs();
 		for(int i =0;i<arr.length;i++){
 			String name =arr[i].getClass().getName();
 			if(name.equals("Player1")||name.equals("Player2")||name.equals("Player3")){
-				invert();
+				invert(f);
 				((MainCharacter)arr[i]).changeHealth(this.getAttack());
 				
 					break;

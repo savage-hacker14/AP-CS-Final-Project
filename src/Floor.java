@@ -277,7 +277,7 @@ public class Floor {
 
 		for (int r = 0; r < width; r++) {
 			for (int c = 0; c < length; c++) {
-				if (floorTiles[r][c].getSpriteType().substring(0, 1).equals("P")) {
+				if (floorTiles[r][c].getSpriteType().length() == 7 && floorTiles[r][c].getSpriteType().substring(0, 6).equalsIgnoreCase("Player")) {
 					Point poin = new Point(r, c);
 					return poin;
 				}
@@ -309,4 +309,6 @@ public class Floor {
 		mapPanel.repaint();
 		mapPanel.revalidate();
 	}
+	
+	
 }

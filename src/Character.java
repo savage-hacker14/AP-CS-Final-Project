@@ -127,7 +127,9 @@ public class Character extends Tile {
 		} else {
 			newX = 0;
 		}
-
+		
+		System.out.println("Stuff: " + p);
+		
 		Point newPos = new Point(newX, p.y);
 
 		System.out.println(p + "\t" + newPos);
@@ -333,15 +335,16 @@ public class Character extends Tile {
 		Tile[] arr = surroundObjs();
 		
 		for(int i = 0; i < arr.length;i++){
-			if(arr[i] instanceof Enemy){
+			if(arr[i] instanceof Tile){
 				// flash tile
 				arr[i].invert(f);
 				try {
-					Thread.sleep(200);
+					Thread.sleep(2000);
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				System.out.println("It should have inverted");
 				arr[i].invert(f);
 				
 				

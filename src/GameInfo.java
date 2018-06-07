@@ -259,7 +259,7 @@ public class GameInfo {
 				//cycleEnemyMoves();
 				
 				//((Character) c).attack();
-				c.invert();
+				c.invert(f);
 				f = IO.loadInCurrentFloor();
 				f.refresh(mapPanel);
 				//c.surroundObjs();
