@@ -77,10 +77,18 @@ public class GameInfo {
 			switch (button) {
 			case "ATTACK":
 				System.out.println("ATTACK!");
-				cycleEnemyMoves();
+				//cycleEnemyMoves();
 				
 				//((Character) c).attack();
-				c.invert();
+				f = IO.loadInCurrentFloor();
+				//f.getTile(new Point(c.p.x - 1, c.p.y)).invert(f);
+				//c.invert(f);
+				try {
+					((Character) c).attack();
+				} catch (InterruptedException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				f.refresh(mapPanel);
 				//c.surroundObjs();
 				break;
@@ -248,10 +256,11 @@ public class GameInfo {
 			
 			private void attack() {
 				System.out.println("ATTACK!");
-				cycleEnemyMoves();
+				//cycleEnemyMoves();
 				
 				//((Character) c).attack();
 				c.invert();
+				f = IO.loadInCurrentFloor();
 				f.refresh(mapPanel);
 				//c.surroundObjs();
 			}

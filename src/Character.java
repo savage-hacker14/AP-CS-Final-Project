@@ -333,30 +333,22 @@ public class Character extends Tile {
 		Tile[] arr = surroundObjs();
 		
 		for(int i = 0; i < arr.length;i++){
-			arr[i].invert();
-			try {
-				IO.writeMap(f, IO.currentFloor());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-//			if(arr[i].getSpriteType().equals("Enemy")){
-//				// flash tile
-//				arr[i].invert();
-//				try {
-//					Thread.sleep(200);
-//				} catch (InterruptedException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				arr[i].invert();
-//				
-//				
-//				((Enemy)arr[i]).setHealth(((Enemy)arr[i]).getHealth()-this.getAttack());
-//					break;
-//			}	
-//		}	
+			if(arr[i] instanceof Enemy){
+				// flash tile
+				arr[i].invert(f);
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				arr[i].invert(f);
+				
+				
+				((Enemy)arr[i]).setHealth(((Enemy)arr[i]).getHealth()-this.getAttack());
+					break;
+			}	
+		}	
 	}
 
 	private void removeOldPlayer(String [][] map, Floor f, String filepath) throws IOException {

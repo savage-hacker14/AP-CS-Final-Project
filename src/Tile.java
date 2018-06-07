@@ -47,18 +47,25 @@ public class Tile extends JPanel {
     	return sprite;
     }
     
-    public void invert() {
+    public void invert(Floor f) {
+    	Point pos = f.findChar();   	
+    	
+    	System.out.println("Pos: " + p.toString());
     	
     	for (int x = 0; x < sprite.getWidth(); x++) {
             for (int y = 0; y < sprite.getHeight(); y++) {
                 int rgba = sprite.getRGB(x, y);
-                Color col = new Color(rgba, true);
-                col = new Color(255 - col.getRed(),
-                                255 - col.getGreen(),
-                                255 - col.getBlue());
-                sprite.setRGB(x, y, col.getRGB());
+                if (rgba >> 24 != 0x00) {
+	                Color col = new Color(rgba, true);
+	                col = new Color(255 - col.getRed(),
+	                                255 - col.getGreen(),
+	                                255 - col.getBlue());
+	                sprite.setRGB(x, y, col.getRGB());
+                }
             }
         }
+    	
+    	f.getTile(pos).setSprite(sprite);
     	  	
     }
     
