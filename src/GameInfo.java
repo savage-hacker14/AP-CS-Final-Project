@@ -79,16 +79,14 @@ public class GameInfo {
 				System.out.println("ATTACK!");
 				cycleEnemyMoves();
 				
-				//((Character) c).attack();
 				f = IO.loadInCurrentFloor();
-				//f.getTile(new Point(c.p.x - 1, c.p.y)).invert(f);
-				//c.invert(f);
-				try {
-					((Character) c).attack();
-				} catch (InterruptedException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
+				f.getTile(new Point(c.p.x, c.p.y - 1)).invert(f);
+//				try {
+//					((Character) c).attack();
+//				} catch (InterruptedException e3) {
+//					// TODO Auto-generated catch block
+//					e3.printStackTrace();
+//				}
 				f.refresh(mapPanel);
 				//c.surroundObjs();
 				break;

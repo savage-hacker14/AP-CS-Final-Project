@@ -331,15 +331,15 @@ public class Character extends Tile {
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] instanceof Enemy) {
 				// flash tile
-				arr[i].invert(f);
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				System.out.println("It should have inverted");
 				arr[i].invert(f);
+				System.out.println("It should have inverted");
+				//arr[i].invert(f);
 				System.out.println(arr[i].p);
 				((Enemy) arr[i]).setHealth(((Enemy) arr[i]).getHealth() - this.getAttack());
 

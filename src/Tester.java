@@ -21,12 +21,13 @@ public class Tester {
 		Point floorPt = IO.findPlayerFloorID("Floor1_", 3, 5);
 		Floor.currentFloorID = floorPt;
 		
-		//load in floor from text file
+//		//load in floor from text file
 		JPanel map = new JPanel();
-		String filepath = "MapTxtFiles/Floor1_" + floorPt.x + "x" + floorPt.y;
-		String[][] testArr = IO.readMapFromTxt(filepath);
-		//IO.printMap(testArr);
-		Floor testFloor = new Floor(testArr, IO.strToFloorID(filepath));
+//		String filepath = "MapTxtFiles/Floor1_" + floorPt.x + "x" + floorPt.y;
+//		String[][] testArr = IO.readMapFromTxt(filepath);
+//		//IO.printMap(testArr);
+		
+		Floor testFloor = IO.loadInCurrentFloor();
 		int rows = 9;
 		int cols = 16;
 		map.setLayout(new GridLayout(rows, cols));

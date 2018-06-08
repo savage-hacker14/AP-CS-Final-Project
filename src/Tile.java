@@ -47,8 +47,7 @@ public class Tile extends JPanel {
     	return sprite;
     }
     
-    public void invert(Floor f) {
-    	Point pos = f.findChar();   	
+    public void invert(Floor f) {  	
     	
     	for (int x = 0; x < sprite.getWidth(); x++) {
             for (int y = 0; y < sprite.getHeight(); y++) {
@@ -63,7 +62,7 @@ public class Tile extends JPanel {
             }
         }
     	
-    	f.getTile(pos).setSprite(sprite);
+    	f.getTile(p).setSprite(sprite);
     	  	
     }
     
@@ -138,7 +137,7 @@ public class Tile extends JPanel {
 					&& surr[i].y < Floor.length;
 			if (validPoint) {
 				Tile surrTile = f.getTile(surr[i]);
-				System.out.println(surrTile.toString());
+				//System.out.println(surrTile.toString());
 				tiles.add(surrTile);
 			}
 		}

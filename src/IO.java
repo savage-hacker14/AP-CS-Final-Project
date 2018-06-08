@@ -182,6 +182,8 @@ public class IO {
 	 * 
 	 * */
 	public static Point findPlayerFloorID(String floorName, int maxWidth, int maxHeight) {
+		// clean up code; why not use find char here?
+		
 		
 		//Cycle through floors
 		for (int i = 0; i < maxWidth; i++) {
