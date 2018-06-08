@@ -63,23 +63,23 @@ public class Enemy extends Tile {
 		// NOTE: Revise this to use surrounding objects method?
 
 		Tile[] surr8 = surroundObjs();
-		Tile[] surr4 = { surr8[1], surr8[3], surr8[4], surr8[6] };
-		boolean[] walkableSurr4 = new boolean[4];
-		int count = 0;
-		for (int i = 0; i < surr4.length; i++) {
-			walkableSurr4[i] = surr4[i].isWalkable();
-			count++;
-		}
-		int antiCount = 0;
-
-		for (int i = 0; i < 4; i++) {
-			if (walkableSurr4[i]) {
-				if ((int) (Math.random() * count - antiCount) == 0) {
-					// Move up, down, left, or right depending on random number
-				}
-				antiCount++;
-			}
-		}
+//		Tile[] surr4 = { surr8[1], surr8[3], surr8[4], surr8[6] };
+//		boolean[] walkableSurr4 = new boolean[4];
+//		int count = 0;
+//		for (int i = 0; i < surr4.length; i++) {
+//			walkableSurr4[i] = surr4[i].isWalkable();
+//			count++;
+//		}
+//		int antiCount = 0;
+//
+//		for (int i = 0; i < 4; i++) {
+//			if (walkableSurr4[i]) {
+//				if ((int) (Math.random() * count - antiCount) == 0) {
+//					// Move up, down, left, or right depending on random number
+//				}
+//				antiCount++;
+//			}
+//		}
 
 		// Moves to a random spot adjacent to it (not diagonally)
 
