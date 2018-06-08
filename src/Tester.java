@@ -10,7 +10,7 @@ public class Tester {
 		// TODO Auto-generated method stub
 		JFrame window = new JFrame();
 		Container pane = window.getContentPane();
-		window.setTitle("Custom Floor");
+		window.setTitle("Zelda");
 		window.setSize(500, 500);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		// allows program termination when x is clicked on
@@ -48,7 +48,7 @@ public class Tester {
 		testFloor.printFloor();
 		
 		//create game info panel
-		JPanel gameInfo = GameInfo.generatePanel(testFloor, main, map);
+		JPanel gameInfo = GameInfo.generatePanel(main, map);
 		pane.add(gameInfo);
 		window.repaint();
 		

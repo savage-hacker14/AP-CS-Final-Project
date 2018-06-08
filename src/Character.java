@@ -324,34 +324,32 @@ public class Character extends Tile {
 	}
 
 	// Sensory commands
-	public void attack() throws InterruptedException {
+	public Floor attack() throws InterruptedException {
 		Floor f = IO.loadInCurrentFloor();
+			
+		// array of all surrounding cell coordinates
+		Point[] surr = new Point[8];
+		surr[0] = new Point(p.x - 1, p.y - 1);
+		surr[1] = new Point(p.x - 1, p.y);
+		surr[2] = new Point(p.x - 1, p.y + 1);
+		surr[3] = new Point(p.x, p.y - 1);
+		surr[4] = new Point(p.x, p.y + 1);
+		surr[5] = new Point(p.x + 1, p.y - 1);
+		surr[6] = new Point(p.x + 1, p.y);
+		surr[7] = new Point(p.x + 1, p.y + 1);
 
-		Tile[] arr = surroundObjs();
-
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] instanceof Enemy) {
-				// flash tile
-//				try {
-//					Thread.sleep(1000);
-//				} catch (InterruptedException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-				//f.getTile(new Point(arr[i].p)).invert(f);
-				((Tile) arr[i]).invert(f);
+		for (int i = 0; i < surr.length; i++) {
+			boolean validPoint = surr[i].x >= 0 && surr[i].x < Floor.width && surr[i].y >= 0
+					&& surr[i].y < Floor.length;
+			if (validPoint && f.getTile(surr[i]) instanceof Enemy) {
+				Tile surrTile = f.getTile(surr[i]);
+				surrTile.invert();
 				
-				System.out.println(arr[i]);
-				System.out.println("It should have inverted");
-				
-				
-				//arr[i].invert(f);
-				System.out.println(arr[i].p);
-				((Enemy) arr[i]).setHealth(((Enemy) arr[i]).getHealth() - this.getAttack());
-
-				break;
+				((Enemy) surrTile).setHealth(((Enemy) surrTile).getHealth() - this.getAttack());
 			}
 		}
+		
+		return f;
 	}
 
 	private void removeOldPlayer(String[][] map, Floor f, String filepath) throws IOException {

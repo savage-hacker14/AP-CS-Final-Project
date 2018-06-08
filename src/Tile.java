@@ -49,7 +49,7 @@ public class Tile extends JPanel {
     	return sprite;
     }
     
-    public void invert(Floor f) {  	
+    public void invert() {  	
     	
     	BufferedImage img = null;
 		try {
@@ -73,6 +73,7 @@ public class Tile extends JPanel {
         }
     	System.out.println("done inverting");
     	
+    	//Floor f = IO.loadInCurrentFloor();
     	setSprite(img);
     	
     	//IO.writeMap(f, IO.currentFloor());
@@ -120,17 +121,9 @@ public class Tile extends JPanel {
     }
     public Tile[] surroundObjs() {
 		// Load in the current floor id floor
-		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
+		Floor f = IO.loadInCurrentFloor();
 		String[][] map;
-		Floor f = new Floor();
-		try {
-			map = IO.readMapFromTxt(filepath);
-			f = new Floor(map, Floor.currentFloorID);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
+
 		// will store surrounding tiles
 		ArrayList<Tile> tiles = new ArrayList<Tile>();
 
@@ -163,7 +156,7 @@ public class Tile extends JPanel {
 
 //		// for debug, print out array
 //		for (int i = 0; i < tilesArr.length; i++) {
-//			System.out.println(tilesArr[i].getSpriteType().substring(0, 1));
+//			System.out.println(tilesArr[i]);
 //		}
 
 		// return array

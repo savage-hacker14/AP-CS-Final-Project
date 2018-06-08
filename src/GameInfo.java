@@ -34,15 +34,15 @@ public class GameInfo {
 		// do later
 	}
 	
-	public static JPanel generatePanel(Floor f, MainCharacter c, JPanel mapPanel) {
+	public static JPanel generatePanel(MainCharacter c, JPanel mapPanel) {
 		JPanel panel = new JPanel();
 		
 		init();
 		
 		for (int i = 0; i < buttons.length; i++) {
 			String buttonName = buttons[i].getText();
-			buttons[i].addActionListener(new ButtonListener(buttonName, c, f, mapPanel));
-			buttons[i].addKeyListener(new KeyReader(c, f, mapPanel));
+			buttons[i].addActionListener(new ButtonListener(buttonName, c, mapPanel));
+			buttons[i].addKeyListener(new KeyReader(c, mapPanel));
 			panel.add(buttons[i]);
 		}
 		
@@ -60,14 +60,13 @@ public class GameInfo {
 		
 		protected String button;
 		protected MainCharacter c;
-		protected Floor f;
 		protected JPanel mapPanel;
+		protected Floor f = IO.loadInCurrentFloor();
 		
 		// Class for reading button clicks
-		public ButtonListener(String buttonTxt, MainCharacter ch, Floor fl, JPanel map) {
+		public ButtonListener(String buttonTxt, MainCharacter ch, JPanel map) {
 			button = buttonTxt;
 			c = ch;
-			f = fl;
 			mapPanel = map;
 		}
 		
@@ -77,18 +76,17 @@ public class GameInfo {
 			switch (button) {
 			case "ATTACK":
 				System.out.println("ATTACK!");
-				cycleEnemyMoves();
+				//cycleEnemyMoves();		
 				
-				f = IO.loadInCurrentFloor();
-				//f.getTile(new Point(c.p.x, c.p.y - 1)).invert(f);
+				//f.getTile(new Point(c.p.x, c.p.y - 1)).invert();
 				try {
-					((Character) c).attack();
+					f = ((Character) c).attack();
 				} catch (InterruptedException e3) {
 					// TODO Auto-generated catch block
 					e3.printStackTrace();
 				}
 				f.refresh(mapPanel);
-				//c.surroundObjs();
+//				c.surroundObjs();
 				break;
 			case "DEFEND":
 				System.out.println("DEFEND!");
@@ -175,8 +173,8 @@ public class GameInfo {
 	static class KeyReader extends ButtonListener implements KeyListener {
 	
 			// Class for reading button clicks
-			public KeyReader(MainCharacter ch, Floor fl, JPanel map) {
-				super("", ch, fl, map);
+			public KeyReader(MainCharacter ch, JPanel map) {
+				super("", ch, map);
 				//win = window;
 			}
 			
