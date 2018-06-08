@@ -131,7 +131,7 @@ public class Floor {
 				
 				switch (tile) {
 				case "blb":
-					floorTiles[r][c] = new Tile(blob, background, "Blob", BGName, tileLocation);
+					floorTiles[r][c] = new Enemy(blob, background, "Blob", BGName, tileLocation, 100, 10, 20, 10);
 					break;
 				case "bsh":
 					floorTiles[r][c] = new Tile(bush, background, "Bush", BGName, tileLocation);
@@ -143,7 +143,7 @@ public class Floor {
 					floorTiles[r][c] = new Tile(chilli, background, "Chilli", BGName, tileLocation);
 					break;
 				case "dmn":
-					floorTiles[r][c] = new Tile(demon, background, "Demon", BGName, tileLocation);
+					floorTiles[r][c] = new Enemy(demon, background, "Demon", BGName, tileLocation, 2000, 100, 200, 200);
 					break;
 				case "dor":
 					floorTiles[r][c] = new Tile(door, background, "Door", BGName, tileLocation);
@@ -152,7 +152,7 @@ public class Floor {
 					floorTiles[r][c] = new Tile(doorLock, background, "DoorLock", BGName, tileLocation);
 					break;
 				case "enm":
-					floorTiles[r][c] = new Tile(enemy, background, "Enemy", BGName, tileLocation);
+					floorTiles[r][c] = new Enemy(enemy, background, "Enemy", BGName, tileLocation, 40, 20, 10, 5);
 					break;
 				case "fbl":
 					floorTiles[r][c] = new Tile(fireball, background, "Fireball", BGName, tileLocation);
@@ -164,10 +164,10 @@ public class Floor {
 					floorTiles[r][c] = new Tile(key, background, "Key", BGName, tileLocation);
 					break;
 				case "knt":
-					floorTiles[r][c] = new Tile(knight, background, "Knight", BGName, tileLocation);
+					floorTiles[r][c] = new Enemy(knight, background, "Knight", BGName, tileLocation, 200, 30, 80, 40);
 					break;
 				case "knw":
-					floorTiles[r][c] = new Tile(knightWings, background, "KnightWings", BGName, tileLocation);
+					floorTiles[r][c] = new Enemy(knightWings, background, "KnightWings", BGName, tileLocation, 200, 50, 120, 60);
 					break;
 				case "lva":
 					floorTiles[r][c] = new Tile(lava, background, "Lava", BGName, tileLocation);

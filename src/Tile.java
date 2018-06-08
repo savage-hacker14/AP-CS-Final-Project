@@ -50,8 +50,6 @@ public class Tile extends JPanel {
     public void invert(Floor f) {
     	Point pos = f.findChar();   	
     	
-    	System.out.println("Pos: " + p.toString());
-    	
     	for (int x = 0; x < sprite.getWidth(); x++) {
             for (int y = 0; y < sprite.getHeight(); y++) {
                 int rgba = sprite.getRGB(x, y);

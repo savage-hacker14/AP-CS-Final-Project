@@ -77,7 +77,7 @@ public class GameInfo {
 			switch (button) {
 			case "ATTACK":
 				System.out.println("ATTACK!");
-				//cycleEnemyMoves();
+				cycleEnemyMoves();
 				
 				//((Character) c).attack();
 				f = IO.loadInCurrentFloor();
@@ -162,11 +162,10 @@ public class GameInfo {
 			
 		}
 		
-		// Should this be here or in enemy class?
 		protected void cycleEnemyMoves() {
-			for (int i = 0; i < f.length; i++) {
-				for (int j = 0; j < f.width; j++) {
-					if (f.getTile(j, i) instanceof Enemy) {
+			for (int i = 0; i < 9; i++) {
+				for (int j = 0; j < 16; j++) {
+					if (f.getTile(i, j) instanceof Enemy) {
 						((Enemy)f.getTile(i, j)).move(f);
 					}
 				}

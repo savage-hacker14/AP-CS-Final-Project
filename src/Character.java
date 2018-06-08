@@ -48,7 +48,7 @@ public class Character extends Tile {
 			this.health = maxHealth;
 		} else if (this.health < 0) {
 			System.out.println("GAME OVER!");
-			
+
 		}
 		System.out.println(this.health);
 	}
@@ -92,13 +92,13 @@ public class Character extends Tile {
 
 		// load in new floor
 		if (p.x == 0) {
-			
-			//Removes old Player from previous floor
+
+			// Removes old Player from previous floor
 			removeOldPlayer(map, f, filepath);
 
 			// load in upper floor
 			String newfilepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + (Floor.currentFloorID.y + 1);
-			//System.out.println(newfilepath);
+			// System.out.println(newfilepath);
 
 			// get new floor ID
 			Point newFID = IO.strToFloorID(newfilepath);
@@ -107,17 +107,18 @@ public class Character extends Tile {
 
 			String[][] newCharArr = IO.readMapFromTxt(newfilepath);
 			Floor newF = new Floor(newCharArr, newFID);
-			//System.out.println(Floor.currentFloorID);
+			// System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
 			newF.setTile(this, new Point(Floor.width - 1, p.y));
 			newF.getTile(new Point(Floor.width - 1, p.y)).setSpriteType("Player1");
-			//System.out.println(newF.getTile(new Point(Floor.width - 1, p.y)).getImageType());
+			// System.out.println(newF.getTile(new Point(Floor.width - 1,
+			// p.y)).getImageType());
 			p.setLocation(Floor.width - 1, p.y);
 
 			// write new map file
 			IO.writeMap(newF, newfilepath);
-	
+
 			return newF;
 		}
 
@@ -127,9 +128,9 @@ public class Character extends Tile {
 		} else {
 			newX = 0;
 		}
-		
+
 		System.out.println("Stuff: " + p);
-		
+
 		Point newPos = new Point(newX, p.y);
 
 		System.out.println(p + "\t" + newPos);
@@ -156,13 +157,13 @@ public class Character extends Tile {
 
 		// load in new floor
 		if (p.x == Floor.width - 1) {
-			
-			//Removes old Player from previous floor
+
+			// Removes old Player from previous floor
 			removeOldPlayer(map, f, filepath);
-			
+
 			// load in upper floor
 			String newfilepath = "MapTxtFiles/Floor1_" + f.getFloorID().x + "x" + (f.getFloorID().y - 1);
-			//System.out.println(newfilepath);
+			// System.out.println(newfilepath);
 
 			// get new floor ID
 			Point newFID = IO.strToFloorID(newfilepath);
@@ -171,20 +172,18 @@ public class Character extends Tile {
 
 			String[][] newCharArr = IO.readMapFromTxt(newfilepath);
 			Floor newF = new Floor(newCharArr, newFID);
-			//System.out.println(Floor.currentFloorID);
+			// System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
 			newF.setTile(this, new Point(0, p.y));
 			p.setLocation(0, p.y);
 			newF.getTile(new Point(0, p.y)).setSpriteType("Player1");
-			//System.out.println(newF.getTile(new Point(Floor.width - 1, p.y)).getImageType());
+			// System.out.println(newF.getTile(new Point(Floor.width - 1,
+			// p.y)).getImageType());
 
 			// write new map file
 			IO.writeMap(newF, newfilepath);
-			
-			
-			
-			
+
 			return newF;
 		}
 
@@ -212,16 +211,16 @@ public class Character extends Tile {
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
 		String[][] map = IO.readMapFromTxt(filepath);
 		Floor f = IO.loadInCurrentFloor();
-		
+
 		// load in new floor
 		if (p.y == 0) {
-			
-			//Removes old Player from previous floor
+
+			// Removes old Player from previous floor
 			removeOldPlayer(map, f, filepath);
-			
+
 			// load in upper floor
 			String newfilepath = "MapTxtFiles/Floor1_" + (f.getFloorID().x - 1) + "x" + f.getFloorID().y;
-			//System.out.println(newfilepath);
+			// System.out.println(newfilepath);
 
 			// get new floor ID
 			Point newFID = IO.strToFloorID(newfilepath);
@@ -230,7 +229,7 @@ public class Character extends Tile {
 
 			String[][] newCharArr = IO.readMapFromTxt(newfilepath);
 			Floor newF = new Floor(newCharArr, newFID);
-			//System.out.println(Floor.currentFloorID);
+			// System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
 			newF.setTile(this, new Point(p.x, Floor.length - 1));
@@ -240,8 +239,6 @@ public class Character extends Tile {
 			// write new map file
 			IO.writeMap(newF, newfilepath);
 
-			
-			
 			return newF;
 		}
 
@@ -278,13 +275,13 @@ public class Character extends Tile {
 
 		// load in new floor
 		if (p.y == Floor.length - 1) {
-			
-			//Removes old Player from previous floor
+
+			// Removes old Player from previous floor
 			removeOldPlayer(map, f, filepath);
-			
+
 			// load in upper floor
 			String newfilepath = "MapTxtFiles/Floor1_" + (f.getFloorID().x + 1) + "x" + f.getFloorID().y;
-			//System.out.println(newfilepath);
+			// System.out.println(newfilepath);
 
 			// get new floor ID
 			Point newFID = IO.strToFloorID(newfilepath);
@@ -293,7 +290,7 @@ public class Character extends Tile {
 
 			String[][] newCharArr = IO.readMapFromTxt(newfilepath);
 			Floor newF = new Floor(newCharArr, newFID);
-			//System.out.println(Floor.currentFloorID);
+			// System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
 			newF.setTile(this, new Point(p.x, 0));
@@ -303,9 +300,6 @@ public class Character extends Tile {
 			// write new map file
 			IO.writeMap(newF, newfilepath);
 
-			
-			
-			
 			return newF;
 		}
 
@@ -331,33 +325,34 @@ public class Character extends Tile {
 	// Sensory commands
 	public void attack() throws InterruptedException {
 		Floor f = IO.loadInCurrentFloor();
-				
+
 		Tile[] arr = surroundObjs();
-		
-		for(int i = 0; i < arr.length;i++){
-			if(arr[i] instanceof Tile){
+
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] instanceof Enemy) {
 				// flash tile
 				arr[i].invert(f);
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(1000);
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				System.out.println("It should have inverted");
 				arr[i].invert(f);
-				
-				
-				((Enemy)arr[i]).setHealth(((Enemy)arr[i]).getHealth()-this.getAttack());
-					break;
-			}	
-		}	
+				System.out.println(arr[i].p);
+				((Enemy) arr[i]).setHealth(((Enemy) arr[i]).getHealth() - this.getAttack());
+
+				break;
+			}
+		}
 	}
 
-	private void removeOldPlayer(String [][] map, Floor f, String filepath) throws IOException {
+	private void removeOldPlayer(String[][] map, Floor f, String filepath) throws IOException {
 		// Removes player from old
-		
-		////////////////////////////////////////////////////////////////////////////Check this
+
+		//////////////////////////////////////////////////////////////////////////// Check
+		//////////////////////////////////////////////////////////////////////////// this
 		Tile tileToChange;
 		if (map[f.getFloorID().x][f.getFloorID().y].substring(0, 1).equals("g")) {
 			tileToChange = new Tile(Floor.grass, Floor.grass, "Grass", "Grass", p);
