@@ -1,9 +1,11 @@
 // Written by Jacob Krucinski on 5/11/18
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Tile extends JPanel {
@@ -49,21 +51,32 @@ public class Tile extends JPanel {
     
     public void invert(Floor f) {  	
     	
-    	for (int x = 0; x < sprite.getWidth(); x++) {
-            for (int y = 0; y < sprite.getHeight(); y++) {
-                int rgba = sprite.getRGB(x, y);
+    	BufferedImage img = null;
+		try {
+			img = ImageIO.read(new File("Sprites/" + getSpriteType() + ".png"));
+			//System.out.println("success");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	for (int x = 0; x < img.getWidth(); x++) {
+            for (int y = 0; y < img.getHeight(); y++) {
+                int rgba = img.getRGB(x, y);
                 if (rgba >> 24 != 0x00) {
 	                Color col = new Color(rgba, true);
 	                col = new Color(255 - col.getRed(),
 	                                255 - col.getGreen(),
 	                                255 - col.getBlue());
-	                sprite.setRGB(x, y, col.getRGB());
+	                img.setRGB(x, y, col.getRGB());
                 }
             }
         }
+    	System.out.println("done inverting");
     	
-    	f.getTile(p).setSprite(sprite);
-    	  	
+    	setSprite(img);
+    	
+    	//IO.writeMap(f, IO.currentFloor());
+    	System.out.println("sprite set");
     }
     
     public String getSpriteType() {

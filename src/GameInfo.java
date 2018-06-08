@@ -80,13 +80,13 @@ public class GameInfo {
 				cycleEnemyMoves();
 				
 				f = IO.loadInCurrentFloor();
-				f.getTile(new Point(c.p.x, c.p.y - 1)).invert(f);
-//				try {
-//					((Character) c).attack();
-//				} catch (InterruptedException e3) {
-//					// TODO Auto-generated catch block
-//					e3.printStackTrace();
-//				}
+				//f.getTile(new Point(c.p.x, c.p.y - 1)).invert(f);
+				try {
+					((Character) c).attack();
+				} catch (InterruptedException e3) {
+					// TODO Auto-generated catch block
+					e3.printStackTrace();
+				}
 				f.refresh(mapPanel);
 				//c.surroundObjs();
 				break;

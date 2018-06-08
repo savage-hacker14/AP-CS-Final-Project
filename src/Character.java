@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.swing.JPanel;
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
 public class Character extends Tile {
@@ -331,14 +332,19 @@ public class Character extends Tile {
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] instanceof Enemy) {
 				// flash tile
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				arr[i].invert(f);
+//				try {
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+				//f.getTile(new Point(arr[i].p)).invert(f);
+				((Tile) arr[i]).invert(f);
+				
+				System.out.println(arr[i]);
 				System.out.println("It should have inverted");
+				
+				
 				//arr[i].invert(f);
 				System.out.println(arr[i].p);
 				((Enemy) arr[i]).setHealth(((Enemy) arr[i]).getHealth() - this.getAttack());
