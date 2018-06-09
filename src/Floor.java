@@ -13,7 +13,7 @@ public class Floor {
 	public static int length = 16;
 	public static int width = 9;
 
-	private Point floorID; // String that stores current part of floor
+	private Point floorID; // String that stores current part of floors
 	public static Point currentFloorID = new Point (0, 0);
 
 	// Images/sprites to be used
