@@ -22,6 +22,14 @@ public class Tile extends JPanel {
 		sprite = img;
 	}
 	
+	public Tile(Tile til) {
+		sprite = til.getSprite();
+		spriteType = til.getSpriteType();
+		ground = til.getBG();
+		groundType = til.getBGImageType();
+		p = til.p;
+	}
+	
 	public Tile(BufferedImage sprit, BufferedImage BG, String name, String grndType, Point location) {
 		sprite = sprit;
 		spriteType = name;
