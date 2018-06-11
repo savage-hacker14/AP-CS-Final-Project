@@ -5,6 +5,7 @@ public class Items {
 	private int health;
 	private int attack;
 	private int defense;
+	private int price;
 	private String name;
 	public Items(BufferedImage img) {
 		image = img;
