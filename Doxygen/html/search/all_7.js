@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['imagegrid',['ImageGrid',['../class_image_grid.html',1,'']]],
-  ['imagegrid_2ejava',['ImageGrid.java',['../_image_grid_8java.html',1,'']]],
   ['increaseattack',['increaseAttack',['../class_character.html#a0c1bb51a8fb77e279c9a2aec3d9da220',1,'Character.increaseAttack()'],['../class_items.html#aa11f1882385688321a7b229b20e9eb21',1,'Items.increaseAttack()']]],
   ['increasedefense',['increaseDefense',['../class_character.html#a5a19731635035065db3422d4b7040793',1,'Character.increaseDefense()'],['../class_items.html#a08b51b58cd0bde034b7a38753c7abeda',1,'Items.increaseDefense()']]],
   ['increasehealth',['increaseHealth',['../class_items.html#abca25933efd165969f5d223658b62693',1,'Items']]],
-  ['init',['init',['../class_floor.html#a20153aea2d1d62b35d1007e9e81bf026',1,'Floor.init()'],['../class_floor_test.html#a0c9db41b8fead6e0ad95f61df4ec8380',1,'FloorTest.init()']]],
+  ['init',['init',['../class_floor.html#a20153aea2d1d62b35d1007e9e81bf026',1,'Floor']]],
   ['invert',['invert',['../class_tile.html#a819465295d8875849c5c95499c3b8186',1,'Tile']]],
   ['io',['IO',['../class_i_o.html',1,'']]],
   ['io_2ejava',['IO.java',['../_i_o_8java.html',1,'']]],

@@ -40,7 +40,7 @@ public class Tile extends JPanel {
 	}
 	
 	/**
-	 * 
+	 * Main constructor for Tile objects
 	 * @param sprite 		(BufferedImage)
 	 * @param background 	(BufferedImage)
 	 * @param spriteName 	(String)
@@ -79,7 +79,7 @@ public class Tile extends JPanel {
     
     /**
      * Get sprite image
-     * @return
+     * @return BufferedImage
      */
     public BufferedImage getSprite() {
     	return sprite;
@@ -161,7 +161,7 @@ public class Tile extends JPanel {
     
     /**
      * Set location of Tile in Floor
-     * @param pt
+     * @param Point
      */
     public void setPoint(Point pt) {
     	p = pt;

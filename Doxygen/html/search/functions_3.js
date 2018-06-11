@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['enemy',['Enemy',['../class_enemy.html#affaf8ef1a04ffa8eb4dd2a61131accdf',1,'Enemy.Enemy(BufferedImage img)'],['../class_enemy.html#a9bd220c1eda2de202027a3df748e3066',1,'Enemy.Enemy(Enemy enm)'],['../class_enemy.html#ae3dfefce6ae7fb71e0d780be0711aacf',1,'Enemy.Enemy(BufferedImage sprit, BufferedImage BG, String name, String grndType, Point location, int helth, int attck, int defnse, int trophy)']]]
+  ['demon',['Demon',['../class_demon.html#a8ea773ed2a4685ecff4bc13d1ef52e94',1,'Demon']]],
+  ['door',['Door',['../class_door.html#a6c9d4ddbf6fad4b3161661827a6ed9bc',1,'Door']]]
 ];

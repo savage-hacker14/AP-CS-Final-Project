@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['readitems',['readItems',['../class_main_character.html#a641cbde4655b258720dad96036a87496',1,'MainCharacter']]],
-  ['readmapfromtxt',['readMapFromTxt',['../class_i_o.html#a9188baba4cc0dba2617925baf36bd31a',1,'IO']]],
-  ['refresh',['refresh',['../class_floor.html#ac2d448cb6ccab8112e802b8ecb444863',1,'Floor']]],
-  ['refreshall',['refreshAll',['../class_floor.html#adc9fb8eba3f6b810fbdd984183b29777',1,'Floor']]],
-  ['resetall',['resetAll',['../class_character.html#ae99f349177041a76a58cbe279a118e03',1,'Character']]]
+  ['paintcomponent',['paintComponent',['../class_tile.html#a658c3ec36211c29255a4d86994aff5bd',1,'Tile']]],
+  ['printfloor',['printFloor',['../class_floor.html#afa74d329f9d931fa12a7b7601cef3e9a',1,'Floor']]],
+  ['printmap',['printMap',['../class_i_o.html#a7142931758cf633b7ba22b7ccb7558cc',1,'IO']]]
 ];
