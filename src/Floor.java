@@ -145,7 +145,7 @@ public class Floor {
 				
 				switch (tile) {
 				case "blb":
-					floorTiles[r][c] = new Enemy(blob, background, "Blob", BGName, tileLocation, 100, 10, 20, 10);
+					floorTiles[r][c] = new Blob(blob, background, "Blob", BGName, tileLocation);
 					break;
 				case "bsh":
 					floorTiles[r][c] = new Tile(bush, background, "Bush", BGName, tileLocation);
@@ -157,7 +157,7 @@ public class Floor {
 					floorTiles[r][c] = new Tile(chilli, background, "Chilli", BGName, tileLocation);
 					break;
 				case "dmn":
-					floorTiles[r][c] = new Enemy(demon, background, "Demon", BGName, tileLocation, 2000, 100, 200, 200);
+					floorTiles[r][c] = new Demon(demon, background, "Demon", BGName, tileLocation);
 					break;
 				case "dor":
 					floorTiles[r][c] = new Tile(door, background, "Door", BGName, tileLocation);

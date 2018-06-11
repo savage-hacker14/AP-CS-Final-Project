@@ -233,6 +233,14 @@ public class GameInfo {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			for (int i = 0; i < Floor.width; i++) {
+				for (int j = 0; j < Floor.length; j++) {
+					if (f.getTile(i, j) instanceof Enemy) {
+						
+
+					}
+				}
+			}
 		}
 
 	}
