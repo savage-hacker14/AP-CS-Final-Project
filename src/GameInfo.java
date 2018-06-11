@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -64,8 +65,6 @@ public class GameInfo {
 			panel.add(buttons[i]);
 		}
 		
-		characterStatus[0].setText(characterStatus[0].getText() + c.getHealth() + "%");
-		characterStatus[2].setText(characterStatus[2].getText() + c.getAttack() + "%");
 		for (int i = 0; i < characterStatus.length; i++) {
 			panel.add(characterStatus[i]);
 		}
@@ -76,12 +75,20 @@ public class GameInfo {
 		return panel;
 	}
 	
+	/**
+	 * Update player's health indicator in GameInfo panel
+	 * @param newHealth
+	 */
 	public static void updateHealth(int newHealth) {
 		String newTxt = "Health: " + newHealth + "/100";
 		characterStatus[0].setText(newTxt);
 		
 	}
 	
+	/**
+	 * Update player's attack indicator in GameInfo panel
+	 * @param newAttack
+	 */
 	public static void updateAttack(int newAttack) {
 		String newTxt = "Attack: " + newAttack + "/100";
 		characterStatus[0].setText(newTxt);
@@ -190,23 +197,33 @@ public class GameInfo {
 				break;
 			case "INVENTORY":
 				System.out.println("INVENTORY!");
-				int l = ((MainCharacter)c).getBackpack().length;
+				int l = ((MainCharacter) c).getBackpack().length;
+				String answer = "";
 				for(int i =0;i<l;i++) {
-					System.out.println(((MainCharacter)c).getItem(i));
+					if(i>0) {
+						answer+=", ";
+					}
+					answer+=((MainCharacter)c).getItem(i);
 					
 				}
+				JFrame inventory = new JFrame();
+				JOptionPane.showMessageDialog(inventory, answer);
 				break;
 			case "MENU":
 				System.out.println("MENU!");
+				String ans = JOptionPane.showInputDialog("Type save to save");
+				if (ans.equals("save")) {
+					System.exit(0);
+				} 
 				break;
 			case "SHOP":
 				System.out.println("SHOP!");
-				String answer = "";
+				//String answer = "";
 				// need to fix it so it changes main character
-				answer = JOptionPane.showInputDialog("Type one to purchase potion(50), type two to purchase sword(150)");
-				if (answer.equals("one")) {
+				String answ = JOptionPane.showInputDialog("Type one to purchase potion(50), type two to purchase sword(150)");
+				if (answ.equals("one")) {
 
-				} else if (answer.equals("two")) {
+				} else if (answ.equals("two")) {
 
 				}
 				break;

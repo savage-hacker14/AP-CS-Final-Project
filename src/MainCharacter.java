@@ -18,6 +18,8 @@ public class MainCharacter extends Character {
 
 	public MainCharacter(BufferedImage img, BufferedImage BG,String name, String type, Point p) {
 		super(img, BG, name,type, p);
+		backpack = new Items[10];
+		money = 0;
 	}
 
 	public Items getItem(int index) {
