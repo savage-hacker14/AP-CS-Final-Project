@@ -9,7 +9,12 @@ import java.util.Scanner;
 
 public class IO {
 	
-	// This method can read in a character matrix from a .txt file 
+	/**
+	 * This method can read in a String matrix from a .txt file 
+	 * @param filepath
+	 * @return string matrix
+	 * @throws IOException
+	 */
 	public static String[][] readMapFromTxt(String filepath) throws IOException {
 		int maxR = Floor.width;
 		int maxC = Floor.length;
@@ -30,7 +35,12 @@ public class IO {
 		
 		return arr;
 	}
-	
+	/**
+	 * Write a Floor object to its corresponding .txt file
+	 * @param map
+	 * @param filepath
+	 * @throws IOException
+	 */
 	public static void writeMap(Floor map, String filepath) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(filepath));
 		
@@ -133,6 +143,11 @@ public class IO {
 		writer.close();
 	}
 	
+	/**
+	 * For debugging, print out map read in by the readMap method
+	 * @param arr
+	 * @deprecated
+	 */
 	public static void printMap(char[][] arr) {
 		for (char[] row : arr) {
 			for (char c : row) {
@@ -142,6 +157,11 @@ public class IO {
 		}
 	}
 	
+	/**
+	 * Create Floor ID from String
+	 * @param String
+	 * @return Floor ID (Point)
+	 */
 	public static Point strToFloorID(String str) {
 		int x = Integer.parseInt(str.substring(19, 20));
 		int y = Integer.parseInt(str.substring(21, 22));
@@ -151,12 +171,20 @@ public class IO {
 		return new Point(x, y);
 	}
 	
+	/**
+	 * Name of .txt file for current floor
+	 * @return
+	 */
 	public static String currentFloor() {
 		int x = Floor.currentFloorID.x;
 		int y = Floor.currentFloorID.y;
 		return "Floor1_" + x + "x" + y;
 	}
 	
+	/**
+	 * Read in current floor (based on currentFloorID)
+	 * @return Floor object
+	 */
 	public static Floor loadInCurrentFloor() {
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
 		String[][] map;
@@ -174,8 +202,8 @@ public class IO {
 	}
 	
 	
-	/*Returns the floorID point when it finds the first pl1 it sees on the whole map
-	 * 
+	/*
+	 * Returns the floorID point when it finds the first pl1 it sees on the whole map
 	 * @Param String floorName is "MapTxtFiles/Floor1_" unless we do a Floor2_
 	 * @Param maxWidth is width of Floor1
 	 * @Param maxWidth is length of Floor1

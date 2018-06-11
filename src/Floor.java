@@ -43,7 +43,10 @@ public class Floor {
 	public static BufferedImage stone;
 	public static BufferedImage water;
 
-	// Initialize image constants
+	/**
+	 * Initialize all sprite images / backgrounds (Buffered Images)
+	 * @throws IOException
+	 */
 	public static void init() throws IOException {
 
 		// No background images
@@ -75,12 +78,18 @@ public class Floor {
 		grass = ImageIO.read(new File("Sprites/Grass.png"));
 		wood = ImageIO.read(new File("Sprites/Wood.png"));
 	}
-
+	/**
+	 * Default constructor
+	 */
 	public Floor() {
 		floorTiles = new Tile[Floor.width][Floor.length];
 	}
 	
-	// Default constructor with Tile matrix input
+	/**
+	 * Constructor with Tile matrix input
+	 * @param arr
+	 * @throws IOException
+	 */
 	public Floor(Tile[][] arr) throws IOException {
 		// init image constants
 		init();
@@ -97,7 +106,12 @@ public class Floor {
 
 	}
 
-	// Constructor that builds floor based on character matrix input
+	/**
+	 * Constructor that builds floor based on character matrix input
+	 * @param arr (string matrix from .txt file)
+	 * @param id
+	 * @throws IOException
+	 */
 	public Floor(String[][] arr, Point id) throws IOException {
 		// init image constants
 		init();
@@ -212,6 +226,11 @@ public class Floor {
 
 	}
 	
+	/**
+	 * Clone method for a Floor object
+	 * @param f
+	 * @return
+	 */
 	public Floor clone(Floor f) {
 		try {
 			return new Floor(f.getFloor());
@@ -223,31 +242,65 @@ public class Floor {
 		return (Floor) new Object();
 	}
 
+	/**
+	 * Get tile x,y (row,col) from Floor object
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public Tile getTile(int x, int y) {
 		return floorTiles[x][y];
 	}
-
+	
+	/**
+	 * Get tile in Floor object from Point p
+	 * @param p
+	 * @return
+	 */
 	public Tile getTile(Point p) {
 		return floorTiles[p.x][p.y];
 	}
-
+	
+	/**
+	 * Set a tile at position x,y (row,col) on the Floor object 
+	 * @param tile
+	 * @param x
+	 * @param y
+	 */
 	public void setTile(Tile tile, int x, int y) {
 		floorTiles[x][y] = tile;
 	}
 
+	/**
+	 * Set a tile at position Point p (row,col) on the Floor object 
+	 * @param tile
+	 * @param p
+	 */
 	public void setTile(Tile tile, Point p) {
 		floorTiles[p.x][p.y] = tile;
 	}
-
+	
+	/**
+	 * Return floor object
+	 * @return
+	 */
 	public Tile[][] getFloor() {
 		return floorTiles;
 	}
-
+	
+	/**
+	 * Return Floor ID (Point)
+	 * @return
+	 */
 	public Point getFloorID() {
 		return floorID;
 	}
 
-	// new method. Moves tiles from old x,y to new x,y
+	/**
+	 * Move tile at location old to location newPt
+	 * @param old
+	 * @param newPt
+	 */
 	public void moveTile(Point old, Point newPt) {
 		//floorTiles[newPt.x][newPt.y] = floorTiles[old.x][old.y];
 		
@@ -272,6 +325,10 @@ public class Floor {
 		}
 	}
 
+	/**
+	 * Finds the first player (when scanning row by row) on the Floor
+	 * @return
+	 */
 	public Point findChar() {
 		MainCharacter main = new MainCharacter(player1);
 
@@ -288,6 +345,9 @@ public class Floor {
 		return poin;
 	}
 
+	/**
+	 * For debugging, print out first letter of each tile in the Floor object
+	 */
 	public void printFloor() {
 		for (int r = 0; r < width; r++) {
 			for (int c = 0; c < length; c++) {
@@ -297,6 +357,10 @@ public class Floor {
 		}
 	}
 
+	/**
+	 * Refresh graphics panel that contains floor to the latest floor
+	 * @param mapPanel
+	 */
 	public void refresh(JPanel mapPanel) {
 		mapPanel.removeAll();
 		for (int r = 0; r < width; r++) {
@@ -310,6 +374,12 @@ public class Floor {
 		mapPanel.revalidate();
 	}
 	
+	/**
+	 * Refresh floor and info/button panel in GUI
+	 * @param c
+	 * @param map
+	 * @param info
+	 */
 	public void refreshAll(MainCharacter c, JPanel map, JPanel info) {
 		this.refresh(map);
 		

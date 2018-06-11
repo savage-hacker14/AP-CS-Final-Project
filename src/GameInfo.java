@@ -19,6 +19,9 @@ public class GameInfo {
 	private static JLabel[] characterStatus;
 	private static BufferedImage currentMapView;
 
+	/**
+	 * Initialize all buttons and labels in info panel
+	 */
 	private static void init() {
 
 		// init buttons
@@ -43,6 +46,12 @@ public class GameInfo {
 		// do later
 	}
 
+	/**
+	 * Create a JPanel with all the buttons and info
+	 * @param c 		(MainCharacter)
+	 * @param mapPanel	(??)
+	 * @return
+	 */
 	public static JPanel generatePanel(MainCharacter c, JPanel mapPanel) {
 		JPanel panel = new JPanel();
 
@@ -75,7 +84,13 @@ public class GameInfo {
 		protected JPanel info;
 		protected Floor f = IO.loadInCurrentFloor();
 
-		// Class for reading button clicks
+		/**
+		 * Constructor for the class reading button clicks
+		 * @param buttonTxt
+		 * @param ch
+		 * @param map
+		 * @param i
+		 */
 		public ButtonListener(String buttonTxt, MainCharacter ch, JPanel map, JPanel i) {
 			button = buttonTxt;
 			c = ch;
@@ -84,6 +99,9 @@ public class GameInfo {
 		}
 
 		@Override
+		/**
+		 * Checks what button is pressed at does its corresponding action
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			switch (button) {
@@ -181,7 +199,9 @@ public class GameInfo {
 
 		}
 
-		// What does this do Matt?
+		/**
+		 * Calls the move method for all the enemies in the game
+		 */
 		protected void cycleEnemyMoves() {
 
 			ArrayList<Point> skip = new ArrayList<Point>();
@@ -219,13 +239,20 @@ public class GameInfo {
 
 	static class KeyReader extends ButtonListener implements KeyListener {
 
-		// Class for reading button clicks
+		/**
+		 * Class for reading key presses
+		 * @param ch 	(MainCharacter)
+		 * @param map	(JPanel)
+		 * @param info	(JPanel)
+		 */
 		public KeyReader(MainCharacter ch, JPanel map, JPanel info) {
 			super("", ch, map, info);
 			// win = window;
 		}
 
-		// Make this method more efficient
+		/*
+		 * Checks which key was pressed and responds accordingly
+		 */
 		public void keyPressed(KeyEvent e) {
 			// super.actionPerformed((ActionEvent) e); // doesn't work
 			int key = e.getKeyCode();
@@ -243,6 +270,9 @@ public class GameInfo {
 			}
 		}
 
+		/**
+		 * Move character upwards. Called during the proper keypress.
+		 */
 		private void moveUp() {
 			System.out.println("UP!");
 			try {
@@ -256,6 +286,9 @@ public class GameInfo {
 			}
 		}
 
+		/**
+		 * Move character downwards. Called during the proper keypress.
+		 */
 		private void moveDown() {
 			System.out.println("DOWN!");
 			try {
@@ -268,6 +301,9 @@ public class GameInfo {
 			}
 		}
 
+		/**
+		 * Move character to the left. Called during the proper keypress.
+		 */
 		private void moveLeft() {
 			System.out.println("LEFT!");
 			try {
@@ -280,6 +316,9 @@ public class GameInfo {
 			}
 		}
 
+		/**
+		 * Move character to the right. Called during the proper keypress.
+		 */
 		private void moveRight() {
 			System.out.println("RIGHT!");
 			try {
@@ -291,7 +330,10 @@ public class GameInfo {
 				e1.printStackTrace();
 			}
 		}
-
+		
+		/**
+		 * Has character attack all surrounding enemies (determined by surrObjs() method). Called during proper keypress.
+		 */
 		private void attack() {
 			System.out.println("ATTACK!");
 			// cycleEnemyMoves();

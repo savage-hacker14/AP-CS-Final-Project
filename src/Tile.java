@@ -18,10 +18,19 @@ public class Tile extends JPanel {
 	private String groundType;
 	protected Point p;				// protected so subclasses can see this
 	
+	/**
+	 * Old constructor (deprecated)
+	 * @param img
+	 * @deprecated
+	 */
 	public Tile(BufferedImage img) {
 		sprite = img;
 	}
 	
+	/**
+	 * Create a Tile object from a previous Tile object
+	 * @param til
+	 */
 	public Tile(Tile til) {
 		sprite = til.getSprite();
 		spriteType = til.getSpriteType();
@@ -30,6 +39,14 @@ public class Tile extends JPanel {
 		p = til.p;
 	}
 	
+	/**
+	 * 
+	 * @param sprite 		(BufferedImage)
+	 * @param background 	(BufferedImage)
+	 * @param spriteName 	(String)
+	 * @param groundType	(String)
+	 * @param location		(Point)
+	 */
 	public Tile(BufferedImage sprit, BufferedImage BG, String name, String grndType, Point location) {
 		sprite = sprit;
 		spriteType = name;
@@ -38,6 +55,9 @@ public class Tile extends JPanel {
 		p = location;		// the r & c value of the tile in the Floor object
 	}
 	
+	/**
+	 * Method for drawing Tile objects in GUI
+	 */
     public void paintComponent (Graphics g) {
     	super.paintComponent(g);
     	
@@ -49,14 +69,25 @@ public class Tile extends JPanel {
      	g.drawRect(0, 0, getWidth(), getHeight());    
     }
     
+    /**
+     * Get background image
+     * @return
+     */
     public BufferedImage getBG() {
     	return ground;
     }
     
+    /**
+     * Get sprite image
+     * @return
+     */
     public BufferedImage getSprite() {
     	return sprite;
     }
     
+    /**
+     * Invert method: Inverts color mapping for sprite image
+     */
     public void invert() {  	
     	
     	BufferedImage img = null;
@@ -88,30 +119,58 @@ public class Tile extends JPanel {
     	System.out.println("sprite set");
     }
     
+    /**
+     * Get sprite name/type
+     * @return string
+     */
     public String getSpriteType() {
     	return spriteType;
     }
     
+    /**
+     * Set sprite name/type
+     * @param str
+     */
     public void setSpriteType(String str) {
     	spriteType = str;
     }
     
+    /**
+     * Get the background image name/type
+     * @return
+     */
     public String getBGImageType() {
     	return groundType;
     }
     
+    /**
+     * Set sprite image
+     * @param img
+     */
     public void setSprite(BufferedImage img) {
     	sprite = img;
     }
     
-    public Point getPoint( ) {
+    /**
+     * Get point/location of Tile in Floor
+     * @return
+     */
+    public Point getPoint() {
     	return p;
     }
     
+    /**
+     * Set location of Tile in Floor
+     * @param pt
+     */
     public void setPoint(Point pt) {
     	p = pt;
     }
     
+    /**
+     * Returns true if Tile (& sprite) can walk onto this Tile type
+     * @return boolean
+     */
     public boolean isWalkable() {
     	switch (spriteType) {
     		
@@ -127,6 +186,11 @@ public class Tile extends JPanel {
     	
     	return false;
     }
+    
+    /**
+     * Returns all Tile objects that surround a tile
+     * @return adjacent tiles (5 to 8)
+     */
     public Tile[] surroundObjs() {
 		// Load in the current floor id floor
 		Floor f = IO.loadInCurrentFloor();
@@ -170,6 +234,12 @@ public class Tile extends JPanel {
 		// return array
 		return tilesArr;
 	}
+    
+    /**
+     * Returns true if Tile (& sprite) can walk onto this Tile type
+     * @param type
+     * @return
+     */
     public boolean isWalkable(String type) {
     	switch (type) {
     		
@@ -186,6 +256,9 @@ public class Tile extends JPanel {
     	return false;
     }
     
+    /**
+     * Generate string with Tile information
+     */
     public String toString() {
     	String temp = "";
     	temp += "Sprite: " + this.spriteType + "\n";
