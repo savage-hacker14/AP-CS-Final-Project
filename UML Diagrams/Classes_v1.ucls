@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="Floor" project="AP-CS-Final-Project" file="/AP-CS-Final-Project/src/Floor.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="455" y="273"/>    
+    <position height="-1" width="-1" x="572" y="275"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="GameInfo.ButtonListener" project="AP-CS-Final-Project" 
     file="/AP-CS-Final-Project/src/GameInfo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="186" width="270" x="743" y="224"/>    
+    <position height="-1" width="-1" x="894" y="189"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="GameInfo.KeyReader" project="AP-CS-Final-Project" 
     file="/AP-CS-Final-Project/src/GameInfo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="222" width="225" x="1034" y="450"/>    
+    <position height="-1" width="-1" x="1194" y="521"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="GameInfo" project="AP-CS-Final-Project" 
     file="/AP-CS-Final-Project/src/GameInfo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="168" width="240" x="1019" y="16"/>    
+    <position height="-1" width="-1" x="1206" y="95"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="IO" project="AP-CS-Final-Project" file="/AP-CS-Final-Project/src/IO.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="768" y="-50"/>    
+    <position height="-1" width="-1" x="859" y="-47"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,42 +57,63 @@
   </class>  
   <class id="7" language="java" name="Tile" project="AP-CS-Final-Project" file="/AP-CS-Final-Project/src/Tile.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="133" y="213"/>    
+    <position height="-1" width="-1" x="-71" y="205"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="8">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="9" name="f"/>      
-      <multiplicity id="10" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="11">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="12">    
+  <class id="8" language="java" name="Character" project="AP-CS-Final-Project" 
+    file="/AP-CS-Final-Project/src/Character.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="271" y="545"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="9">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="13" name="floorTiles"/>      
-      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
+      <attribute id="10" name="floorTiles">        
+        <position height="0" width="0" x="-204" y="-8"/>      
+      </attribute>      
+      <multiplicity id="11" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-204" y="-8"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="15">    
+  <association id="12">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="13" name="f">        
+        <position height="0" width="0" x="117" y="2"/>      
+      </attribute>      
+      <multiplicity id="14" minimum="0" maximum="1">        
+        <position height="0" width="0" x="117" y="2"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <nesting id="16">    
     <bendpoint x="1043" y="224"/>    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="3"/>  
   </nesting>  
-  <nesting id="16">    
+  <nesting id="17">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="2"/>  
   </nesting>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

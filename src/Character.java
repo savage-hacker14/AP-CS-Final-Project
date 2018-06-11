@@ -15,6 +15,11 @@ public class Character extends Tile {
 	private int defense;
 	private int maxHealth;
 
+	/**
+	 * Old character constructor with sprite image
+	 * @param img
+	 * @deprecated
+	 */
 	public Character(BufferedImage img) {
 		super(img);
 		health = 100;
@@ -23,6 +28,14 @@ public class Character extends Tile {
 		maxHealth = 100;
 	}
 
+	/**
+	 * Main constructor for Character objects
+	 * @param sprite
+	 * @param background
+	 * @param sprite name/type
+	 * @param background name/type
+	 * @param location
+	 */
 	public Character(BufferedImage img, BufferedImage BG, String spriteType, String BGName, Point p) {
 		super(img, BG, spriteType, BGName, p);
 		health = 100;
@@ -38,23 +51,41 @@ public class Character extends Tile {
 		//maxHealth = 100;
 	//}
 
+	/**
+	 * Get health of the Character
+	 * @return health
+	 */
 	public int getHealth() {
 		return health;
 	}
 	
+	/**
+	 * Set health of the Character
+	 * @param health
+	 */
 	public void setHealth(int health) {
 		this.health = health;
 	}
 	
+	/**
+	 * Set defense of the Character
+	 * @param defense
+	 */
 	public void setDefense(int defense) {
 		this.defense = defense;
 	}
 	
+	/**
+	 * Set attack (on enemies) of the Character
+	 * @param attack
+	 */
 	public void setAttack(int attack) {
 		this.attack = attack;
 	}
 
-	/* Increases health by health, but doesn't exceed maxHealth */
+	/**
+	 *  Increases health by health, but doesn't exceed maxHealth (100)
+	 */
 	public void changeHealth(int health) {
 		this.health += health;
 		if (this.health > maxHealth) {
@@ -66,37 +97,61 @@ public class Character extends Tile {
 		System.out.println(this.health);
 	}
 
+	/**
+	 * Get Character's attack
+	 * @return
+	 */
 	public int getAttack() {
 		return attack;
 	}
 
-	/* Increases attack by attack, but doesn't exceed maxAttack */
+	/**
+	 * Increases attack by attack, but doesn't exceed maxAttack
+	 */
 	public void increaseAttack(int attack) {
 		this.attack += attack;
 
 	}
 
+	/**
+	 * Get defense of Character
+	 * @return
+	 */
 	public int getDefense() {
 		return defense;
 	}
 
-	/* Increases defense by defense, but doesn't exceed maxDefense */
+	/**
+	 * Increases defense by defense, but doesn't exceed maxDefense 
+	 */
 	public void increaseDefense(int defense) {
 		this.defense += defense;
 
 	}
 
+	/**
+	 * Get the maxHealth of the Character
+	 * @return maxHealth (100)
+	 */
 	public int getMaxHealth() {
 		return maxHealth;
 	}
 
+	/**
+	 * Set max health of Character
+	 * @param maxHealth
+	 */
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
 	}
 
-	// Character movements
-	// NOTE: X and Y represent row and col, respectively
-
+	/**
+	 * Character movements
+	 * NOTE: X and Y represent row and col, respectively
+	 * 
+	 * Moves Character up in Floor
+	 * @return updated Floor after move
+	 */
 	public Floor moveUp() throws IOException {
 		// Load in the current floor id floor
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
@@ -162,6 +217,11 @@ public class Character extends Tile {
 		return f;
 	}
 
+	/**
+	 * Moves Character down in Floor
+	 * @return updated Floor after move
+	 * @throws IOException
+	 */
 	public Floor moveDown() throws IOException {
 		// Load in the current floor id floor
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
@@ -219,6 +279,11 @@ public class Character extends Tile {
 		return f;
 	}
 
+	/**
+	 * Moves Character left in Floor
+	 * @return updated Floor after move
+	 * @throws IOException
+	 */
 	public Floor moveLeft() throws IOException {
 		// Load in the current floor id floor
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
@@ -280,6 +345,11 @@ public class Character extends Tile {
 		return f;
 	}
 
+	/**
+	 * Moves Character right in Floor
+	 * @return updated Floor after move
+	 * @throws IOException
+	 */
 	public Floor moveRight() throws IOException {
 		// Load in the current floor id floor
 		String filepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y;
@@ -335,7 +405,13 @@ public class Character extends Tile {
 		return f;
 	}
 
-	// Sensory commands
+	/**
+	 * Sensory commands
+	 * 
+	 * Attack all enemies in 5-8 Tile vicinity
+	 * @return
+	 * @throws InterruptedException
+	 */
 	public Floor attack() throws InterruptedException {
 		Floor f = IO.loadInCurrentFloor();
 			
@@ -364,6 +440,13 @@ public class Character extends Tile {
 		return f;
 	}
 
+	/**
+	 * Removes "ghost" player from previous map subsection
+	 * @param map
+	 * @param f
+	 * @param filepath
+	 * @throws IOException
+	 */
 	private void removeOldPlayer(String[][] map, Floor f, String filepath) throws IOException {
 		// Removes player from old
 

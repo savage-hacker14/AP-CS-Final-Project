@@ -7,9 +7,11 @@ public class Items {
 	private int defense;
 	private int price;
 	private String name;
+	
 	public Items(BufferedImage img) {
 		image = img;
 	}
+	
 	public int getHealth() {
 		return health;
 	}

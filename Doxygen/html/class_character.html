@@ -87,10 +87,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac60026181a037c13157305df11f8d19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55928e47a524bb781dcc613517be9651"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_character.html#a55928e47a524bb781dcc613517be9651">Character</a> (BufferedImage img, BufferedImage BG, String spriteType, String BGName, Point <a class="el" href="class_tile.html#a169d12ee115e85a6c286c5bc6a097ce6">p</a>)</td></tr>
 <tr class="separator:a55928e47a524bb781dcc613517be9651"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae99f349177041a76a58cbe279a118e03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_character.html#ae99f349177041a76a58cbe279a118e03">resetAll</a> ()</td></tr>
-<tr class="separator:ae99f349177041a76a58cbe279a118e03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07aa359f0980f4463ee01c9128566b11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_character.html#a07aa359f0980f4463ee01c9128566b11">getHealth</a> ()</td></tr>
 <tr class="separator:a07aa359f0980f4463ee01c9128566b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a507fdd28807b38334a246f2ad33e719e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_character.html#a507fdd28807b38334a246f2ad33e719e">setHealth</a> (int health)</td></tr>
+<tr class="separator:a507fdd28807b38334a246f2ad33e719e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5be3901d2daba8a62eb303813f91a02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_character.html#ab5be3901d2daba8a62eb303813f91a02">setDefense</a> (int defense)</td></tr>
+<tr class="separator:ab5be3901d2daba8a62eb303813f91a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9c13519266f0a4653c61b2b7237db6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_character.html#aff9c13519266f0a4653c61b2b7237db6">setAttack</a> (int attack)</td></tr>
+<tr class="separator:aff9c13519266f0a4653c61b2b7237db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63259e21ffca3ba5145491e07574ae3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_character.html#a63259e21ffca3ba5145491e07574ae3f">changeHealth</a> (int health)</td></tr>
 <tr class="separator:a63259e21ffca3ba5145491e07574ae3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d6391731999604ff7c8150003cb746e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_character.html#a1d6391731999604ff7c8150003cb746e">getAttack</a> ()</td></tr>
@@ -173,6 +177,13 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Old character constructor with sprite image </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd></dd></dl>
 
 </div>
 </div>
@@ -219,6 +230,16 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Main constructor for <a class="el" href="class_character.html">Character</a> objects </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sprite</td><td></td></tr>
+    <tr><td class="paramname">background</td><td></td></tr>
+    <tr><td class="paramname">sprite</td><td>name/type </td></tr>
+    <tr><td class="paramname">background</td><td>name/type </td></tr>
+    <tr><td class="paramname">location</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -237,6 +258,14 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sensory commands</p>
+<p>Attack all enemies in 5-8 <a class="el" href="class_tile.html">Tile</a> vicinity </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">InterruptedException</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -255,6 +284,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Increases health by health, but doesn't exceed maxHealth (100) </p>
 
 </div>
 </div>
@@ -272,6 +302,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get <a class="el" href="class_character.html">Character</a>'s attack </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -289,6 +320,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get defense of <a class="el" href="class_character.html">Character</a> </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -306,6 +338,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get health of the <a class="el" href="class_character.html">Character</a> </p><dl class="section return"><dt>Returns</dt><dd>health </dd></dl>
 
 </div>
 </div>
@@ -323,6 +356,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the maxHealth of the <a class="el" href="class_character.html">Character</a> </p><dl class="section return"><dt>Returns</dt><dd>maxHealth (100) </dd></dl>
 
 </div>
 </div>
@@ -341,6 +375,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Increases attack by attack, but doesn't exceed maxAttack </p>
 
 </div>
 </div>
@@ -359,6 +394,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Increases defense by defense, but doesn't exceed maxDefense </p>
 
 </div>
 </div>
@@ -376,6 +412,13 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Moves <a class="el" href="class_character.html">Character</a> down in <a class="el" href="class_floor.html">Floor</a> </p><dl class="section return"><dt>Returns</dt><dd>updated <a class="el" href="class_floor.html">Floor</a> after move </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -393,6 +436,13 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Moves <a class="el" href="class_character.html">Character</a> left in <a class="el" href="class_floor.html">Floor</a> </p><dl class="section return"><dt>Returns</dt><dd>updated <a class="el" href="class_floor.html">Floor</a> after move </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -410,6 +460,13 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Moves <a class="el" href="class_character.html">Character</a> right in <a class="el" href="class_floor.html">Floor</a> </p><dl class="section return"><dt>Returns</dt><dd>updated <a class="el" href="class_floor.html">Floor</a> after move </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -427,23 +484,80 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p><a class="el" href="class_character.html">Character</a> movements NOTE: X and Y represent row and col, respectively</p>
+<p>Moves <a class="el" href="class_character.html">Character</a> up in <a class="el" href="class_floor.html">Floor</a> </p><dl class="section return"><dt>Returns</dt><dd>updated <a class="el" href="class_floor.html">Floor</a> after move </dd></dl>
 
 </div>
 </div>
-<a id="ae99f349177041a76a58cbe279a118e03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae99f349177041a76a58cbe279a118e03">&#9670;&nbsp;</a></span>resetAll()</h2>
+<a id="aff9c13519266f0a4653c61b2b7237db6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff9c13519266f0a4653c61b2b7237db6">&#9670;&nbsp;</a></span>setAttack()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Character.resetAll </td>
+          <td class="memname">void Character.setAttack </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attack</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Set attack (on enemies) of the <a class="el" href="class_character.html">Character</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attack</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab5be3901d2daba8a62eb303813f91a02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5be3901d2daba8a62eb303813f91a02">&#9670;&nbsp;</a></span>setDefense()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Character.setDefense </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>defense</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set defense of the <a class="el" href="class_character.html">Character</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">defense</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a507fdd28807b38334a246f2ad33e719e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a507fdd28807b38334a246f2ad33e719e">&#9670;&nbsp;</a></span>setHealth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Character.setHealth </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>health</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set health of the <a class="el" href="class_character.html">Character</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">health</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -462,6 +576,12 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Set max health of <a class="el" href="class_character.html">Character</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxHealth</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
