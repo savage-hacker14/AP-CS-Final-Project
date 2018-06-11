@@ -49,8 +49,11 @@ public class GameInfo {
 
 	/**
 	 * Create a JPanel with all the buttons and info
-	 * @param c 		(MainCharacter)
-	 * @param mapPanel	(??)
+	 * 
+	 * @param c
+	 *            (MainCharacter)
+	 * @param mapPanel
+	 *            (??)
 	 * @return
 	 */
 	public static JPanel generatePanel(MainCharacter c, JPanel mapPanel) {
@@ -60,11 +63,12 @@ public class GameInfo {
 
 		for (int i = 0; i < buttons.length; i++) {
 			String buttonName = buttons[i].getText();
-			buttons[i].addActionListener(new ButtonListener(buttonName, c, mapPanel, panel));
+			buttons[i].addActionListener(
+					new ButtonListener(buttonName, c, mapPanel, panel));
 			buttons[i].addKeyListener(new KeyReader(c, mapPanel, panel));
 			panel.add(buttons[i]);
 		}
-		
+
 		for (int i = 0; i < characterStatus.length; i++) {
 			panel.add(characterStatus[i]);
 		}
@@ -74,19 +78,21 @@ public class GameInfo {
 
 		return panel;
 	}
-	
+
 	/**
 	 * Update player's health indicator in GameInfo panel
+	 * 
 	 * @param newHealth
 	 */
 	public static void updateHealth(int newHealth) {
 		String newTxt = "Health: " + newHealth + "/100";
 		characterStatus[0].setText(newTxt);
-		
+
 	}
-	
+
 	/**
 	 * Update player's attack indicator in GameInfo panel
+	 * 
 	 * @param newAttack
 	 */
 	public static void updateAttack(int newAttack) {
@@ -104,12 +110,14 @@ public class GameInfo {
 
 		/**
 		 * Constructor for the class reading button clicks
+		 * 
 		 * @param buttonTxt
 		 * @param ch
 		 * @param map
 		 * @param i
 		 */
-		public ButtonListener(String buttonTxt, MainCharacter ch, JPanel map, JPanel i) {
+		public ButtonListener(String buttonTxt, MainCharacter ch, JPanel map,
+				JPanel i) {
 			button = buttonTxt;
 			c = ch;
 			mapPanel = map;
@@ -135,7 +143,7 @@ public class GameInfo {
 				}
 				cycleEnemyMoves();
 				f.refresh(mapPanel);
-				//f.refreshAll(c, mapPanel, info);
+				// f.refreshAll(c, mapPanel, info);
 				// c.surroundObjs();
 				break;
 			case "DEFEND":
@@ -148,9 +156,9 @@ public class GameInfo {
 					System.out.println(Floor.currentFloorID);
 					f = c.moveUp();
 					cycleEnemyMoves();
-					//c.surroundObjs();
+					// c.surroundObjs();
 					f.refresh(mapPanel);
-					//f.refreshAll(c, mapPanel, info);
+					// f.refreshAll(c, mapPanel, info);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -161,9 +169,9 @@ public class GameInfo {
 				try {
 					f = c.moveDown();
 					cycleEnemyMoves();
-					//c.surroundObjs();
+					// c.surroundObjs();
 					f.refresh(mapPanel);
-					//f.refreshAll(c, mapPanel, info);
+					// f.refreshAll(c, mapPanel, info);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -174,9 +182,9 @@ public class GameInfo {
 				try {
 					f = c.moveLeft();
 					cycleEnemyMoves();
-					//c.surroundObjs();
+					// c.surroundObjs();
 					f.refresh(mapPanel);
-					//f.refreshAll(c, mapPanel, info);
+					// f.refreshAll(c, mapPanel, info);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -187,9 +195,9 @@ public class GameInfo {
 				try {
 					f = c.moveRight();
 					cycleEnemyMoves();
-					//c.surroundObjs();
+					// c.surroundObjs();
 					f.refresh(mapPanel);
-					//f.refreshAll(c, mapPanel, info);
+					// f.refreshAll(c, mapPanel, info);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -199,12 +207,16 @@ public class GameInfo {
 				System.out.println("INVENTORY!");
 				int l = ((MainCharacter) c).getBackpack().length;
 				String answer = "";
-				for(int i =0;i<l;i++) {
-					if(i>0) {
-						answer+=", ";
+				for (int i = 0; i < l; i++) {
+					if (i > 0) {
+						answer += ", ";
 					}
-					answer+=((MainCharacter)c).getItem(i);
-					
+					if (((MainCharacter) c).getItem(i) == null) {
+						answer+="Empty Space";
+					} else {
+						answer += ((MainCharacter) c).getItem(i);
+					}
+
 				}
 				JFrame inventory = new JFrame();
 				JOptionPane.showMessageDialog(inventory, answer);
@@ -214,13 +226,14 @@ public class GameInfo {
 				String ans = JOptionPane.showInputDialog("Type save to save");
 				if (ans.equals("save")) {
 					System.exit(0);
-				} 
+				}
 				break;
 			case "SHOP":
 				System.out.println("SHOP!");
-				//String answer = "";
+				// String answer = "";
 				// need to fix it so it changes main character
-				String answ = JOptionPane.showInputDialog("Type one to purchase potion(50), type two to purchase sword(150)");
+				String answ = JOptionPane.showInputDialog(
+						"Type one to purchase potion(50), type two to purchase sword(150)");
 				if (answ.equals("one")) {
 
 				} else if (answ.equals("two")) {
@@ -258,23 +271,24 @@ public class GameInfo {
 					}
 				}
 			}
-			//makes enemies attack
+			// makes enemies attack
 			for (int i = 0; i < Floor.width; i++) {
 				for (int j = 0; j < Floor.length; j++) {
 					if (f.getTile(i, j) instanceof Enemy) {
-						
-						((Enemy)f.getTile(i, j)).attack(f);
+
+						((Enemy) f.getTile(i, j)).attack(f);
 					}
 				}
 			}
 			f.printFloor();
 			try {
-				IO.writeMap(f, "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y);
+				IO.writeMap(f, "MapTxtFiles/Floor1_" + Floor.currentFloorID.x
+						+ "x" + Floor.currentFloorID.y);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 
 	}
@@ -283,9 +297,13 @@ public class GameInfo {
 
 		/**
 		 * Class for reading key presses
-		 * @param ch 	(MainCharacter)
-		 * @param map	(JPanel)
-		 * @param info	(JPanel)
+		 * 
+		 * @param ch
+		 *            (MainCharacter)
+		 * @param map
+		 *            (JPanel)
+		 * @param info
+		 *            (JPanel)
 		 */
 		public KeyReader(MainCharacter ch, JPanel map, JPanel info) {
 			super("", ch, map, info);
@@ -321,14 +339,14 @@ public class GameInfo {
 				System.out.println(Floor.currentFloorID);
 				f = c.moveUp();
 				cycleEnemyMoves();
-				//c.surroundObjs();
+				// c.surroundObjs();
 				f.refresh(mapPanel);
-				//f.refreshAll(c, mapPanel, info);
+				// f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 		}
 
 		/**
@@ -339,14 +357,14 @@ public class GameInfo {
 			try {
 				f = c.moveDown();
 				cycleEnemyMoves();
-				//c.surroundObjs();
+				// c.surroundObjs();
 				f.refresh(mapPanel);
-				//f.refreshAll(c, mapPanel, info);
+				// f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 		}
 
 		/**
@@ -357,14 +375,14 @@ public class GameInfo {
 			try {
 				f = c.moveLeft();
 				cycleEnemyMoves();
-				//c.surroundObjs();
+				// c.surroundObjs();
 				f.refresh(mapPanel);
-				//f.refreshAll(c, mapPanel, info);
+				// f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 		}
 
 		/**
@@ -375,18 +393,19 @@ public class GameInfo {
 			try {
 				f = c.moveRight();
 				cycleEnemyMoves();
-				//c.surroundObjs();
+				// c.surroundObjs();
 				f.refresh(mapPanel);
-				//f.refreshAll(c, mapPanel, info);
+				// f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 		}
-		
+
 		/**
-		 * Has character attack all surrounding enemies (determined by surrObjs() method). Called during proper keypress.
+		 * Has character attack all surrounding enemies (determined by
+		 * surrObjs() method). Called during proper keypress.
 		 */
 		private void attack() {
 			System.out.println("ATTACK!");
@@ -400,9 +419,9 @@ public class GameInfo {
 			}
 			cycleEnemyMoves();
 			f.refresh(mapPanel);
-			//f.refreshAll(c, mapPanel, info);
+			// f.refreshAll(c, mapPanel, info);
 			// c.surroundObjs();
-			
+
 		}
 
 		@Override
