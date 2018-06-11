@@ -41,6 +41,18 @@ public class Character extends Tile {
 	public int getHealth() {
 		return health;
 	}
+	
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	
+	public void setDefense(int defense) {
+		this.defense = defense;
+	}
+	
+	public void setAttack(int attack) {
+		this.attack = attack;
+	}
 
 	/* Increases health by health, but doesn't exceed maxHealth */
 	public void changeHealth(int health) {
