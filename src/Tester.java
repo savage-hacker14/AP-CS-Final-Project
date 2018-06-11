@@ -51,20 +51,6 @@ public class Tester {
 		JPanel gameInfo = GameInfo.generatePanel(main, map);
 		pane.add(gameInfo);
 		window.repaint();
-		
-//		// test character moves
-//		while (true) {
-//			main.moveDown(testFloor);
-//			try {
-//				Thread.sleep(1000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			main.moveUp(testFloor);
-//			window.repaint();
-//		}
-	
 	}
 
 }

@@ -35,9 +35,9 @@ public class GameInfo {
 
 		// init characterStatus
 		characterStatus = new JLabel[3];
-		characterStatus[0] = new JLabel("Health: 100%");
+		characterStatus[0] = new JLabel("Health: ");
 		characterStatus[1] = new JLabel("Magic");
-		characterStatus[2] = new JLabel("Attack: ___");
+		characterStatus[2] = new JLabel("Attack: ");
 
 		// init current map view
 		// do later
@@ -50,11 +50,13 @@ public class GameInfo {
 
 		for (int i = 0; i < buttons.length; i++) {
 			String buttonName = buttons[i].getText();
-			buttons[i].addActionListener(new ButtonListener(buttonName, c, mapPanel));
-			buttons[i].addKeyListener(new KeyReader(c, mapPanel));
+			buttons[i].addActionListener(new ButtonListener(buttonName, c, mapPanel, panel));
+			buttons[i].addKeyListener(new KeyReader(c, mapPanel, panel));
 			panel.add(buttons[i]);
 		}
-
+		
+		characterStatus[0].setText(characterStatus[0].getText() + c.getHealth() + "%");
+		characterStatus[2].setText(characterStatus[2].getText() + c.getAttack() + "%");
 		for (int i = 0; i < characterStatus.length; i++) {
 			panel.add(characterStatus[i]);
 		}
@@ -70,13 +72,15 @@ public class GameInfo {
 		protected String button;
 		protected MainCharacter c;
 		protected JPanel mapPanel;
+		protected JPanel info;
 		protected Floor f = IO.loadInCurrentFloor();
 
 		// Class for reading button clicks
-		public ButtonListener(String buttonTxt, MainCharacter ch, JPanel map) {
+		public ButtonListener(String buttonTxt, MainCharacter ch, JPanel map, JPanel i) {
 			button = buttonTxt;
 			c = ch;
 			mapPanel = map;
+			info = i;
 		}
 
 		@Override
@@ -95,6 +99,7 @@ public class GameInfo {
 				}
 				cycleEnemyMoves();
 				f.refresh(mapPanel);
+				//f.refreshAll(c, mapPanel, info);
 				// c.surroundObjs();
 				break;
 			case "DEFEND":
@@ -107,7 +112,9 @@ public class GameInfo {
 					System.out.println(Floor.currentFloorID);
 					f = c.moveUp();
 					cycleEnemyMoves();
+					//c.surroundObjs();
 					f.refresh(mapPanel);
+					//f.refreshAll(c, mapPanel, info);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -118,7 +125,9 @@ public class GameInfo {
 				try {
 					f = c.moveDown();
 					cycleEnemyMoves();
+					//c.surroundObjs();
 					f.refresh(mapPanel);
+					//f.refreshAll(c, mapPanel, info);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -129,7 +138,9 @@ public class GameInfo {
 				try {
 					f = c.moveLeft();
 					cycleEnemyMoves();
+					//c.surroundObjs();
 					f.refresh(mapPanel);
+					//f.refreshAll(c, mapPanel, info);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -140,7 +151,9 @@ public class GameInfo {
 				try {
 					f = c.moveRight();
 					cycleEnemyMoves();
+					//c.surroundObjs();
 					f.refresh(mapPanel);
+					//f.refreshAll(c, mapPanel, info);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -168,12 +181,14 @@ public class GameInfo {
 
 		}
 
+		// What does this do Matt?
 		protected void cycleEnemyMoves() {
 
 			ArrayList<Point> skip = new ArrayList<Point>();
 
-			for (int i = 0; i < 9; i++) {
-				for (int j = 0; j < 16; j++) {
+			// Replace with static Floor variables
+			for (int i = 0; i < Floor.width; i++) {
+				for (int j = 0; j < Floor.length; j++) {
 					if (f.getTile(i, j) instanceof Enemy) {
 
 						boolean isRepeated = false;
@@ -205,8 +220,8 @@ public class GameInfo {
 	static class KeyReader extends ButtonListener implements KeyListener {
 
 		// Class for reading button clicks
-		public KeyReader(MainCharacter ch, JPanel map) {
-			super("", ch, map);
+		public KeyReader(MainCharacter ch, JPanel map, JPanel info) {
+			super("", ch, map, info);
 			// win = window;
 		}
 
@@ -234,7 +249,7 @@ public class GameInfo {
 				System.out.println(Floor.currentFloorID);
 				f = c.moveUp();
 				cycleEnemyMoves();
-				f.refresh(mapPanel);
+				f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -246,7 +261,7 @@ public class GameInfo {
 			try {
 				f = c.moveDown();
 				cycleEnemyMoves();
-				f.refresh(mapPanel);
+				f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -258,7 +273,7 @@ public class GameInfo {
 			try {
 				f = c.moveLeft();
 				cycleEnemyMoves();
-				f.refresh(mapPanel);
+				f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -270,7 +285,7 @@ public class GameInfo {
 			try {
 				f = c.moveRight();
 				cycleEnemyMoves();
-				f.refresh(mapPanel);
+				f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -288,7 +303,7 @@ public class GameInfo {
 				// TODO Auto-generated catch block
 				e3.printStackTrace();
 			}
-			f.refresh(mapPanel);
+			f.refreshAll(c, mapPanel, info);
 			// c.surroundObjs();
 		}
 

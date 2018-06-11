@@ -98,6 +98,7 @@ public class Enemy extends Tile {
 				Tile oldTile = new Tile(floor.getTile(newSpot1));
 				floor.setTile(new Enemy(newTile.getSprite(), newTile.getBG(), newTile.getSpriteType(), newTile.getBGImageType(), newSpot1, newTile.getHealth(), newTile.getAttack(), newTile.getDefense(), newTile.getTrophies()), newSpot1);
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
+				this.attack(floor);
 				
 				return newSpot1;
 			} else {
@@ -113,6 +114,8 @@ public class Enemy extends Tile {
 				Tile oldTile = new Tile(floor.getTile(newSpot2));
 				floor.setTile(new Enemy(newTile.getSprite(), newTile.getBG(), newTile.getSpriteType(), newTile.getBGImageType(), newSpot2, newTile.getHealth(), newTile.getAttack(), newTile.getDefense(), newTile.getTrophies()), newSpot2);
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
+				this.attack(floor);
+				
 				
 				return newSpot2;
 			} else {
@@ -128,6 +131,8 @@ public class Enemy extends Tile {
 				Tile oldTile = new Tile(floor.getTile(newSpot3));
 				floor.setTile(new Enemy(newTile.getSprite(), newTile.getBG(), newTile.getSpriteType(), newTile.getBGImageType(), newSpot3, newTile.getHealth(), newTile.getAttack(), newTile.getDefense(), newTile.getTrophies()), newSpot3);
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
+				this.attack(floor);
+				
 				
 				return newSpot3;
 			}
@@ -141,6 +146,9 @@ public class Enemy extends Tile {
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
 				System.out.println(floor.getTile(newSpot4) instanceof Enemy);
 				System.out.println(floor.getTile(oldSpot) instanceof Enemy);
+				this.attack(floor);
+				
+				
 				return newSpot4;
 		}
 		
@@ -159,8 +167,10 @@ public class Enemy extends Tile {
 			String name = arr[i].getClass().getName();
 			if (name.equals("Player1") || name.equals("Player2") || name.equals("Player3")) {
 				// invert(f);
+				System.out.println("Player attacked");
 				((MainCharacter) arr[i]).changeHealth(this.getAttack());
-
+				System.out.println(((MainCharacter) arr[i]).getHealth());
+				
 				break;
 			}
 		}

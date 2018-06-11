@@ -310,5 +310,14 @@ public class Floor {
 		mapPanel.revalidate();
 	}
 	
+	public void refreshAll(MainCharacter c, JPanel map, JPanel info) {
+		this.refresh(map);
+		
+		info.removeAll();
+		info.add(GameInfo.generatePanel(c, map));
+		
+		info.repaint();
+		info.revalidate();
+	}
 	
 }
