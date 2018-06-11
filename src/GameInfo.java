@@ -75,6 +75,17 @@ public class GameInfo {
 
 		return panel;
 	}
+	
+	public static void updateHealth(int newHealth) {
+		String newTxt = "Health: " + newHealth + "/100";
+		characterStatus[0].setText(newTxt);
+		
+	}
+	
+	public static void updateAttack(int newAttack) {
+		String newTxt = "Attack: " + newAttack + "/100";
+		characterStatus[0].setText(newTxt);
+	}
 
 	static class ButtonListener implements ActionListener {
 

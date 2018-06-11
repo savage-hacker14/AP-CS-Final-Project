@@ -170,6 +170,7 @@ public class Enemy extends Tile {
 				System.out.println("Player attacked");
 				System.out.println("Enemey Attack:" +getAttack());
 				((MainCharacter) arr[i]).changeHealth(-1*getAttack());
+				GameInfo.updateHealth(((MainCharacter) arr[i]).getHealth());
 				
 				
 				break;
