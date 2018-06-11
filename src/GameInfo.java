@@ -179,6 +179,11 @@ public class GameInfo {
 				break;
 			case "INVENTORY":
 				System.out.println("INVENTORY!");
+				int l = ((MainCharacter)c).getBackpack().length;
+				for(int i =0;i<l;i++) {
+					System.out.println(((MainCharacter)c).getItem(i));
+					
+				}
 				break;
 			case "MENU":
 				System.out.println("MENU!");
@@ -187,8 +192,7 @@ public class GameInfo {
 				System.out.println("SHOP!");
 				String answer = "";
 				// need to fix it so it changes main character
-				answer = JOptionPane
-						.showInputDialog("Type one to purchase potion(50), type two to purchase sword(150)");
+				answer = JOptionPane.showInputDialog("Type one to purchase potion(50), type two to purchase sword(150)");
 				if (answer.equals("one")) {
 
 				} else if (answer.equals("two")) {

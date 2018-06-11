@@ -23,11 +23,14 @@ public class MainCharacter extends Character {
 	public Items getItem(int index) {
 		return backpack[index];
 	}
+	
 
 	public void setItem(Items input, int index) {
 		backpack[index] = input;
 	}
-
+	public  Items[] getBackpack() {
+		return backpack;
+	}
 	// checks for open spots
 	public int itemSpace() {
 		for (int i = 0; i < backpack.length; i++) {

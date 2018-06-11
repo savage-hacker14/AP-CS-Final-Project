@@ -5,7 +5,7 @@ public class Items {
 	private int health;
 	private int attack;
 	private int defense;
-
+	private String name;
 	public Items(BufferedImage img) {
 		image = img;
 	}
@@ -40,7 +40,14 @@ public class Items {
 		
 	}
 
+	public String getName() {
+		return name;
+	}
 
+	/* Increases defense by defense, but doesn't exceed maxDefense */
+	public void setName(String nme) {
+		name =nme;
+	}
 
 
 }
