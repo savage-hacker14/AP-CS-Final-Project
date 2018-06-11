@@ -39,7 +39,7 @@ public class MainCharacter extends Character {
 	}
 
 	public void readItems() {
-		resetAll();
+		//resetAll();
 		for (int i = 0; i < backpack.length; i++) {
 			setMaxHealth(backpack[i].getHealth() + getMaxHealth());
 			changeHealth(backpack[i].getHealth());

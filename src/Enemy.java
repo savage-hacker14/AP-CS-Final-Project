@@ -168,9 +168,9 @@ public class Enemy extends Tile {
 			if (arr[i] instanceof MainCharacter) {
 				// invert(f);
 				System.out.println("Player attacked");
+				System.out.println("Enemey Attack:" +getAttack());
 				((MainCharacter) arr[i]).changeHealth(-1*getAttack());
-				System.out.println(((MainCharacter) arr[i]).getHealth());
-				System.out.println("YUHYUH");
+				
 				
 				break;
 			}
