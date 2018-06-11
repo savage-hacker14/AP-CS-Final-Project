@@ -178,22 +178,22 @@ public class Floor {
 					floorTiles[r][c] = new Tile(key, background, "Key", BGName, tileLocation);
 					break;
 				case "knt":
-					floorTiles[r][c] = new Enemy(knight, background, "Knight", BGName, tileLocation, 200, 30, 80, 40);
+					floorTiles[r][c] = new Knight(knight, background, "Knight", BGName, tileLocation);
 					break;
 				case "knw":
-					floorTiles[r][c] = new Enemy(knightWings, background, "KnightWings", BGName, tileLocation, 200, 50, 120, 60);
+					floorTiles[r][c] = new KnightWings (knightWings, background, "KnightWings", BGName, tileLocation);
 					break;
 				case "lva":
 					floorTiles[r][c] = new Tile(lava, background, "Lava", BGName, tileLocation);
 					break;
 				case "pl1":
-					floorTiles[r][c] = new Tile(player1, background, "Player1", BGName, tileLocation);
+					floorTiles[r][c] = new MainCharacter(player1, background, "Player1", BGName, tileLocation);
 					break;
 				case "pl2":
-					floorTiles[r][c] = new Tile(player2, background, "Player2", BGName, tileLocation);
+					floorTiles[r][c] = new MainCharacter(player2, background, "Player2", BGName, tileLocation);
 					break;
 				case "pl3":
-					floorTiles[r][c] = new Tile(player3, background, "Player3", BGName, tileLocation);
+					floorTiles[r][c] = new MainCharacter(player3, background, "Player3", BGName, tileLocation);
 					break;
 				case "pot":
 					floorTiles[r][c] = new Tile(potion, background, "Potion", BGName, tileLocation);

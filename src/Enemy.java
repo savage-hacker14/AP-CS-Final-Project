@@ -165,11 +165,12 @@ public class Enemy extends Tile {
 		Tile[] arr = surroundObjs();
 		for (int i = 0; i < arr.length; i++) {
 			String name = arr[i].getClass().getName();
-			if (name.equals("Player1") || name.equals("Player2") || name.equals("Player3")) {
+			if (arr[i] instanceof MainCharacter) {
 				// invert(f);
 				System.out.println("Player attacked");
-				((MainCharacter) arr[i]).changeHealth(this.getAttack());
+				((MainCharacter) arr[i]).changeHealth(-1*getAttack());
 				System.out.println(((MainCharacter) arr[i]).getHealth());
+				System.out.println("YUHYUH");
 				
 				break;
 			}

@@ -226,6 +226,15 @@ public class GameInfo {
 					}
 				}
 			}
+			//makes enemies attack
+			for (int i = 0; i < Floor.width; i++) {
+				for (int j = 0; j < Floor.length; j++) {
+					if (f.getTile(i, j) instanceof Enemy) {
+						
+						((Enemy)f.getTile(i, j)).attack(f);
+					}
+				}
+			}
 			f.printFloor();
 			try {
 				IO.writeMap(f, "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + Floor.currentFloorID.y);
@@ -233,14 +242,7 @@ public class GameInfo {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			for (int i = 0; i < Floor.width; i++) {
-				for (int j = 0; j < Floor.length; j++) {
-					if (f.getTile(i, j) instanceof Enemy) {
-						
-
-					}
-				}
-			}
+			
 		}
 
 	}
@@ -287,11 +289,14 @@ public class GameInfo {
 				System.out.println(Floor.currentFloorID);
 				f = c.moveUp();
 				cycleEnemyMoves();
-				f.refreshAll(c, mapPanel, info);
+				//c.surroundObjs();
+				f.refresh(mapPanel);
+				//f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
 		}
 
 		/**
@@ -302,11 +307,14 @@ public class GameInfo {
 			try {
 				f = c.moveDown();
 				cycleEnemyMoves();
-				f.refreshAll(c, mapPanel, info);
+				//c.surroundObjs();
+				f.refresh(mapPanel);
+				//f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
 		}
 
 		/**
@@ -317,11 +325,14 @@ public class GameInfo {
 			try {
 				f = c.moveLeft();
 				cycleEnemyMoves();
-				f.refreshAll(c, mapPanel, info);
+				//c.surroundObjs();
+				f.refresh(mapPanel);
+				//f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
 		}
 
 		/**
@@ -332,11 +343,14 @@ public class GameInfo {
 			try {
 				f = c.moveRight();
 				cycleEnemyMoves();
-				f.refreshAll(c, mapPanel, info);
+				//c.surroundObjs();
+				f.refresh(mapPanel);
+				//f.refreshAll(c, mapPanel, info);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
 		}
 		
 		/**
@@ -344,7 +358,6 @@ public class GameInfo {
 		 */
 		private void attack() {
 			System.out.println("ATTACK!");
-			// cycleEnemyMoves();
 
 			// f.getTile(new Point(c.p.x, c.p.y - 1)).invert();
 			try {
@@ -353,8 +366,11 @@ public class GameInfo {
 				// TODO Auto-generated catch block
 				e3.printStackTrace();
 			}
-			f.refreshAll(c, mapPanel, info);
+			cycleEnemyMoves();
+			f.refresh(mapPanel);
+			//f.refreshAll(c, mapPanel, info);
 			// c.surroundObjs();
+			
 		}
 
 		@Override
