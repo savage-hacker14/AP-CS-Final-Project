@@ -1,0 +1,256 @@
+.TH "Character" 3 "Mon Jun 11 2018" "Version Zelda 8-bit created by Brant B, Jacob K, and Matt L" "AP CS Final Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Character
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBTile\fP\&.
+.PP
+Inherited by \fBMainCharacter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCharacter\fP (BufferedImage img)"
+.br
+.ti -1c
+.RI "\fBCharacter\fP (BufferedImage img, BufferedImage BG, String spriteType, String BGName, Point \fBp\fP)"
+.br
+.ti -1c
+.RI "int \fBgetHealth\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetHealth\fP (int health)"
+.br
+.ti -1c
+.RI "void \fBsetDefense\fP (int defense)"
+.br
+.ti -1c
+.RI "void \fBsetAttack\fP (int attack)"
+.br
+.ti -1c
+.RI "void \fBchangeHealth\fP (int health)"
+.br
+.ti -1c
+.RI "int \fBgetAttack\fP ()"
+.br
+.ti -1c
+.RI "void \fBincreaseAttack\fP (int attack)"
+.br
+.ti -1c
+.RI "int \fBgetDefense\fP ()"
+.br
+.ti -1c
+.RI "void \fBincreaseDefense\fP (int defense)"
+.br
+.ti -1c
+.RI "int \fBgetMaxHealth\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetMaxHealth\fP (int maxHealth)"
+.br
+.ti -1c
+.RI "\fBFloor\fP \fBmoveUp\fP ()  throws IOException "
+.br
+.ti -1c
+.RI "\fBFloor\fP \fBmoveDown\fP ()  throws IOException "
+.br
+.ti -1c
+.RI "\fBFloor\fP \fBmoveLeft\fP ()  throws IOException "
+.br
+.ti -1c
+.RI "\fBFloor\fP \fBmoveRight\fP ()  throws IOException "
+.br
+.ti -1c
+.RI "\fBFloor\fP \fBattack\fP ()  throws InterruptedException "
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Character\&.Character (BufferedImage img)"
+Old character constructor with sprite image 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimg\fP 
+.RE
+.PP
+\fBDeprecated\fP
+.RS 4
+.RE
+.PP
+
+.SS "Character\&.Character (BufferedImage img, BufferedImage BG, String spriteType, String BGName, Point p)"
+Main constructor for \fBCharacter\fP objects 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsprite\fP 
+.br
+\fIbackground\fP 
+.br
+\fIsprite\fP name/type 
+.br
+\fIbackground\fP name/type 
+.br
+\fIlocation\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBFloor\fP Character\&.attack () throws InterruptedException"
+Sensory commands
+.PP
+Attack all enemies in 5-8 \fBTile\fP vicinity 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInterruptedException\fP 
+.RE
+.PP
+
+.SS "void Character\&.changeHealth (int health)"
+Increases health by health, but doesn't exceed maxHealth (100) 
+.SS "int Character\&.getAttack ()"
+Get \fBCharacter\fP's attack 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "int Character\&.getDefense ()"
+Get defense of \fBCharacter\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "int Character\&.getHealth ()"
+Get health of the \fBCharacter\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+health 
+.RE
+.PP
+
+.SS "int Character\&.getMaxHealth ()"
+Get the maxHealth of the \fBCharacter\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+maxHealth (100) 
+.RE
+.PP
+
+.SS "void Character\&.increaseAttack (int attack)"
+Increases attack by attack, but doesn't exceed maxAttack 
+.SS "void Character\&.increaseDefense (int defense)"
+Increases defense by defense, but doesn't exceed maxDefense 
+.SS "\fBFloor\fP Character\&.moveDown () throws IOException"
+Moves \fBCharacter\fP down in \fBFloor\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+updated \fBFloor\fP after move 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.RE
+.PP
+
+.SS "\fBFloor\fP Character\&.moveLeft () throws IOException"
+Moves \fBCharacter\fP left in \fBFloor\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+updated \fBFloor\fP after move 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.RE
+.PP
+
+.SS "\fBFloor\fP Character\&.moveRight () throws IOException"
+Moves \fBCharacter\fP right in \fBFloor\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+updated \fBFloor\fP after move 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.RE
+.PP
+
+.SS "\fBFloor\fP Character\&.moveUp () throws IOException"
+\fBCharacter\fP movements NOTE: X and Y represent row and col, respectively
+.PP
+Moves \fBCharacter\fP up in \fBFloor\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+updated \fBFloor\fP after move 
+.RE
+.PP
+
+.SS "void Character\&.setAttack (int attack)"
+Set attack (on enemies) of the \fBCharacter\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIattack\fP 
+.RE
+.PP
+
+.SS "void Character\&.setDefense (int defense)"
+Set defense of the \fBCharacter\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdefense\fP 
+.RE
+.PP
+
+.SS "void Character\&.setHealth (int health)"
+Set health of the \fBCharacter\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhealth\fP 
+.RE
+.PP
+
+.SS "void Character\&.setMaxHealth (int maxHealth)"
+Set max health of \fBCharacter\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxHealth\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AP CS Final Project from the source code\&.

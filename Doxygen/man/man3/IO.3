@@ -1,0 +1,121 @@
+.TH "IO" 3 "Mon Jun 11 2018" "Version Zelda 8-bit created by Brant B, Jacob K, and Matt L" "AP CS Final Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+IO
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static String [][] \fBreadMapFromTxt\fP (String filepath)  throws IOException "
+.br
+.ti -1c
+.RI "static void \fBwriteMap\fP (\fBFloor\fP map, String filepath)  throws IOException "
+.br
+.ti -1c
+.RI "static void \fBprintMap\fP (char[][] arr)"
+.br
+.ti -1c
+.RI "static Point \fBstrToFloorID\fP (String str)"
+.br
+.ti -1c
+.RI "static String \fBcurrentFloor\fP ()"
+.br
+.ti -1c
+.RI "static \fBFloor\fP \fBloadInCurrentFloor\fP ()"
+.br
+.ti -1c
+.RI "static Point \fBfindPlayerFloorID\fP (String floorName, int maxWidth, int maxHeight)"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "static String IO\&.currentFloor ()\fC [static]\fP"
+Name of \&.txt file for current floor 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "static Point IO\&.findPlayerFloorID (String floorName, int maxWidth, int maxHeight)\fC [static]\fP"
+
+.SS "static \fBFloor\fP IO\&.loadInCurrentFloor ()\fC [static]\fP"
+Read in current floor (based on currentFloorID) 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBFloor\fP object 
+.RE
+.PP
+
+.SS "static void IO\&.printMap (char arr[][])\fC [static]\fP"
+For debugging, print out map read in by the readMap method 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarr\fP 
+.RE
+.PP
+\fBDeprecated\fP
+.RS 4
+.RE
+.PP
+
+.SS "static String [][] IO\&.readMapFromTxt (String filepath) throws IOException\fC [static]\fP"
+This method can read in a String matrix from a \&.txt file 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilepath\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+string matrix 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.RE
+.PP
+
+.SS "static Point IO\&.strToFloorID (String str)\fC [static]\fP"
+Create \fBFloor\fP ID from String 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIString\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBFloor\fP ID (Point) 
+.RE
+.PP
+
+.SS "static void IO\&.writeMap (\fBFloor\fP map, String filepath) throws IOException\fC [static]\fP"
+Write a \fBFloor\fP object to its corresponding \&.txt file 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImap\fP 
+.br
+\fIfilepath\fP 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AP CS Final Project from the source code\&.

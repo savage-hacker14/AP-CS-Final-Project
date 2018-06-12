@@ -1,0 +1,95 @@
+.TH "Enemy" 3 "Mon Jun 11 2018" "Version Zelda 8-bit created by Brant B, Jacob K, and Matt L" "AP CS Final Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Enemy
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBTile\fP\&.
+.PP
+Inherited by \fBBlob\fP, \fBDemon\fP, \fBKnight\fP, and \fBKnightWings\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEnemy\fP (BufferedImage img)"
+.br
+.ti -1c
+.RI "\fBEnemy\fP (\fBEnemy\fP enm)"
+.br
+.ti -1c
+.RI "\fBEnemy\fP (BufferedImage sprit, BufferedImage BG, String name, String grndType, Point location, int helth, int attck, int defnse, int trophy)"
+.br
+.ti -1c
+.RI "int \fBgetHealth\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetHealth\fP (int h)"
+.br
+.ti -1c
+.RI "void \fBattackedByPlayer\fP (int health)"
+.br
+.ti -1c
+.RI "int \fBgetAttack\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetAttack\fP (int h)"
+.br
+.ti -1c
+.RI "int \fBgetDefense\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetDefense\fP (int h)"
+.br
+.ti -1c
+.RI "Point \fBmove\fP (\fBFloor\fP floor)"
+.br
+.ti -1c
+.RI "int \fBgetTrophies\fP ()"
+.br
+.ti -1c
+.RI "void \fBattack\fP (\fBFloor\fP f)"
+.br
+.ti -1c
+.RI "void \fBaddTrophies\fP (int add)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Enemy\&.Enemy (BufferedImage img)"
+
+.SS "Enemy\&.Enemy (\fBEnemy\fP enm)"
+
+.SS "Enemy\&.Enemy (BufferedImage sprit, BufferedImage BG, String name, String grndType, Point location, int helth, int attck, int defnse, int trophy)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Enemy\&.addTrophies (int add)"
+
+.SS "void Enemy\&.attack (\fBFloor\fP f)"
+
+.SS "void Enemy\&.attackedByPlayer (int health)"
+
+.SS "int Enemy\&.getAttack ()"
+
+.SS "int Enemy\&.getDefense ()"
+
+.SS "int Enemy\&.getHealth ()"
+
+.SS "int Enemy\&.getTrophies ()"
+
+.SS "Point Enemy\&.move (\fBFloor\fP floor)"
+
+.SS "void Enemy\&.setAttack (int h)"
+
+.SS "void Enemy\&.setDefense (int h)"
+
+.SS "void Enemy\&.setHealth (int h)"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AP CS Final Project from the source code\&.

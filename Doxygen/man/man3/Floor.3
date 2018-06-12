@@ -1,0 +1,386 @@
+.TH "Floor" 3 "Mon Jun 11 2018" "Version Zelda 8-bit created by Brant B, Jacob K, and Matt L" "AP CS Final Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Floor
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFloor\fP ()"
+.br
+.ti -1c
+.RI "\fBFloor\fP (\fBTile\fP[][] arr)  throws IOException "
+.br
+.ti -1c
+.RI "\fBFloor\fP (String[][] arr, Point id)  throws IOException "
+.br
+.ti -1c
+.RI "\fBFloor\fP \fBclone\fP (\fBFloor\fP f)"
+.br
+.ti -1c
+.RI "\fBTile\fP \fBgetTile\fP (int x, int y)"
+.br
+.ti -1c
+.RI "\fBTile\fP \fBgetTile\fP (Point p)"
+.br
+.ti -1c
+.RI "void \fBsetTile\fP (\fBTile\fP tile, int x, int y)"
+.br
+.ti -1c
+.RI "void \fBsetTile\fP (\fBTile\fP tile, Point p)"
+.br
+.ti -1c
+.RI "\fBTile\fP [][] \fBgetFloor\fP ()"
+.br
+.ti -1c
+.RI "Point \fBgetFloorID\fP ()"
+.br
+.ti -1c
+.RI "void \fBmoveTile\fP (Point old, Point newPt)"
+.br
+.ti -1c
+.RI "Point \fBfindChar\fP ()"
+.br
+.ti -1c
+.RI "void \fBprintFloor\fP ()"
+.br
+.ti -1c
+.RI "void \fBrefresh\fP (JPanel mapPanel)"
+.br
+.ti -1c
+.RI "void \fBrefreshAll\fP (\fBMainCharacter\fP c, JPanel map, JPanel info)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBinit\fP ()  throws IOException "
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static int \fBlength\fP = 16"
+.br
+.ti -1c
+.RI "static int \fBwidth\fP = 9"
+.br
+.ti -1c
+.RI "static Point \fBcurrentFloorID\fP = new Point (0, 0)"
+.br
+.ti -1c
+.RI "static BufferedImage \fBblob\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBbush\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBchest\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBchilli\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBdemon\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBdoor\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBdoorLock\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBenemy\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBfireball\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBgrass\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBknight\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBknightWings\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBlava\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBkey\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBrock\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBwood\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBsword1\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBsword2\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBsword3\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBplayer1\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBplayer2\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBplayer3\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBpotion\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBstone\fP"
+.br
+.ti -1c
+.RI "static BufferedImage \fBwater\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Floor\&.Floor ()"
+Default constructor 
+.SS "Floor\&.Floor (\fBTile\fP arr[][]) throws IOException"
+Constructor with \fBTile\fP matrix input 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarr\fP 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.RE
+.PP
+
+.SS "Floor\&.Floor (String arr[][], Point id) throws IOException"
+Constructor that builds floor based on character matrix input 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarr\fP (string matrix from \&.txt file) 
+.br
+\fIid\fP 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBFloor\fP Floor\&.clone (\fBFloor\fP f)"
+Clone method for a \fBFloor\fP object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.SS "Point Floor\&.findChar ()"
+Finds the first player (when scanning row by row) on the \fBFloor\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "\fBTile\fP [][] Floor\&.getFloor ()"
+Return floor object 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "Point Floor\&.getFloorID ()"
+Return \fBFloor\fP ID (Point) 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "\fBTile\fP Floor\&.getTile (int x, int y)"
+Get tile x,y (row,col) from \fBFloor\fP object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.SS "\fBTile\fP Floor\&.getTile (Point p)"
+Get tile in \fBFloor\fP object from Point p 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.SS "static void Floor\&.init () throws IOException\fC [static]\fP"
+Initialize all sprite images / backgrounds (Buffered Images) 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP 
+.RE
+.PP
+
+.SS "void Floor\&.moveTile (Point old, Point newPt)"
+Move tile at location old to location newPt 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIold\fP 
+.br
+\fInewPt\fP 
+.RE
+.PP
+
+.SS "void Floor\&.printFloor ()"
+For debugging, print out first letter of each tile in the \fBFloor\fP object 
+.SS "void Floor\&.refresh (JPanel mapPanel)"
+Refresh graphics panel that contains floor to the latest floor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImapPanel\fP 
+.RE
+.PP
+
+.SS "void Floor\&.refreshAll (\fBMainCharacter\fP c, JPanel map, JPanel info)"
+Refresh floor and info/button panel in GUI 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP 
+.br
+\fImap\fP 
+.br
+\fIinfo\fP 
+.RE
+.PP
+
+.SS "void Floor\&.setTile (\fBTile\fP tile, int x, int y)"
+Set a tile at position x,y (row,col) on the \fBFloor\fP object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItile\fP 
+.br
+\fIx\fP 
+.br
+\fIy\fP 
+.RE
+.PP
+
+.SS "void Floor\&.setTile (\fBTile\fP tile, Point p)"
+Set a tile at position Point p (row,col) on the \fBFloor\fP object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItile\fP 
+.br
+\fIp\fP 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "BufferedImage Floor\&.blob\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.bush\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.chest\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.chilli\fC [static]\fP"
+
+.SS "Point Floor\&.currentFloorID = new Point (0, 0)\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.demon\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.door\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.doorLock\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.enemy\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.fireball\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.grass\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.key\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.knight\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.knightWings\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.lava\fC [static]\fP"
+
+.SS "int Floor\&.length = 16\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.player1\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.player2\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.player3\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.potion\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.rock\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.stone\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.sword1\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.sword2\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.sword3\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.water\fC [static]\fP"
+
+.SS "int Floor\&.width = 9\fC [static]\fP"
+
+.SS "BufferedImage Floor\&.wood\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AP CS Final Project from the source code\&.

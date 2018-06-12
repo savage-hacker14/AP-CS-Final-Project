@@ -1,0 +1,234 @@
+.TH "Tile" 3 "Mon Jun 11 2018" "Version Zelda 8-bit created by Brant B, Jacob K, and Matt L" "AP CS Final Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tile
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits JPanel\&.
+.PP
+Inherited by \fBCharacter\fP, \fBChest\fP, \fBDoor\fP, and \fBEnemy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTile\fP (BufferedImage img)"
+.br
+.ti -1c
+.RI "\fBTile\fP (\fBTile\fP til)"
+.br
+.ti -1c
+.RI "\fBTile\fP (BufferedImage sprit, BufferedImage BG, String name, String grndType, Point location)"
+.br
+.ti -1c
+.RI "void \fBpaintComponent\fP (Graphics g)"
+.br
+.ti -1c
+.RI "BufferedImage \fBgetBG\fP ()"
+.br
+.ti -1c
+.RI "BufferedImage \fBgetSprite\fP ()"
+.br
+.ti -1c
+.RI "void \fBinvert\fP ()"
+.br
+.ti -1c
+.RI "String \fBgetSpriteType\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetSpriteType\fP (String str)"
+.br
+.ti -1c
+.RI "String \fBgetBGImageType\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetSprite\fP (BufferedImage img)"
+.br
+.ti -1c
+.RI "Point \fBgetPoint\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetPoint\fP (Point pt)"
+.br
+.ti -1c
+.RI "boolean \fBisWalkable\fP ()"
+.br
+.ti -1c
+.RI "\fBTile\fP [] \fBsurroundObjs\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBisWalkable\fP (String type)"
+.br
+.ti -1c
+.RI "String \fBtoString\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "Point \fBp\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Tile\&.Tile (BufferedImage img)"
+Old constructor (deprecated) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimg\fP 
+.RE
+.PP
+\fBDeprecated\fP
+.RS 4
+.RE
+.PP
+
+.SS "Tile\&.Tile (\fBTile\fP til)"
+Create a \fBTile\fP object from a previous \fBTile\fP object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItil\fP 
+.RE
+.PP
+
+.SS "Tile\&.Tile (BufferedImage sprit, BufferedImage BG, String name, String grndType, Point location)"
+Main constructor for \fBTile\fP objects 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsprite\fP (BufferedImage) 
+.br
+\fIbackground\fP (BufferedImage) 
+.br
+\fIspriteName\fP (String) 
+.br
+\fIgroundType\fP (String) 
+.br
+\fIlocation\fP (Point) 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "BufferedImage Tile\&.getBG ()"
+Get background image 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "String Tile\&.getBGImageType ()"
+Get the background image name/type 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "Point Tile\&.getPoint ()"
+Get point/location of \fBTile\fP in \fBFloor\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "BufferedImage Tile\&.getSprite ()"
+Get sprite image 
+.PP
+\fBReturns:\fP
+.RS 4
+BufferedImage 
+.RE
+.PP
+
+.SS "String Tile\&.getSpriteType ()"
+Get sprite name/type 
+.PP
+\fBReturns:\fP
+.RS 4
+string 
+.RE
+.PP
+
+.SS "void Tile\&.invert ()"
+Invert method: Inverts color mapping for sprite image 
+.SS "boolean Tile\&.isWalkable ()"
+Returns true if \fBTile\fP (& sprite) can walk onto this \fBTile\fP type 
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.SS "boolean Tile\&.isWalkable (String type)"
+Returns true if \fBTile\fP (& sprite) can walk onto this \fBTile\fP type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.SS "void Tile\&.paintComponent (Graphics g)"
+Method for drawing \fBTile\fP objects in GUI 
+.SS "void Tile\&.setPoint (Point pt)"
+Set location of \fBTile\fP in \fBFloor\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIPoint\fP 
+.RE
+.PP
+
+.SS "void Tile\&.setSprite (BufferedImage img)"
+Set sprite image 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimg\fP 
+.RE
+.PP
+
+.SS "void Tile\&.setSpriteType (String str)"
+Set sprite name/type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP 
+.RE
+.PP
+
+.SS "\fBTile\fP [] Tile\&.surroundObjs ()"
+Returns all \fBTile\fP objects that surround a tile 
+.PP
+\fBReturns:\fP
+.RS 4
+adjacent tiles (5 to 8) 
+.RE
+.PP
+
+.SS "String Tile\&.toString ()"
+Generate string with \fBTile\fP information 
+.SH "Member Data Documentation"
+.PP 
+.SS "Point Tile\&.p\fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AP CS Final Project from the source code\&.
