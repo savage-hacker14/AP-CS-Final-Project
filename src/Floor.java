@@ -42,6 +42,9 @@ public class Floor {
 	public static BufferedImage potion;
 	public static BufferedImage stone;
 	public static BufferedImage water;
+	public static BufferedImage monster;
+	public static BufferedImage furnace;
+	
 
 	/**
 	 * Initialize all sprite images / backgrounds (Buffered Images)
@@ -66,13 +69,15 @@ public class Floor {
 		player2 = ImageIO.read(new File("Sprites/Player2.PNG"));
 		player3 = ImageIO.read(new File("Sprites/Player3.PNG"));
 		potion = ImageIO.read(new File("Sprites/PotionRed.png"));
-		sword1 = ImageIO.read(new File("Sprites/SmallSwordVertical.png"));
-		sword2 = ImageIO.read(new File("Sprites/SmallSwordVertical.png"));
-		sword3 = ImageIO.read(new File("Sprites/SmallSwordVertical.png"));
+		sword1 = ImageIO.read(new File("Sprites/Sword1.png"));
+		sword2 = ImageIO.read(new File("Sprites/Sword2.png"));
+		sword3 = ImageIO.read(new File("Sprites/Sword3.png"));
 		stone = ImageIO.read(new File("Sprites/Stone.png"));
 		water = ImageIO.read(new File("Sprites/Water.png"));
 		key = ImageIO.read(new File("Sprites/Key.png"));
 		rock = ImageIO.read(new File("Sprites/Rock.png"));
+		monster = ImageIO.read(new File("Sprites/Monster.png"));
+		furnace = ImageIO.read(new File("Sprites/Furnace.png"));
 		
 		// Backgrounds
 		grass = ImageIO.read(new File("Sprites/Grass.png"));
@@ -218,6 +223,12 @@ public class Floor {
 					break;
 				case "wod":
 					floorTiles[r][c] = new Tile(wood, background, "Wood", BGName, tileLocation);
+					break;
+				case "mon":
+					floorTiles[r][c] = new Enemy(monster, background, "Monster", BGName, tileLocation, 500, 150, 200, 250);
+					break;
+				case "frn":
+					floorTiles[r][c] = new Tile(furnace, background, "Furnace", BGName, tileLocation);
 					break;
 				
 				}

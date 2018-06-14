@@ -22,7 +22,7 @@ public class Tester {
 		pane.setBackground(Color.LIGHT_GRAY);
 		
 		// Checks to find player throughout whole map and returns floor ID point that finds him
-		Point floorPt = IO.findPlayerFloorID("Floor1_", 3, 5);
+		Point floorPt = IO.findPlayerFloorID("Floor1_", 4, 10);
 		Floor.currentFloorID = floorPt;
 		
 //		//load in floor from text file

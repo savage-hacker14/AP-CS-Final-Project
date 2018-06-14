@@ -133,6 +133,12 @@ public class IO {
 				case "Wood":
 					writer.write(bg + "wod ");
 					break;
+				case "Furnace":
+					writer.write(bg + "frn ");
+					break;
+				case "Monster":
+					writer.write(bg + "mon ");
+					break;
 				}
 			}
 			

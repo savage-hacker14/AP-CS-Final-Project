@@ -17,6 +17,7 @@ public class Character extends Tile {
 
 	/**
 	 * Old character constructor with sprite image
+	 * 
 	 * @param img
 	 * @deprecated
 	 */
@@ -30,10 +31,13 @@ public class Character extends Tile {
 
 	/**
 	 * Main constructor for Character objects
+	 * 
 	 * @param sprite
 	 * @param background
-	 * @param sprite name/type
-	 * @param background name/type
+	 * @param sprite
+	 *            name/type
+	 * @param background
+	 *            name/type
 	 * @param location
 	 */
 	public Character(BufferedImage img, BufferedImage BG, String spriteType, String BGName, Point p) {
@@ -44,39 +48,43 @@ public class Character extends Tile {
 		maxHealth = 100;
 	}
 
-	//public void resetAll() {
-		//health = 100;
-		//attack = 10;
-		//defense = 10;
-		//maxHealth = 100;
-	//}
+	// public void resetAll() {
+	// health = 100;
+	// attack = 10;
+	// defense = 10;
+	// maxHealth = 100;
+	// }
 
 	/**
 	 * Get health of the Character
+	 * 
 	 * @return health
 	 */
 	public int getHealth() {
 		return health;
 	}
-	
+
 	/**
 	 * Set health of the Character
+	 * 
 	 * @param health
 	 */
 	public void setHealth(int health) {
 		this.health = health;
 	}
-	
+
 	/**
 	 * Set defense of the Character
+	 * 
 	 * @param defense
 	 */
 	public void setDefense(int defense) {
 		this.defense = defense;
 	}
-	
+
 	/**
 	 * Set attack (on enemies) of the Character
+	 * 
 	 * @param attack
 	 */
 	public void setAttack(int attack) {
@@ -84,7 +92,7 @@ public class Character extends Tile {
 	}
 
 	/**
-	 *  Increases health by health, but doesn't exceed maxHealth (100)
+	 * Increases health by health, but doesn't exceed maxHealth (100)
 	 */
 	public void changeHealth(int health) {
 		this.health += health;
@@ -99,6 +107,7 @@ public class Character extends Tile {
 
 	/**
 	 * Get Character's attack
+	 * 
 	 * @return
 	 */
 	public int getAttack() {
@@ -115,6 +124,7 @@ public class Character extends Tile {
 
 	/**
 	 * Get defense of Character
+	 * 
 	 * @return
 	 */
 	public int getDefense() {
@@ -122,7 +132,7 @@ public class Character extends Tile {
 	}
 
 	/**
-	 * Increases defense by defense, but doesn't exceed maxDefense 
+	 * Increases defense by defense, but doesn't exceed maxDefense
 	 */
 	public void increaseDefense(int defense) {
 		this.defense += defense;
@@ -131,6 +141,7 @@ public class Character extends Tile {
 
 	/**
 	 * Get the maxHealth of the Character
+	 * 
 	 * @return maxHealth (100)
 	 */
 	public int getMaxHealth() {
@@ -139,6 +150,7 @@ public class Character extends Tile {
 
 	/**
 	 * Set max health of Character
+	 * 
 	 * @param maxHealth
 	 */
 	public void setMaxHealth(int maxHealth) {
@@ -146,10 +158,10 @@ public class Character extends Tile {
 	}
 
 	/**
-	 * Character movements
-	 * NOTE: X and Y represent row and col, respectively
+	 * Character movements NOTE: X and Y represent row and col, respectively
 	 * 
 	 * Moves Character up in Floor
+	 * 
 	 * @return updated Floor after move
 	 */
 	public Floor moveUp() throws IOException {
@@ -178,11 +190,45 @@ public class Character extends Tile {
 			// System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
-			newF.setTile(this, new Point(Floor.width - 1, p.y));
+			newF.getTile(new Point(Floor.width - 1, p.y)).setSprite(Floor.player1);
 			newF.getTile(new Point(Floor.width - 1, p.y)).setSpriteType("Player1");
 			// System.out.println(newF.getTile(new Point(Floor.width - 1,
 			// p.y)).getImageType());
 			p.setLocation(Floor.width - 1, p.y);
+
+			// write new map file
+			IO.writeMap(newF, newfilepath);
+
+			return newF;
+		}
+
+		if (f.getTile(p.x - 1, p.y).getSpriteType().equalsIgnoreCase("Door")) {
+
+			// Removes old Player from previous floor
+			removeOldPlayer(map, f, filepath);
+
+			// load in upper floor
+			String newfilepath = "MapTxtFiles/Floor1_" + Floor.currentFloorID.x + "x" + (Floor.currentFloorID.y + 1);
+			// System.out.println(newfilepath);
+
+			// get new floor ID
+			Point newFID = IO.strToFloorID(newfilepath);
+			Floor.currentFloorID = (Point) newFID.clone();
+			// System.out.println(Floor.currentFloorID);
+
+			String[][] newCharArr = IO.readMapFromTxt(newfilepath);
+			Floor newF = new Floor(newCharArr, newFID);
+			// System.out.println(Floor.currentFloorID);
+
+			// place character in new correct position
+			newF.setTile(this, new Point(Floor.width - 2, p.y));
+			newF.getTile(new Point(Floor.width - 2, p.y)).setSprite(Floor.player1);
+			newF.getTile(new Point(Floor.width - 2, p.y)).setSpriteType("Player1");
+			newF.getTile(new Point(Floor.width - 2, p.y)).setBGImageType("Wood");
+			newF.getTile(new Point(Floor.width - 2, p.y)).setBG(Floor.wood);
+			// System.out.println(newF.getTile(new Point(Floor.width - 1,
+			// p.y)).getImageType());
+			p.setLocation(Floor.width - 2, p.y);
 
 			// write new map file
 			IO.writeMap(newF, newfilepath);
@@ -219,6 +265,7 @@ public class Character extends Tile {
 
 	/**
 	 * Moves Character down in Floor
+	 * 
 	 * @return updated Floor after move
 	 * @throws IOException
 	 */
@@ -248,9 +295,45 @@ public class Character extends Tile {
 			// System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
-			newF.setTile(this, new Point(0, p.y));
+
 			p.setLocation(0, p.y);
+			newF.getTile(new Point(0, p.y)).setSprite(Floor.player1);;
 			newF.getTile(new Point(0, p.y)).setSpriteType("Player1");
+			// System.out.println(newF.getTile(new Point(Floor.width - 1,
+			// p.y)).getImageType());
+
+			// write new map file
+			IO.writeMap(newF, newfilepath);
+
+			return newF;
+		}
+
+		if (f.getTile(p.x + 1, p.y).getSpriteType().equalsIgnoreCase("Door")) {
+
+			// Removes old Player from previous floor
+			removeOldPlayer(map, f, filepath);
+
+			// load in upper floor
+			String newfilepath = "MapTxtFiles/Floor1_" + f.getFloorID().x + "x" + (f.getFloorID().y - 1);
+			// System.out.println(newfilepath);
+
+			// get new floor ID
+			Point newFID = IO.strToFloorID(newfilepath);
+			Floor.currentFloorID = (Point) newFID.clone();
+			// System.out.println(Floor.currentFloorID);
+
+			String[][] newCharArr = IO.readMapFromTxt(newfilepath);
+			Floor newF = new Floor(newCharArr, newFID);
+			// System.out.println(Floor.currentFloorID);
+
+			// place character in new correct position
+			newF.setTile(this, new Point(1, p.y));
+			p.setLocation(1, p.y);
+			newF.getTile(new Point(1, p.y)).setSpriteType("Player1");
+			newF.getTile(new Point(1, p.y)).setSprite(Floor.player1);
+			newF.getTile(new Point(Floor.width - 2, p.y)).setBG(Floor.wood);
+			newF.getTile(new Point(Floor.width - 2, p.y)).setBGImageType("Wood");
+
 			// System.out.println(newF.getTile(new Point(Floor.width - 1,
 			// p.y)).getImageType());
 
@@ -281,6 +364,7 @@ public class Character extends Tile {
 
 	/**
 	 * Moves Character left in Floor
+	 * 
 	 * @return updated Floor after move
 	 * @throws IOException
 	 */
@@ -310,8 +394,9 @@ public class Character extends Tile {
 			// System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
-			newF.setTile(this, new Point(p.x, Floor.length - 1));
+			// newF.setTile(this, new Point(p.x, Floor.length - 1));
 			p.setLocation(p.x, Floor.length - 1);
+			newF.getTile(new Point(p.x, Floor.length - 1)).setSprite(Floor.player1);
 			newF.getTile(new Point(p.x, Floor.length - 1)).setSpriteType("Player1");
 
 			// write new map file
@@ -347,6 +432,7 @@ public class Character extends Tile {
 
 	/**
 	 * Moves Character right in Floor
+	 * 
 	 * @return updated Floor after move
 	 * @throws IOException
 	 */
@@ -376,8 +462,9 @@ public class Character extends Tile {
 			// System.out.println(Floor.currentFloorID);
 
 			// place character in new correct position
-			newF.setTile(this, new Point(p.x, 0));
+			// newF.setTile(this, new Point(p.x, 0));
 			p.setLocation(p.x, 0);
+			newF.getTile(new Point(p.x, 0)).setSprite(Floor.player1);
 			newF.getTile(new Point(p.x, 0)).setSpriteType("Player1");
 
 			// write new map file
@@ -409,12 +496,13 @@ public class Character extends Tile {
 	 * Sensory commands
 	 * 
 	 * Attack all enemies in 5-8 Tile vicinity
+	 * 
 	 * @return
 	 * @throws InterruptedException
 	 */
 	public Floor attack() throws InterruptedException {
 		Floor f = IO.loadInCurrentFloor();
-			
+
 		// array of all surrounding cell coordinates
 		Point[] surr = new Point[8];
 		surr[0] = new Point(p.x - 1, p.y - 1);
@@ -432,16 +520,17 @@ public class Character extends Tile {
 			if (validPoint && f.getTile(surr[i]) instanceof Enemy) {
 				Tile surrTile = f.getTile(surr[i]);
 				surrTile.invert();
-				
+
 				((Enemy) surrTile).setHealth(((Enemy) surrTile).getHealth() - this.getAttack());
 			}
 		}
-		
+
 		return f;
 	}
 
 	/**
 	 * Removes "ghost" player from previous map subsection
+	 * 
 	 * @param map
 	 * @param f
 	 * @param filepath

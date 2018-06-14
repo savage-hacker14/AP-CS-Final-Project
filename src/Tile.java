@@ -78,6 +78,14 @@ public class Tile extends JPanel {
     }
     
     /**
+     * Set background image
+     * @return
+     */
+    public void setBG(BufferedImage newBG) {
+    	ground = newBG;
+    }
+    
+    /**
      * Get sprite image
      * @return BufferedImage
      */
@@ -141,6 +149,10 @@ public class Tile extends JPanel {
      */
     public String getBGImageType() {
     	return groundType;
+    }
+    
+    public void setBGImageType(String newBGName) {
+    	groundType = newBGName;
     }
     
     /**
