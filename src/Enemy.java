@@ -84,7 +84,9 @@ public class Enemy extends Tile {
 		if (p.y < Floor.length - 2 && floor.getTile(p.x, p.y + 1).isWalkable()) {
 			openSpots++;
 		}
-
+		
+		System.out.println("Blob did muv mefid");
+		
 		int randNum = (int) (Math.random() * openSpots);
 		Point newSpot1 = new Point(p.x - 1, p.y);
 		Point newSpot2 = new Point(p.x + 1, p.y);
@@ -98,7 +100,7 @@ public class Enemy extends Tile {
 				Tile oldTile = new Tile(floor.getTile(newSpot1));
 				floor.setTile(new Enemy(newTile.getSprite(), newTile.getBG(), newTile.getSpriteType(), newTile.getBGImageType(), newSpot1, newTile.getHealth(), newTile.getAttack(), newTile.getDefense(), newTile.getTrophies()), newSpot1);
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
-				this.attack(floor);
+				//this.attack(floor);
 				
 				return newSpot1;
 			} else {
@@ -114,7 +116,7 @@ public class Enemy extends Tile {
 				Tile oldTile = new Tile(floor.getTile(newSpot2));
 				floor.setTile(new Enemy(newTile.getSprite(), newTile.getBG(), newTile.getSpriteType(), newTile.getBGImageType(), newSpot2, newTile.getHealth(), newTile.getAttack(), newTile.getDefense(), newTile.getTrophies()), newSpot2);
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
-				this.attack(floor);
+				//this.attack(floor);
 				
 				
 				return newSpot2;
@@ -131,7 +133,7 @@ public class Enemy extends Tile {
 				Tile oldTile = new Tile(floor.getTile(newSpot3));
 				floor.setTile(new Enemy(newTile.getSprite(), newTile.getBG(), newTile.getSpriteType(), newTile.getBGImageType(), newSpot3, newTile.getHealth(), newTile.getAttack(), newTile.getDefense(), newTile.getTrophies()), newSpot3);
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
-				this.attack(floor);
+				//this.attack(floor);
 				
 				
 				return newSpot3;
@@ -146,7 +148,7 @@ public class Enemy extends Tile {
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
 				System.out.println(floor.getTile(newSpot4) instanceof Enemy);
 				System.out.println(floor.getTile(oldSpot) instanceof Enemy);
-				this.attack(floor);
+				//this.attack(floor);
 				
 				
 				return newSpot4;
@@ -168,12 +170,13 @@ public class Enemy extends Tile {
 			if (arr[i] instanceof MainCharacter) {
 				// invert(f);
 				System.out.println("Player attacked");
-				System.out.println("Enemey Attack:" +getAttack());
-				((MainCharacter) arr[i]).changeHealth(-1*getAttack());
-				GameInfo.updateHealth(((MainCharacter) arr[i]).getHealth());
+				System.out.println("Enemey Attack: " + getAttack() + "    " + p.x + "     " + p.y);
+				TileStatus.attackPlayer(getAttack());
+				TileStatus.getChHealth();
+				GameInfo.updateHealth(TileStatus.getChHealth());
 				
 				
-				break;
+				return;
 			}
 		}
 	}

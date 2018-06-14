@@ -51,6 +51,9 @@ public class Tester {
 		//System.out.println(main.getPoint());
 		testFloor.printFloor();
 		
+		TileStatus.set(10000, 10000, 50, 50, 0);
+		TileStatus.addEnemiesToList(testFloor);
+		
 		//create game info panel
 		JPanel gameInfo = GameInfo.generatePanel(main, map);
 		pane.add(gameInfo);
