@@ -196,6 +196,8 @@ public class Character extends Tile {
 			// p.y)).getImageType());
 			p.setLocation(Floor.width - 1, p.y);
 
+			TileStatus.addEnemiesToList(newF);
+			
 			// write new map file
 			IO.writeMap(newF, newfilepath);
 
@@ -230,6 +232,9 @@ public class Character extends Tile {
 			// p.y)).getImageType());
 			p.setLocation(Floor.width - 2, p.y);
 
+			
+			TileStatus.addEnemiesToList(newF);
+			
 			// write new map file
 			IO.writeMap(newF, newfilepath);
 
@@ -302,6 +307,8 @@ public class Character extends Tile {
 			// System.out.println(newF.getTile(new Point(Floor.width - 1,
 			// p.y)).getImageType());
 
+			TileStatus.addEnemiesToList(newF);
+			
 			// write new map file
 			IO.writeMap(newF, newfilepath);
 
@@ -336,7 +343,9 @@ public class Character extends Tile {
 
 			// System.out.println(newF.getTile(new Point(Floor.width - 1,
 			// p.y)).getImageType());
-
+			
+			TileStatus.addEnemiesToList(newF);
+			
 			// write new map file
 			IO.writeMap(newF, newfilepath);
 
@@ -398,7 +407,9 @@ public class Character extends Tile {
 			p.setLocation(p.x, Floor.length - 1);
 			newF.getTile(new Point(p.x, Floor.length - 1)).setSprite(Floor.player1);
 			newF.getTile(new Point(p.x, Floor.length - 1)).setSpriteType("Player1");
-
+			
+			TileStatus.addEnemiesToList(newF);
+			
 			// write new map file
 			IO.writeMap(newF, newfilepath);
 
@@ -466,7 +477,9 @@ public class Character extends Tile {
 			p.setLocation(p.x, 0);
 			newF.getTile(new Point(p.x, 0)).setSprite(Floor.player1);
 			newF.getTile(new Point(p.x, 0)).setSpriteType("Player1");
-
+			
+			TileStatus.addEnemiesToList(newF);
+			
 			// write new map file
 			IO.writeMap(newF, newfilepath);
 
@@ -520,8 +533,10 @@ public class Character extends Tile {
 			if (validPoint && f.getTile(surr[i]) instanceof Enemy) {
 				Tile surrTile = f.getTile(surr[i]);
 				surrTile.invert();
-
-				((Enemy) surrTile).setHealth(((Enemy) surrTile).getHealth() - this.getAttack());
+				
+				
+				System.out.println("QQQQQ");
+				TileStatus.attackEnemy(f.getFloorID(), f.getTile(surr[i]).p, attack, f);
 			}
 		}
 

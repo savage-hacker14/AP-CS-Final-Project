@@ -362,9 +362,9 @@ public class Floor {
 	public void printFloor() {
 		for (int r = 0; r < width; r++) {
 			for (int c = 0; c < length; c++) {
-				System.out.print(floorTiles[r][c].getSpriteType().substring(0, 1) + " ");
+				//System.out.print(floorTiles[r][c].getSpriteType().substring(0, 1) + " ");
 			}
-			System.out.println();
+			//System.out.println();
 		}
 	}
 

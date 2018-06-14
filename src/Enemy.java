@@ -101,6 +101,7 @@ public class Enemy extends Tile {
 				floor.setTile(new Enemy(newTile.getSprite(), newTile.getBG(), newTile.getSpriteType(), newTile.getBGImageType(), newSpot1, newTile.getHealth(), newTile.getAttack(), newTile.getDefense(), newTile.getTrophies()), newSpot1);
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
 				//this.attack(floor);
+				TileStatus.updateEnemyPosition(floor.getFloorID(), p, newSpot1);
 				
 				return newSpot1;
 			} else {
@@ -117,7 +118,7 @@ public class Enemy extends Tile {
 				floor.setTile(new Enemy(newTile.getSprite(), newTile.getBG(), newTile.getSpriteType(), newTile.getBGImageType(), newSpot2, newTile.getHealth(), newTile.getAttack(), newTile.getDefense(), newTile.getTrophies()), newSpot2);
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
 				//this.attack(floor);
-				
+				TileStatus.updateEnemyPosition(floor.getFloorID(), p, newSpot2);
 				
 				return newSpot2;
 			} else {
@@ -134,7 +135,7 @@ public class Enemy extends Tile {
 				floor.setTile(new Enemy(newTile.getSprite(), newTile.getBG(), newTile.getSpriteType(), newTile.getBGImageType(), newSpot3, newTile.getHealth(), newTile.getAttack(), newTile.getDefense(), newTile.getTrophies()), newSpot3);
 				floor.setTile(new Tile(oldTile.getSprite(), oldTile.getBG(), oldTile.getSpriteType(), oldTile.getBGImageType(), oldSpot), oldSpot);
 				//this.attack(floor);
-				
+				TileStatus.updateEnemyPosition(floor.getFloorID(), p, newSpot3);
 				
 				return newSpot3;
 			}
@@ -149,7 +150,7 @@ public class Enemy extends Tile {
 				System.out.println(floor.getTile(newSpot4) instanceof Enemy);
 				System.out.println(floor.getTile(oldSpot) instanceof Enemy);
 				//this.attack(floor);
-				
+				TileStatus.updateEnemyPosition(floor.getFloorID(), p, newSpot4);
 				
 				return newSpot4;
 		}

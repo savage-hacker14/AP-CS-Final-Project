@@ -26,27 +26,27 @@ public class TileStatus {
 		enemyTrophies = new ArrayList<Integer>();
 
 	}
-	
+
 	public static void increaseCharacterAttack(int increment) {
 		chAttack += increment;
 	}
-	
+
 	public static void increaseCharacterDefense(int increment) {
 		chDefense += increment;
 	}
-	
+
 	public static void increaseCharacterMaxHealth(int increment) {
 		chMaxHealth += increment;
 	}
-	
+
 	public static void increaseCharacterHealth(int increment) {
 		chHealth += increment;
-		
+
 		if (chHealth > chMaxHealth) {
 			chHealth = chMaxHealth;
 		}
 	}
-	
+
 	public static void attackEnemy(Point enmFloor, Point enmTile, int attackPts, Floor f) {
 
 		// Going through each enemy
@@ -56,13 +56,13 @@ public class TileStatus {
 			if (enemyFloorID.get(i).x == enmFloor.x && enemyFloorID.get(i).y == enmFloor.y) {
 				if (enemyTileID.get(i).x == enmTile.x && enemyTileID.get(i).y == enmTile.y) {
 					enemyHealth.set(i, enemyHealth.get(i) - attackPts);
-
+					System.out.println("WWWWWWWWWWWWWWWWWWWW");
 					// When the enemy dies
 					if (enemyHealth.get(i) <= 0) {
 
 						// Deletes the enemy from the floor
 						f.getTile(enmTile).setSprite(f.getTile(enmTile).getBG());
-						f.getTile(enmTile).setSpriteType(f.getTile(enmTile).getSpriteType());
+						f.getTile(enmTile).setSpriteType(f.getTile(enmTile).getBGImageType());
 
 						// Removes the enemy from the ArrayList
 						enemyFloorID.remove(i);
@@ -75,14 +75,19 @@ public class TileStatus {
 			}
 		}
 
+		System.out.print("Enemy healths: ");
+		for (int i = 0; i < enemyFloorID.size(); i++) {
+			System.out.print(enemyHealth.get(i) + " ");
+		}
+
 	}
 
 	public static void attackPlayer(int attackPts) {
 
 		chHealth -= attackPts;
-		
+
 		System.out.println("Character Health: " + chHealth);
-		
+
 		if (chHealth <= 0) {
 			chHealth = 0;
 			// Character dies : Game Over
@@ -93,44 +98,46 @@ public class TileStatus {
 	}
 
 	public static void updateEnemyPosition(Point enmFloor, Point oldTile, Point newTile) {
-		
+
 		for (int i = 0; i < enemyTileID.size(); i++) {
-			if (enemyTileID.get(i).x == enmFloor.x && enemyTileID.get(i).y == enmFloor.y) {
-				enemyTileID.set(i, new Point(newTile.x, newTile.y));
-				return;
+			if (enemyFloorID.get(i).x == enmFloor.x && enemyFloorID.get(i).y == enmFloor.y) {
+				if (enemyTileID.get(i).x == oldTile.x && enemyTileID.get(i).y == oldTile.y) {
+					enemyTileID.set(i, new Point(newTile.x, newTile.y));
+					return;
+				}
 			}
 		}
-		
-		
+
 	}
 
 	// Make sure enemy positions are updated when re-entering a room so that it
 	// doesn't double copy the enemies on the list
 	public static void addEnemiesToList(Floor f) {
-		
-		// Going through each enemy to see if the FloorID of the enemy matches with any already created enemy
+
+		// Going through each enemy to see if the FloorID of the enemy matches with any
+		// already created enemy
 		boolean alreadyAdded = false;
-		
+
 		for (int i = 0; i < enemyFloorID.size(); i++) {
 			if (enemyFloorID.get(i).x == f.getFloorID().x && enemyFloorID.get(i).y == f.getFloorID().y) {
 				alreadyAdded = true;
 				i = enemyFloorID.size();
 			}
 		}
-		
+
 		if (!alreadyAdded) {
 			for (int i = 0; i < f.width; i++) {
 				for (int j = 0; j < f.length; j++) {
 					if (f.getTile(i, j) instanceof Enemy) {
 						enemyFloorID.add(new Point(f.getFloorID().x, f.getFloorID().y));
 						enemyTileID.add(new Point(i, j));
-						enemyHealth.add(((Enemy)f.getTile(i, j)).getHealth());
-						enemyTrophies.add(((Enemy)f.getTile(i, j)).getTrophies());
+						enemyHealth.add(((Enemy) f.getTile(i, j)).getHealth());
+						enemyTrophies.add(((Enemy) f.getTile(i, j)).getTrophies());
 					}
 				}
 			}
 		}
-		
+
 	}
 
 	public static int getChHealth() {
