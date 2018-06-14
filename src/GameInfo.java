@@ -259,7 +259,7 @@ public class GameInfo {
 						boolean isRepeated = false;
 
 						for (int k = 0; k < skip.size(); k++) {
-							if (skip.get(k).x == f.getTile(i, j).p.x) {
+							if (skip.get(k).x == f.getTile(i, j).p.x && skip.get(k).y == f.getTile(i, j).p.y) {
 								isRepeated = true;
 								k = skip.size();
 							}
