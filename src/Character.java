@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
@@ -240,7 +241,7 @@ public class Character extends Tile {
 
 			return newF;
 		}
-
+		
 		int newX;
 		if (p.x > 0) {
 			newX = p.x - 1;
@@ -253,8 +254,31 @@ public class Character extends Tile {
 		Point newPos = new Point(newX, p.y);
 
 		System.out.println(p + "\t" + newPos);
-
-		if (isWalkable(f.getTile(newPos).getSpriteType())) {
+		if (f.getTile(p.x - 1, p.y).getSpriteType().equalsIgnoreCase("Chest")) {
+			int ran =(int) (Math.random()*3);
+			Items inChest;
+			if(ran==0) {
+				inChest = new Items(0,20,0,30,"sword");
+			}else if(ran ==1) {
+				inChest = new Items(0,0,20,30,"armor");
+			}else {
+				inChest = new Items(10,0,0,10,"Potion");
+			}
+			
+			String ans = JOptionPane.showInputDialog("Type yes to accept the following Item: "+ inChest.getName());
+			if(ans.equals("yes")) {
+				int num =TileStatus.itemSpace();
+				if(num==-1) {
+					JOptionPane.showInputDialog("BackPack full, type anything to continue");
+				}else {
+					TileStatus.setItem(inChest, num);
+				}
+			}
+			String BGI = f.getTile(new Point(p.x-1, p.y)).getBGImageType();
+			BufferedImage BGim =f.getTile(new Point(p.x-1, p.y)).getBG();
+			f.getTile(new Point(p.x-1, p.y)).setSprite(BGim);
+			f.getTile(new Point(p.x-1, p.y)).setSpriteType(BGI);
+		}else if (isWalkable(f.getTile(newPos).getSpriteType())) {
 			f.moveTile(p, newPos);
 			f.printFloor();
 
@@ -357,7 +381,31 @@ public class Character extends Tile {
 
 		System.out.println(p + "\t" + newPos);
 
-		if (isWalkable(f.getTile(newPos).getSpriteType())) {
+		if (f.getTile(p.x + 1, p.y).getSpriteType().equalsIgnoreCase("Chest")) {
+			int ran =(int) (Math.random()*3);
+			Items inChest;
+			if(ran==0) {
+				inChest = new Items(0,20,0,30,"sword");
+			}else if(ran ==1) {
+				inChest = new Items(0,0,20,30,"armor");
+			}else {
+				inChest = new Items(10,0,0,10,"Potion");
+			}
+			
+			String ans = JOptionPane.showInputDialog("Type yes to accept the following Item: "+ inChest.getName());
+			if(ans.equals("yes")) {
+				int num =TileStatus.itemSpace();
+				if(num==-1) {
+					JOptionPane.showInputDialog("BackPack full, type anything to continue");
+				}else {
+					TileStatus.setItem(inChest, num);
+				}
+			}
+			String BGI = f.getTile(new Point(p.x+1, p.y)).getBGImageType();
+			BufferedImage BGim =f.getTile(new Point(p.x+1, p.y)).getBG();
+			f.getTile(new Point(p.x+1, p.y)).setSprite(BGim);
+			f.getTile(new Point(p.x+1, p.y)).setSpriteType(BGI);
+		}else if (isWalkable(f.getTile(newPos).getSpriteType())) {
 			f.moveTile(p, newPos);
 			f.printFloor();
 
@@ -427,7 +475,31 @@ public class Character extends Tile {
 
 		System.out.println(p + "\t" + newPos);
 
-		if (isWalkable(f.getTile(newPos).getSpriteType())) {
+		if (f.getTile(p.x , p.y-1).getSpriteType().equalsIgnoreCase("Chest")) {
+			int ran =(int) (Math.random()*3);
+			Items inChest;
+			if(ran==0) {
+				inChest = new Items(0,20,0,30,"sword");
+			}else if(ran ==1) {
+				inChest = new Items(0,0,20,30,"armor");
+			}else {
+				inChest = new Items(10,0,0,10,"Potion");
+			}
+			
+			String ans = JOptionPane.showInputDialog("Type yes to accept the following Item: "+ inChest.getName());
+			if(ans.equals("yes")) {
+				int num =TileStatus.itemSpace();
+				if(num==-1) {
+					JOptionPane.showInputDialog("BackPack full, type anything to continue");
+				}else {
+					TileStatus.setItem(inChest, num);
+				}
+				String BGI = f.getTile(new Point(p.x, p.y-1)).getBGImageType();
+				BufferedImage BGim =f.getTile(new Point(p.x, p.y-1)).getBG();
+				f.getTile(new Point(p.x, p.y-1)).setSprite(BGim);
+				f.getTile(new Point(p.x, p.y-1)).setSpriteType(BGI);
+			}
+		}else if (isWalkable(f.getTile(newPos).getSpriteType())) {
 			f.moveTile(p, newPos);
 			f.printFloor();
 
@@ -491,7 +563,31 @@ public class Character extends Tile {
 
 		System.out.println(p + "\t" + newPos);
 
-		if (isWalkable(f.getTile(newPos).getSpriteType())) {
+		if (f.getTile(p.x , p.y+1).getSpriteType().equalsIgnoreCase("Chest")) {
+			int ran =(int) (Math.random()*3);
+			Items inChest;
+			if(ran==0) {
+				inChest = new Items(0,20,0,30,"sword");
+			}else if(ran ==1) {
+				inChest = new Items(0,0,20,30,"armor");
+			}else {
+				inChest = new Items(10,0,0,10,"Potion");
+			}
+			
+			String ans = JOptionPane.showInputDialog("Type yes to accept the following Item: "+ inChest.getName());
+			if(ans.equals("yes")) {
+				int num =TileStatus.itemSpace();
+				if(num==-1) {
+					JOptionPane.showInputDialog("BackPack full, type anything to continue");
+				}else {
+					TileStatus.setItem(inChest, num);
+				}
+			}
+			String BGI = f.getTile(new Point(p.x, p.y+1)).getBGImageType();
+			BufferedImage BGim =f.getTile(new Point(p.x, p.y+1)).getBG();
+			f.getTile(new Point(p.x, p.y+1)).setSprite(BGim);
+			f.getTile(new Point(p.x, p.y+1)).setSpriteType(BGI);
+		}else if (isWalkable(f.getTile(newPos).getSpriteType())) {
 			f.moveTile(p, newPos);
 			f.printFloor();
 

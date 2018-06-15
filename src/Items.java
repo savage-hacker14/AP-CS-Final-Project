@@ -11,7 +11,13 @@ public class Items {
 	public Items(BufferedImage img) {
 		image = img;
 	}
-	
+	public Items(int heal, int att, int defen, int pric, String nam) {
+		health = heal;
+		attack = att;
+		defense = defen;
+		price = pric;
+		name =nam;
+	}
 	public int getHealth() {
 		return health;
 	}
