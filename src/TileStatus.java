@@ -7,7 +7,7 @@ public class TileStatus {
 	private static int chAttack = 1;
 	private static int chDefense = 1;
 	private static int chTrophies = 1;
-
+	private static Items[] backpack; 
 	private static ArrayList<Point> enemyFloorID;
 	private static ArrayList<Point> enemyTileID;
 	private static ArrayList<Integer> enemyHealth;
@@ -24,7 +24,7 @@ public class TileStatus {
 		enemyTileID = new ArrayList<Point>();
 		enemyHealth = new ArrayList<Integer>();
 		enemyTrophies = new ArrayList<Integer>();
-
+		backpack = new Items[10];
 	}
 
 	public static void increaseCharacterAttack(int increment) {
@@ -158,6 +158,25 @@ public class TileStatus {
 
 	public static int getChTrophies() {
 		return chTrophies;
+	}
+	public int itemSpace() {
+		for (int i = 0; i < backpack.length; i++) {
+			if (backpack[i] == null) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	public  Items[] getBackpack() {
+		return backpack;
+	}
+	public Items getItem(int index) {
+		return backpack[index];
+	}
+	
+
+	public void setItem(Items input, int index) {
+		backpack[index] = input;
 	}
 
 }
