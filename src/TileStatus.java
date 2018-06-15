@@ -10,7 +10,7 @@ public class TileStatus {
 	private static int chAttack = 1;
 	private static int chDefense = 1;
 	private static int chTrophies = 1;
-	private static Items[] backpack; 
+	private static Items[] backpack;
 	private static ArrayList<Point> enemyFloorID;
 	private static ArrayList<Point> enemyTileID;
 	private static ArrayList<Integer> enemyHealth;
@@ -86,8 +86,10 @@ public class TileStatus {
 	}
 
 	public static void attackPlayer(int attackPts) {
-
-		chHealth -= attackPts;
+		if(attackPts>chDefense) {
+			chHealth -= attackPts-chDefense;
+		}
+		
 
 		System.out.println("Character Health: " + chHealth);
 
@@ -166,7 +168,7 @@ public class TileStatus {
 	public static int getChTrophies() {
 		return chTrophies;
 	}
-	
+
 	public static int itemSpace() {
 		for (int i = 0; i < backpack.length; i++) {
 			if (backpack[i] == null) {
@@ -175,16 +177,22 @@ public class TileStatus {
 		}
 		return -1;
 	}
+
 	public static Items[] getBackpack() {
 		return backpack;
 	}
+
 	public static Items getItem(int index) {
 		return backpack[index];
 	}
-	
 
 	public static void setItem(Items input, int index) {
+
+		chHealth += input.getHealth();
+		chAttack += input.getAttack();
+		chDefense += input.getDefense();
 		backpack[index] = input;
+
 	}
 
 }
