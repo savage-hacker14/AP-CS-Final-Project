@@ -167,7 +167,7 @@ public class TileStatus {
 		return chTrophies;
 	}
 	
-	public int itemSpace() {
+	public static int itemSpace() {
 		for (int i = 0; i < backpack.length; i++) {
 			if (backpack[i] == null) {
 				return i;
@@ -175,15 +175,15 @@ public class TileStatus {
 		}
 		return -1;
 	}
-	public Items[] getBackpack() {
+	public static Items[] getBackpack() {
 		return backpack;
 	}
-	public Items getItem(int index) {
+	public static Items getItem(int index) {
 		return backpack[index];
 	}
 	
 
-	public void setItem(Items input, int index) {
+	public static void setItem(Items input, int index) {
 		backpack[index] = input;
 	}
 
