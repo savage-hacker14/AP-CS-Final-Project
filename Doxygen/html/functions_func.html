@@ -66,6 +66,9 @@ $(function() {
 &#160;
 
 <h3><a id="index_a"></a>- a -</h3><ul>
+<li>addEnemiesToList()
+: <a class="el" href="class_tile_status.html#afc5b30169155f9ff694359a46047c122">TileStatus</a>
+</li>
 <li>addMoney()
 : <a class="el" href="class_main_character.html#a538987c502b344d69926aa4d40cd4cce">MainCharacter</a>
 </li>
@@ -79,6 +82,12 @@ $(function() {
 </li>
 <li>attackedByPlayer()
 : <a class="el" href="class_enemy.html#a7b552ba1403588ac48511a5d52fafe50">Enemy</a>
+</li>
+<li>attackEnemy()
+: <a class="el" href="class_tile_status.html#ae4885b5f2e4d091e4810e885b64a6850">TileStatus</a>
+</li>
+<li>attackPlayer()
+: <a class="el" href="class_tile_status.html#aac7e5644f452203ef6166dc661a2b6cf">TileStatus</a>
 </li>
 </ul>
 
@@ -150,6 +159,7 @@ $(function() {
 </li>
 <li>getBackpack()
 : <a class="el" href="class_main_character.html#a37e51daa5262e1b83808206c1afc4bf8">MainCharacter</a>
+, <a class="el" href="class_tile_status.html#a22dcda581a10caec840a53a91c5a4c77">TileStatus</a>
 </li>
 <li>getBG()
 : <a class="el" href="class_tile.html#a29654c89f454c75080dd3aa563ed51de">Tile</a>
@@ -157,8 +167,23 @@ $(function() {
 <li>getBGImageType()
 : <a class="el" href="class_tile.html#ae5474f0a50caa251143bf32b3af23960">Tile</a>
 </li>
+<li>getChAttack()
+: <a class="el" href="class_tile_status.html#a86b5069fcfffd7d8da8146bc051f4d21">TileStatus</a>
+</li>
+<li>getChDefense()
+: <a class="el" href="class_tile_status.html#aca6b167c9f1066e67aa45be945f69411">TileStatus</a>
+</li>
 <li>getChestItems()
 : <a class="el" href="class_chest.html#a05144bfbd2058f419ce1d10ee45b7743">Chest</a>
+</li>
+<li>getChHealth()
+: <a class="el" href="class_tile_status.html#acb73c043cdc7f90517aa1da23e225db0">TileStatus</a>
+</li>
+<li>getChMaxHealth()
+: <a class="el" href="class_tile_status.html#a5595262d55781b7e5aaf5f02e1b1859e">TileStatus</a>
+</li>
+<li>getChTrophies()
+: <a class="el" href="class_tile_status.html#ab71ac851ad6513a169bd660bc2319723">TileStatus</a>
 </li>
 <li>getDefense()
 : <a class="el" href="class_character.html#a7ecb546ab9930d98ac7eb787e38fcf5b">Character</a>
@@ -178,6 +203,7 @@ $(function() {
 </li>
 <li>getItem()
 : <a class="el" href="class_main_character.html#a3c28652260d193faf392a935c88cb946">MainCharacter</a>
+, <a class="el" href="class_tile_status.html#ae7cfa71e0ce1ebd95208b00b65b803a0">TileStatus</a>
 </li>
 <li>getMaxHealth()
 : <a class="el" href="class_character.html#a656af94db5c562dd3e8f021b359e02e6">Character</a>
@@ -198,7 +224,7 @@ $(function() {
 : <a class="el" href="class_tile.html#ae200b92497d7a5d1b954617f4858b9fa">Tile</a>
 </li>
 <li>getTile()
-: <a class="el" href="class_floor.html#a779797ebd1816f5ee2100a94e41edbf6">Floor</a>
+: <a class="el" href="class_floor.html#addc7a012bb5958b9f38513cd918730ee">Floor</a>
 </li>
 <li>getTrophies()
 : <a class="el" href="class_enemy.html#ac1983f18b9d0d89aa60e8f26bf377934">Enemy</a>
@@ -210,6 +236,18 @@ $(function() {
 <li>increaseAttack()
 : <a class="el" href="class_character.html#a0c1bb51a8fb77e279c9a2aec3d9da220">Character</a>
 , <a class="el" href="class_items.html#aa11f1882385688321a7b229b20e9eb21">Items</a>
+</li>
+<li>increaseCharacterAttack()
+: <a class="el" href="class_tile_status.html#a0ce74dc6deaa61132dd35d370802d930">TileStatus</a>
+</li>
+<li>increaseCharacterDefense()
+: <a class="el" href="class_tile_status.html#a641662a23f9924865b582af42aefb087">TileStatus</a>
+</li>
+<li>increaseCharacterHealth()
+: <a class="el" href="class_tile_status.html#a5a703f502caa5c606f6643058fcb668e">TileStatus</a>
+</li>
+<li>increaseCharacterMaxHealth()
+: <a class="el" href="class_tile_status.html#a5a696a1dd3d664c6a6187e20e590de19">TileStatus</a>
 </li>
 <li>increaseDefense()
 : <a class="el" href="class_character.html#a5a19731635035065db3422d4b7040793">Character</a>
@@ -228,10 +266,11 @@ $(function() {
 : <a class="el" href="class_tile.html#aa72765f568dbdb2a9590ef1688ec84be">Tile</a>
 </li>
 <li>Items()
-: <a class="el" href="class_items.html#ad9e5346666b844e890acaca629a6ecd9">Items</a>
+: <a class="el" href="class_items.html#a90d92cbfce040705aebacdc490034239">Items</a>
 </li>
 <li>itemSpace()
 : <a class="el" href="class_main_character.html#ac7c22de89020369de595c7c5db297826">MainCharacter</a>
+, <a class="el" href="class_tile_status.html#ac7e05948ef52cbf2c0733d2f1a3c0604">TileStatus</a>
 </li>
 </ul>
 
@@ -287,6 +326,9 @@ $(function() {
 <li>paintComponent()
 : <a class="el" href="class_tile.html#a658c3ec36211c29255a4d86994aff5bd">Tile</a>
 </li>
+<li>playSound()
+: <a class="el" href="class_i_o.html#a7177a5f50041196f18830d9b70a3830c">IO</a>
+</li>
 <li>printFloor()
 : <a class="el" href="class_floor.html#afa74d329f9d931fa12a7b7601cef3e9a">Floor</a>
 </li>
@@ -313,9 +355,18 @@ $(function() {
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>set()
+: <a class="el" href="class_tile_status.html#ae3944d7d73852194ff0810eb53d4b0ec">TileStatus</a>
+</li>
 <li>setAttack()
 : <a class="el" href="class_character.html#aff9c13519266f0a4653c61b2b7237db6">Character</a>
 , <a class="el" href="class_enemy.html#addef8a3f367a62cf0fd43f88f817e0ea">Enemy</a>
+</li>
+<li>setBG()
+: <a class="el" href="class_tile.html#a70bf97dbd9b2a96580bd5507b95a146b">Tile</a>
+</li>
+<li>setBGImageType()
+: <a class="el" href="class_tile.html#a345c86b7121921f2c2d96ce54d50243e">Tile</a>
 </li>
 <li>setChestItems()
 : <a class="el" href="class_chest.html#aec01db5560a52284fe4e35f593d96d0b">Chest</a>
@@ -330,6 +381,7 @@ $(function() {
 </li>
 <li>setItem()
 : <a class="el" href="class_main_character.html#a2a6ea539935d434b718e30e0bb194a8e">MainCharacter</a>
+, <a class="el" href="class_tile_status.html#af05277b9f510ccfb75d43606d6ff0b89">TileStatus</a>
 </li>
 <li>setMaxHealth()
 : <a class="el" href="class_character.html#ad670510771a46a726082737d420c3637">Character</a>
@@ -372,8 +424,17 @@ $(function() {
 <li>updateAttack()
 : <a class="el" href="class_game_info.html#a3ac7a052578fe2bee3533a29c502393f">GameInfo</a>
 </li>
+<li>updateChTrophies()
+: <a class="el" href="class_tile_status.html#a792a9e5f07a286037461478b672663e8">TileStatus</a>
+</li>
+<li>updateEnemyPosition()
+: <a class="el" href="class_tile_status.html#a9b9bbbdd7c06153eaa070d1bb7d18bda">TileStatus</a>
+</li>
 <li>updateHealth()
 : <a class="el" href="class_game_info.html#aa5ef169e374730601c86c069f57ef1ea">GameInfo</a>
+</li>
+<li>updateTrophies()
+: <a class="el" href="class_game_info.html#acc8b9cfe82e3860877f86b8145ca235d">GameInfo</a>
 </li>
 </ul>
 
