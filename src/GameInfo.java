@@ -228,16 +228,16 @@ public class GameInfo {
 				break;
 			case "INVENTORY":
 				System.out.println("INVENTORY!");
-				int l = ((MainCharacter) c).getBackpack().length;
+				int l = TileStatus.getBackpack().length;
 				String answer = "";
 				for (int i = 0; i < l; i++) {
 					if (i > 0) {
 						answer += ", ";
 					}
-					if (((MainCharacter) c).getItem(i) == null) {
+					if (TileStatus.getItem(i)==null) {
 						answer+="Empty Space";
 					} else {
-						answer += ((MainCharacter) c).getItem(i);
+						answer += TileStatus.getItem(i).getName();
 					}
 
 				}
