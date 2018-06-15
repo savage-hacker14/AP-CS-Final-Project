@@ -633,6 +633,7 @@ public class Character extends Tile {
 				
 				System.out.println("QQQQQ");
 				TileStatus.attackEnemy(f.getFloorID(), f.getTile(surr[i]).p, attack, f);
+				IO.playSound("Sounds/Attack.wav");
 			}
 		}
 

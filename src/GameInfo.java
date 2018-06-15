@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.sun.xml.internal.fastinfoset.util.CharArray;
+
 public class GameInfo {
 	private static JButton[] buttons;
 	private static JLabel[] characterStatus;
@@ -121,6 +123,16 @@ public class GameInfo {
 	public static void updateAttack(int newAttack) {
 		String newTxt = "Attack: " + newAttack + "/100";
 		characterStatus[0].setText(newTxt);
+	}
+	
+	/**
+	 * Update player's trophy indicator in GameInfo Panel
+	 * @author Jacob
+	 *
+	 */
+	public static void updateTrophies(int newTrophyCount) {
+		String newText = "Trophies: " + newTrophyCount;
+		characterStatus[3].setText(newText);
 	}
 
 	static class ButtonListener implements ActionListener {

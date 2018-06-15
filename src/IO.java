@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import javax.sound.sampled.*;
+
 public class IO {
 	
 	/**
@@ -267,4 +269,41 @@ public class IO {
 		
 	}
 	
+	public static void playSound(String filename) {
+		File audioFile = new File(filename);
+		 
+		AudioInputStream audioStream = null;
+		try {
+			audioStream = AudioSystem.getAudioInputStream(audioFile);
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		AudioFormat format = audioStream.getFormat();
+		 
+		DataLine.Info info = new DataLine.Info(Clip.class, format);
+		
+		Clip audioClip = null;
+		try {
+			audioClip = (Clip) AudioSystem.getLine(info);
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			audioClip.open(audioStream);
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		audioClip.start();
+	}
 }

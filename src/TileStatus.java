@@ -10,12 +10,20 @@ public class TileStatus {
 	private static int chAttack = 1;
 	private static int chDefense = 1;
 	private static int chTrophies = 1;
-	private static Items[] backpack;
+	private static Items[] backpack; 
 	private static ArrayList<Point> enemyFloorID;
 	private static ArrayList<Point> enemyTileID;
 	private static ArrayList<Integer> enemyHealth;
 	private static ArrayList<Integer> enemyTrophies;
 
+	/**
+	 * Set up the TileStatus
+	 * @param health
+	 * @param maxHealth
+	 * @param defense
+	 * @param attack
+	 * @param trophies
+	 */
 	public static void set(int health, int maxHealth, int defense, int attack, int trophies) {
 		chHealth = health;
 		chMaxHealth = maxHealth;
@@ -30,18 +38,34 @@ public class TileStatus {
 		backpack = new Items[10];
 	}
 
+	/**
+	 * Increase the character attack by increment
+	 * @param increment
+	 */
 	public static void increaseCharacterAttack(int increment) {
 		chAttack += increment;
 	}
 
+	/**
+	 * Increase the character defense by increment
+	 * @param increment
+	 */
 	public static void increaseCharacterDefense(int increment) {
 		chDefense += increment;
 	}
 
+	/**
+	 * Increase the character max health by increment
+	 * @param increment
+	 */
 	public static void increaseCharacterMaxHealth(int increment) {
 		chMaxHealth += increment;
 	}
 
+	/**
+	 * Increase the character health by increment
+	 * @param increment
+	 */
 	public static void increaseCharacterHealth(int increment) {
 		chHealth += increment;
 
@@ -50,6 +74,13 @@ public class TileStatus {
 		}
 	}
 
+	/**
+	 * Attack the enemy (deal damage), then possibly remove from floor if dead
+	 * @param enmFloor
+	 * @param enmTile
+	 * @param attackPts
+	 * @param f
+	 */
 	public static void attackEnemy(Point enmFloor, Point enmTile, int attackPts, Floor f) {
 
 		// Going through each enemy
@@ -72,6 +103,10 @@ public class TileStatus {
 						enemyTileID.remove(i);
 						enemyHealth.remove(i);
 						enemyTrophies.remove(i);
+						
+						// Increase player trophies 
+						TileStatus.updateChTrophies(10);
+						GameInfo.updateTrophies(TileStatus.getChTrophies());
 					}
 
 				}
@@ -85,11 +120,13 @@ public class TileStatus {
 
 	}
 
+	/**
+	 * Attack the player (subtract their health if they're in the 5-8 surrounding tile range
+	 * @param attackPts
+	 */
 	public static void attackPlayer(int attackPts) {
-		if(attackPts>chDefense) {
-			chHealth -= attackPts-chDefense;
-		}
-		
+
+		chHealth -= attackPts;
 
 		System.out.println("Character Health: " + chHealth);
 
@@ -99,6 +136,7 @@ public class TileStatus {
 			System.out.println("GAME OVER!!!!!!!!!!");
 			JFrame endGame = new JFrame();
 			String endGameStr = "GAME OVER!" + "\n" + "Your trophies: " + chTrophies;
+			IO.playSound("Sounds/CharDeath.wav");
 			JOptionPane.showMessageDialog(endGame, endGameStr);
 			System.exit(0);
 
@@ -106,6 +144,12 @@ public class TileStatus {
 
 	}
 
+	/**
+	 * Update the enemy's position (Point)
+	 * @param enmFloor
+	 * @param oldTile
+	 * @param newTile
+	 */
 	public static void updateEnemyPosition(Point enmFloor, Point oldTile, Point newTile) {
 
 		for (int i = 0; i < enemyTileID.size(); i++) {
@@ -119,8 +163,11 @@ public class TileStatus {
 
 	}
 
-	// Make sure enemy positions are updated when re-entering a room so that it
-	// doesn't double copy the enemies on the list
+	/** 
+	 * Make sure enemy positions are updated when re-entering a room so that it
+	 * doesn't double copy the enemies on the list
+	 * @param Floor
+	 */
 	public static void addEnemiesToList(Floor f) {
 
 		// Going through each enemy to see if the FloorID of the enemy matches with any
@@ -149,26 +196,57 @@ public class TileStatus {
 
 	}
 
+	/**
+	 * Get character health
+	 * @return health
+	 */
 	public static int getChHealth() {
 		return chHealth;
 	}
 
+	/**
+	 * Get character max health
+	 * @return maxHealth
+	 */
 	public static int getChMaxHealth() {
 		return chMaxHealth;
 	}
 
+	/**
+	 * Get character attack
+	 * @return chAttack
+	 */
 	public static int getChAttack() {
 		return chAttack;
 	}
 
+	/**
+	 * Get character defense
+	 * @return chDefense
+	 */
 	public static int getChDefense() {
 		return chDefense;
 	}
 
+	/**
+	 * Get character trophies
+	 * @return chTrophies
+	 */
 	public static int getChTrophies() {
 		return chTrophies;
 	}
-
+	
+	/**
+	 * Add to character trophies by toSum
+	 */
+	public static void updateChTrophies(int toSum) {
+		chTrophies += toSum;
+	}
+	
+	/**
+	 * Find spot for next available item in Backpack
+	 * @return
+	 */
 	public static int itemSpace() {
 		for (int i = 0; i < backpack.length; i++) {
 			if (backpack[i] == null) {
@@ -177,22 +255,31 @@ public class TileStatus {
 		}
 		return -1;
 	}
-
+	
+	/**
+	 * Get the Backpack object
+	 * @return
+	 */
 	public static Items[] getBackpack() {
 		return backpack;
 	}
-
+	
+	/**
+	 * Get index's spot Item in Backpack
+	 * @param index
+	 * @return
+	 */
 	public static Items getItem(int index) {
 		return backpack[index];
 	}
-
+	
+	/**
+	 * Set index's spot with input in Backpack
+	 * @param input
+	 * @param index
+	 */
 	public static void setItem(Items input, int index) {
-
-		chHealth += input.getHealth();
-		chAttack += input.getAttack();
-		chDefense += input.getDefense();
 		backpack[index] = input;
-
 	}
 
 }
