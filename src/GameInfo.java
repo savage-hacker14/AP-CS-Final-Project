@@ -1,5 +1,7 @@
 
 // Written by JAcob Krucinski on 5/21/18
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +27,7 @@ public class GameInfo {
 	 */
 	private static void init() {
 
-		// init buttons
+		// main buttons
 		buttons = new JButton[9];
 		buttons[0] = new JButton("ATTACK");
 		buttons[1] = new JButton("DEFEND");
@@ -38,17 +40,18 @@ public class GameInfo {
 		buttons[8] = new JButton("SHOP");
 
 		// init characterStatus
-		characterStatus = new JLabel[3];
-		characterStatus[0] = new JLabel("Health: ");
-		characterStatus[1] = new JLabel("Magic");
-		characterStatus[2] = new JLabel("Attack: ");
+		characterStatus = new JLabel[4];
+		characterStatus[0] = new JLabel("Health: " + TileStatus.getChHealth());
+		characterStatus[1] = new JLabel("Magic: ");
+		characterStatus[2] = new JLabel("Attack: " + TileStatus.getChAttack());
+		characterStatus[3] = new JLabel("Trophies: " + TileStatus.getChTrophies());
 
 		// init current map view
 		// do later
 	}
 
 	/**
-	 * Create a JPanel with all the buttons and info
+	 * Create a JPanel with all the buttons and info with a unique 
 	 * 
 	 * @param c
 	 *            (MainCharacter)
@@ -57,26 +60,46 @@ public class GameInfo {
 	 * @return
 	 */
 	public static JPanel generatePanel(MainCharacter c, JPanel mapPanel) {
-		JPanel panel = new JPanel();
-
+		JPanel mainPanel = new JPanel();
+		mainPanel.setLayout(new BorderLayout());
+		
+		JPanel arrowPanel = new JPanel();
+		arrowPanel.setLayout(new GridLayout(1,4));
+		
+		JPanel statusPanel = new JPanel();
+		statusPanel.setLayout(new GridLayout(1, 3));
+		
+		JPanel interact = new JPanel();
+		interact.setLayout(new GridLayout(1, 5));
+		
 		init();
 
 		for (int i = 0; i < buttons.length; i++) {
 			String buttonName = buttons[i].getText();
-			buttons[i].addActionListener(
-					new ButtonListener(buttonName, c, mapPanel, panel));
-			buttons[i].addKeyListener(new KeyReader(c, mapPanel, panel));
-			panel.add(buttons[i]);
+			buttons[i].addActionListener(new ButtonListener(buttonName, c, mapPanel, mapPanel));
+			buttons[i].addKeyListener(new KeyReader(c, mapPanel, mapPanel));
+			
+			// add move buttons to arrowPanel and interact buttons to interact panel
+			if (i >= 2 && i <= 5) {
+				arrowPanel.add(buttons[i]);
+			}
+			else {
+				interact.add(buttons[i]);
+			}
 		}
 
 		for (int i = 0; i < characterStatus.length; i++) {
-			panel.add(characterStatus[i]);
+			statusPanel.add(characterStatus[i]);
 		}
+		
+		mainPanel.add(arrowPanel, BorderLayout.NORTH);
+		mainPanel.add(statusPanel, BorderLayout.SOUTH);
+		mainPanel.add(interact, BorderLayout.CENTER);
 
 		// doesn't seem to work
 		// panel.addKeyListener(new KeyReader(c, f, mapPanel));
 
-		return panel;
+		return mainPanel;
 	}
 
 	/**
