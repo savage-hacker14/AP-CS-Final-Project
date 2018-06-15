@@ -17,6 +17,7 @@ public class Floor {
 	public static Point currentFloorID = new Point (0, 0);
 
 	// Images/sprites to be used
+	//yuh yuh
 	public static BufferedImage blob;
 	public static BufferedImage bush;
 	public static BufferedImage chest;
