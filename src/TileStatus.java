@@ -1,6 +1,9 @@
 import java.awt.Point;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 public class TileStatus {
 	private static int chHealth = 1;
 	private static int chMaxHealth = 1;
@@ -91,7 +94,11 @@ public class TileStatus {
 		if (chHealth <= 0) {
 			chHealth = 0;
 			// Character dies : Game Over
-			System.out.println("GGGGGAAAAAAAAAAAMMMMMMMMEEEEEEEEEE OOOOOOOVVVVVVVVVVEEEEEEEEERRRRRRRRRR!!!!!!!!!!");
+			System.out.println("GAME OVER!!!!!!!!!!");
+			JFrame endGame = new JFrame();
+			String endGameStr = "GAME OVER!" + "\n" + "Your trophies: " + chTrophies;
+			JOptionPane.showMessageDialog(endGame, endGameStr);
+			System.exit(0);
 
 		}
 
